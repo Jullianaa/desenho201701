@@ -1,0 +1,66 @@
+Found a possible double name! Name: MARCELO BENTO DA SILVAMARIA DEL PILAR HIDALGO FALLA
+dataChecker.js:51 It occurred in: ANÁLISE ESTRUTURAL MÉTODO DOS ELEMENTOS FINITOS - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: SEBASTIEN ROLAND MARIE JOSEPH RONDINEAUWELLINGTON AVELINO DO AMARAL
+dataChecker.js:51 It occurred in: CIRCUITOS ELETRÔNICOS 3 - Subclass: B
+dataChecker.js:50 Found a possible double name! Name: FELIX MARTIN CARBAJAL GAMARRAMARIA DEL PILAR HIDALGO FALLA
+dataChecker.js:51 It occurred in: COMBUSTÍVEIS E BIOCOMBUSTÍVEIS - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: JOSIANE DO SOCORRO AGUIAR DE SOUZA DE OLIVEIRA CAMPOS
+dataChecker.js:51 It occurred in: DESENVOLVIMENTO SUSTENTÁVEL - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: ALESSANDRO BORGES DE SOUSA OLIVEIRAHIMILSYS HERNÁNDEZ GONZÁLEZ
+dataChecker.js:51 It occurred in: ENGENHARIA E AMBIENTE - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: JOSIANE DO SOCORRO AGUIAR DE SOUZA DE OLIVEIRA CAMPOS
+dataChecker.js:51 It occurred in: ENGENHARIA ECONÔMICA - Subclass: B
+dataChecker.js:50 Found a possible double name! Name: FABRICIO ATAIDES BRAZNILTON CORREIA DA SILVA
+dataChecker.js:51 It occurred in: ESTÁGIO SUPERVISIONADO - Subclass: B
+dataChecker.js:50 Found a possible double name! Name: FELIPE CHAGAS STORTIJHON NERO VAZ GOULART
+dataChecker.js:51 It occurred in: FISICA 1 - Subclass: E
+dataChecker.js:50 Found a possible double name! Name: FELIPE CHAGAS STORTIJHON NERO VAZ GOULART
+dataChecker.js:51 It occurred in: FISICA 1 - Subclass: F
+dataChecker.js:50 Found a possible double name! Name: FELIPE CHAGAS STORTIJHON NERO VAZ GOULART
+dataChecker.js:51 It occurred in: FISICA 1 - Subclass: G
+dataChecker.js:50 Found a possible double name! Name: FELIPE CHAGAS STORTIJHON NERO VAZ GOULART
+dataChecker.js:51 It occurred in: FISICA 1 - Subclass: H
+dataChecker.js:50 Found a possible double name! Name: ANDRE LUIZ ALMEIDA PENNAGERARDO ANTONIO IDROBO PIZO
+dataChecker.js:51 It occurred in: FUNDAMENTOS DE REDES DE COMPUTADORES - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: ANDRE LUIZ ALMEIDA PENNAGERARDO ANTONIO IDROBO PIZO
+dataChecker.js:51 It occurred in: FUNDAMENTOS DE REDES DE COMPUTADORES - Subclass: B
+dataChecker.js:50 Found a possible double name! Name: FLÁVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA
+dataChecker.js:51 It occurred in: LABORATÓRIO DE SISTEMAS DE CONVERSÃO DE ENERGIA - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: FLÁVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA
+dataChecker.js:51 It occurred in: LABORATÓRIO DE SISTEMAS DE CONVERSÃO DE ENERGIA - Subclass: B
+dataChecker.js:50 Found a possible double name! Name: FLÁVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA
+dataChecker.js:51 It occurred in: LABORATÓRIO DE SISTEMAS DE CONVERSÃO DE ENERGIA - Subclass: C
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: MANUTENÇÃO E EVOLUÇÃO DE SOFTWARE - Subclass: D
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: MANUTENÇÃO E EVOLUÇÃO DE SOFTWARE - Subclass: E
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: MANUTENÇÃO E EVOLUÇÃO DE SOFTWARE - Subclass: F
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: MANUTENÇÃO E EVOLUÇÃO DE SOFTWARE - Subclass: G
+dataChecker.js:50 Found a possible double name! Name: EMMANUEL PACHECO ROCHA LIMASANDRA MARIA DA LUZ
+dataChecker.js:51 It occurred in: MATERIAIS COMPOSTOS E PLÁSTICOS - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: WANDER CLEBER MARIA PEREIRA DA SILVA
+dataChecker.js:51 It occurred in: PROCESSOS PETROQUÍMICOS - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: LUCIANO GONCALVES NOLETORUDI HENRI VAN ELS
+dataChecker.js:51 It occurred in: SISTEMAS HIDRÁULICOS E PNEUMÁTICOS - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: FLÁVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA
+dataChecker.js:51 It occurred in: TEORIA DE ELETRICIDADE APLICADA - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: FLÁVIO HENRIQUE JUSTINIANO RIBEIRO DA SILVA
+dataChecker.js:51 It occurred in: TERMODINAMICA 1 - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: WANDER CLEBER MARIA PEREIRA DA SILVA
+dataChecker.js:51 It occurred in: TÓPICOS ESPECIAIS EM GOVERNANÇA DE TECNOLOGIA DA INFORMAÇÃO - Subclass: A
+dataChecker.js:50 Found a possible double name! Name: ALESSANDRO BORGES DE SOUSA OLIVEIRAMANUEL NASCIMENTO DIAS BARCELOS JUNIOR
+dataChecker.js:51 It occurred in: TRABALHO DE CONCLUSÃO DE CURSO 1 - Subclass: BC
+dataChecker.js:50 Found a possible double name! Name: ALESSANDRO BORGES DE SOUSA OLIVEIRAMANUEL NASCIMENTO DIAS BARCELOS JUNIOR
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: BE
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: C
+dataChecker.js:50 Found a possible double name! Name: CRISTIANO JACQUES MIOSSO RODRIGUES MENDESRENAN UTIDA FERREIRA
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: CD
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: CF
+dataChecker.js:50 Found a possible double name! Name: LOURDES MATTOS BRASILVERA REGINA FERNANDES DA SILVA MARÃES
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: CI
+dataChecker.js:50 Found a possible double name! Name: SUELIA DE SIQUEIRA RODRIGUES FLEURY ROSA
+dataChecker.js:51 It occurred in: TRANSFERENCIA DE CALOR - Subclass: CJ
