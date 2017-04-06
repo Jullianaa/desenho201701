@@ -2,7 +2,6 @@ package com.schoolep.desenho.schoolep.models;
 
 import java.util.Date;
 
-
 public class SchoolClass extends Event {
 
     private int absentClass;
