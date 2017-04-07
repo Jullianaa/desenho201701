@@ -28,12 +28,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     // Discipline Column Names
     private static final String DISCIPLINE_ID_COLUMN = "disciplineId";
+    private static final String DISCIPLINE_DISCIPLINECLASSID_COLUMN = "disciplineDisciplineClassId";
     private static final String DISCIPLINE_NAME_COLUMN = "disciplineName";
     private static final String DISCIPLINE_CODE_COLUMN = "disciplineCode";
     private static final String DISCIPLINE_CREDITS_COLUMN = "disciplineCredits";
 
     // DisciplineClass Column Names
     private static final String DISCIPLINECLASS_ID_COLUMN = "disciplineclassId";
+    private static final String DISCIPLINECLASS_SCHOOLCLASSID_COLUMN = "disciplineclassSchoolClassId";
     private static final String DISCIPLINECLASS_CLASSNAME_COLUMN = "disciplineclassClassname";
     private static final String DISCIPLINECLASS_CLASSPROFESSOR_COLUMN = "disciplineclassClassprofessor";
 
@@ -75,6 +77,26 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     // Student Column Names
     private static final String STUDENT_ID_COLUMN = "studentId";
     private static final String STUDENT_NAME_COLUMN = "studentName";
+
+    // Creating Discipline Data
+    private static final String CREATE_DISCIPLINE_TABLE = "CREATE TABLE " +
+            DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            DISCIPLINE_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
+            DISCIPLINE_NAME_COLUMN + " TEXT, " + DISCIPLINE_CODE_COLUMN + " TEXT, " +
+            DISCIPLINE_CREDITS_COLUMN + " INTEGER, " + "FOREIGN KEY (" +
+            DISCIPLINE_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
+            "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+
+    // Creating DisciplineClass Data
+    private static final String CREATE_DISCIPLINECLASS_TABLE = "CREATE TABLE " +
+            DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + " INTEGER PRIMARY KEY " +
+            "AUTOINCREMENT, " + DISCIPLINE_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
+            DISCIPLINECLASS_CLASSNAME_COLUMN + " TEXT, " + DISCIPLINECLASS_CLASSPROFESSOR_COLUMN +
+            " TEXT, " + "FOREIGN KEY (" + DISCIPLINECLASS_SCHOOLCLASSID_COLUMN + ") REFERENCES " +
+            SCHOOLCLASS_TABLE + "(" + SCHOOLCLASS_ID_COLUMN + "));";
+
+    // Creating Exam Data
+    
 
     @Override
     public void onCreate(SQLiteDatabase db) {
