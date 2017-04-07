@@ -35,7 +35,7 @@ public class Discipline {
     }
 
     public void addClass(DisciplineClass aClass) {
-        this.add(aClass);
+        this.classes.add(aClass);
     }
 
     public int getDisciplineCredits() {
