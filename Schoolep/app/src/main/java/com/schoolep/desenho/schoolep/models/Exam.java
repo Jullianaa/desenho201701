@@ -18,7 +18,7 @@ public class Exam {
         this.grade = grade;
     }
 
-    public void addContentExam (String content){
+    public void addContentExam(String content){
         this.contentExam.add(content);
     }
 

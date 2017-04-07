@@ -34,7 +34,7 @@ public class Discipline {
         return classes;
     }
 
-    public void addClasses(DisciplineClass aClass) {
+    public void addClass(DisciplineClass aClass) {
         this.add(aClass);
     }
 
