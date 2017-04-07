@@ -9,15 +9,15 @@ public abstract class Event {
     private String discipline;
 
     public Event(Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline) {
-        this.dateEvent = dateEvent;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.localEvent = localEvent;
-        this.discipline = discipline;
+        setDateEvent(dateEvent);
+        setStartTime(startTime);
+        setEndTime(endTime);
+        setLocalEvent(localEvent);
+        setDiscipline(discipline);
     }
 
     public Date getDateEvent() {
-        return dateEvent;
+        return this.dateEvent;
     }
 
     public void setDateEvent(Date dateEvent) {
@@ -25,7 +25,7 @@ public abstract class Event {
     }
 
     public Date getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     public void setStartTime(Date startTime) {
@@ -33,7 +33,7 @@ public abstract class Event {
     }
 
     public Date getEndTime() {
-        return endTime;
+        return this.endTime;
     }
 
     public void setEndTime(Date endTime) {
@@ -41,7 +41,7 @@ public abstract class Event {
     }
 
     public String getLocalEvent() {
-        return localEvent;
+        return this.localEvent;
     }
 
     public void setLocalEvent(String localEvent) {
@@ -49,7 +49,7 @@ public abstract class Event {
     }
 
     public String getDiscipline() {
-        return discipline;
+        return this.discipline;
     }
 
     public void setDiscipline(String discipline) {

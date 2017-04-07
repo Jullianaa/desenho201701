@@ -7,13 +7,14 @@ public class DisciplineClass {
     private String classProfessor;
     private List<SchoolClass> days;
 
-    public DisciplineClass(String className, String classProfessor) {
-        this.className = className;
-        this.classProfessor = classProfessor;
+    public DisciplineClass(String className, String classProfessor, List<SchoolClass> days) {
+        setClassName(className);
+        setClassProfessor(classProfessor);
+        setDays(days);
     }
 
     public String getClassName() {
-        return className;
+        return this.className;
     }
 
     public void setClassName(String className) {
@@ -21,7 +22,7 @@ public class DisciplineClass {
     }
 
     public String getClassProfessor() {
-        return classProfessor;
+        return this.classProfessor;
     }
 
     public void setClassProfessor(String classProfessor) {
@@ -29,10 +30,10 @@ public class DisciplineClass {
     }
 
     public List<SchoolClass> getDays() {
-        return days;
+        return this.days;
     }
 
-    public void addDay(SchoolClass classDay) {
-        this.days.add(classDay);
+    public void setDays(List<SchoolClass> days) {
+        this.days = days;
     }
 }

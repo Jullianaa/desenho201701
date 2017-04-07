@@ -7,11 +7,11 @@ public class Monitory extends Event {
 
     public Monitory(Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline, String monitor) {
         super(dateEvent, startTime, endTime, localEvent, discipline);
-        this.monitor = monitor;
+        setMonitor(monitor);
     }
 
     public String getMonitor() {
-        return monitor;
+        return this.monitor;
     }
 
     public void setMonitor(String monitor) {

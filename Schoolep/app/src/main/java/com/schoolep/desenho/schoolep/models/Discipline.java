@@ -5,17 +5,18 @@ import java.util.List;
 public class Discipline {
     private String disciplineName;
     private String disciplineCode;
+    private Integer disciplineCredits;
     private List<DisciplineClass> classes;
-    private int disciplineCredits;
 
-    public Discipline(String disciplineName, String disciplineCode, int disciplineCredits) {
-        this.disciplineName = disciplineName;
-        this.disciplineCode = disciplineCode;
-        this.disciplineCredits = disciplineCredits;
+    public Discipline(String disciplineName, String disciplineCode, Integer disciplineCredits, List<DisciplineClass> classes) {
+        setDisciplineName(disciplineName);
+        setDisciplineCode(disciplineCode);
+        setDisciplineCredits(disciplineCredits);
+        setClasses(classes);
     }
 
     public String getDisciplineName() {
-        return disciplineName;
+        return this.disciplineName;
     }
 
     public void setDisciplineName(String disciplineName) {
@@ -23,7 +24,7 @@ public class Discipline {
     }
 
     public String getDisciplineCode() {
-        return disciplineCode;
+        return this.disciplineCode;
     }
 
     public void setDisciplineCode(String disciplineCode) {
@@ -31,15 +32,15 @@ public class Discipline {
     }
 
     public List<DisciplineClass> getClasses() {
-        return classes;
+        return this.classes;
     }
 
-    public void addClass(DisciplineClass aClass) {
-        this.classes.add(aClass);
+    public void setClasses(List<DisciplineClass> classes){
+        this.classes = classes;
     }
 
     public int getDisciplineCredits() {
-        return disciplineCredits;
+        return this.disciplineCredits;
     }
 
     public void setDisciplineCredits(int disciplineCredits) {

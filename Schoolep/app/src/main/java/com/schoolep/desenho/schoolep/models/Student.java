@@ -9,12 +9,16 @@ public class Student {
     private List<Task> studentTasks;
     private List<Exam> studentExames;
 
-    public Student(String studentName) {
-        this.studentName = studentName;
+    public Student(String studentName, List<Discipline> studentDisciplines, List<Monitory> studentMonitories, List<Task> studentTasks, List<Exam> studentExames) {
+        setStudentName(studentName);
+        setStudentDisciplines(studentDisciplines);
+        setStudentMonitories(studentMonitories);
+        setStudentTasks(studentTasks);
+        setStudentExames(studentExames);
     }
 
     public String getStudentName() {
-        return studentName;
+        return this.studentName;
     }
 
     public void setStudentName(String studentName) {
@@ -22,34 +26,34 @@ public class Student {
     }
 
     public List<Discipline> getStudentDisciplines() {
-        return studentDisciplines;
+        return this.studentDisciplines;
     }
 
-    public void addStudentDiscipline(Discipline discipline) {
-        this.studentDisciplines.add(discipline);
+    public void setStudentDisciplines(List<Discipline> studentDisciplines) {
+        this.studentDisciplines = studentDisciplines;
     }
 
     public List<Monitory> getStudentMonitories() {
-        return studentMonitories;
+        return this.studentMonitories;
     }
 
-    public void addStudentMonitory(Monitory monitory) {
-        this.studentMonitories.add(monitory);
+    public void setStudentMonitories(List<Monitory> studentMonitories) {
+        this.studentMonitories = studentMonitories;
     }
 
     public List<Task> getStudentTasks() {
-        return studentTasks;
+        return this.studentTasks;
     }
 
-    public void addStudentTask(Task task) {
-        this.studentTasks.add(task);
+    public void setStudentTasks(List<Task> studentTasks) {
+        this.studentTasks studentTasks;
     }
 
     public List<Exam> getStudentExames() {
-        return studentExames;
+        return this.studentExames;
     }
 
-    public void addStudentExam(Exam exam) {
-        this.studentExames.add(exam);
+    public void setStudentExames(List<Exam> studentExames) {
+        this.studentExames = studentExames;
     }
 }

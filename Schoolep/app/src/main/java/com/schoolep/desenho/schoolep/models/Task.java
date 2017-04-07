@@ -7,11 +7,11 @@ public class Task extends Event {
 
     public Task(Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline, String taskDescription) {
         super(dateEvent, startTime, endTime, localEvent, discipline);
-        this.taskDescription = taskDescription;
+        setTaskDescription(taskDescription);
     }
 
     public String getTaskDescription() {
-        return taskDescription;
+        return this.taskDescription;
     }
 
     public void setTaskDescription(String taskDescription) {
