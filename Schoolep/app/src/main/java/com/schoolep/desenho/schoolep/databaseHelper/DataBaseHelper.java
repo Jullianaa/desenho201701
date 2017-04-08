@@ -41,6 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     // Exam Column Names
     private static final String EXAM_ID_COLUMN = "examId";
+    private static final String EXAM_DISCIPLINECLASSID_COLUMN = "examDisciplineClassId";
     private static final String EXAM_DATEEVENT_COLUMN = "examDateevent";
     private static final String EXAM_STARTTIME_COLUMN = "examStarttime";
     private static final String EXAM_ENDTIME_COLUMN = "examEndtime";
@@ -96,7 +97,15 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             SCHOOLCLASS_TABLE + "(" + SCHOOLCLASS_ID_COLUMN + "));";
 
     // Creating Exam Data
-    
+    private static final String CREATE_EXAM_TABLE = "CREATE TABLE " +
+            EXAM_TABLE + "(" + EXAM_ID_COLUMN + " INTEGER PRIMARY KEY " +
+            "AUTOINCREMENT, " + EXAM_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
+            EXAM_DATEEVENT_COLUMN + " TEXT, " + EXAM_STARTTIME_COLUMN +
+            " TEXT, " + EXAM_ENDTIME_COLUMN + " TEXT, " + EXAM_LOCALEVENT_COLUMN + " TEXT, " +
+            "FOREIGN KEY (" + EXAM_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
+            "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
