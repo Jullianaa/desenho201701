@@ -160,7 +160,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onOpen(SQLiteDatabase db) {
-        super.onOpen(dn);
+        super.onOpen(db);
     }
 
     @Override
