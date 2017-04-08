@@ -135,6 +135,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             "FOREING KEY (" + TASK_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
             "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
+    // Creating Student Data
     private static final String CREATE_STUDENT_TABLE = "CREATE TABLE " + STUDENT_TABLE + "(" +
             STUDENT_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + STUDENT_NAME_COLUMN +
             " TEXT, " + "FOREING KEY (" + STUDENT_DISCIPLINECLASSID_COLUMN + ") REFERENCES " +
@@ -143,14 +144,51 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             MONITORY_ID_COLUMN + "), FOREING KEY (" + STUDENT_TASKID_COLUMN + ") REFERENCES " +
             TASK_TABLE + "(" + TASK_ID_COLUMN + ") FOREING KEY (" + STUDENT_EXAMID_COLUMN +
             ") REFERENCES " + EXAM_TABLE + "(" + MONITORY_ID_COLUMN + "));";
-    
+
+    private static DataBaseHelper instance;
+
+    public static synchronized DataBaseHelper getHelper(Context context) {
+        if(instance == null){
+            instance = new DataBaseHelper(context);
+        }
+        return instance;
+    }
+
+    public DataBaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(dn);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        // Creating required tables
+        db.execSQL(CREATE_STUDENT_TABLE);
+        db.execSQL(CREATE_DISCIPLINE_TABLE);
+        db.execSQL(CREATE_DISCIPLINECLASS_TABLE);
+        db.execSQL(CREATE_SCHOOLCLASS_TABLE);
+        db.execSQL(CREATE_TASK_TABLE);
+        db.execSQL(CREATE_EXAM_TABLE);
+        db.execSQL(CREATE_MONITORY_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        // On upgrade drop older tables
+        db.execSQL("DROP TABLE IF EXISTS " + STUDENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DISCIPLINE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DISCIPLINECLASS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + SCHOOLCLASS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TASK_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + EXAM_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MONITORY_TABLE);
+
+        // Create new tables
+        onCreate(db);
     }
 }
