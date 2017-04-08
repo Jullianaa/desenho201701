@@ -54,7 +54,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final String MONITORY_STARTTIME_COLUMN = "monitoryStartTime";
     private static final String MONITORY_ENDTIME_COLUMN = "monitoryEndTime";
     private static final String MONITORY_LOCALEVENT_COLUMN = "monitoryLocalEvent";
-    private static final String MONITORY_DISCIPLINE_COLUMN = "monitoryDiscipline";
+    private static final String MONITORY_DISCIPLINECLASSID_COLUMN = "monitoryDiscipline";
     private static final String MONITORY_MONITOR_COLUMN = "monitoryMonitor";
 
     // SchoolClass Column Names
@@ -63,7 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final String SCHOOLCLASS_STARTTIME_COLUMN = "schoolClassStartTime";
     private static final String SCHOOLCLASS_ENDTIME_COLUMN = "schoolClassEndTime";
     private static final String SCHOOLCLASS_LOCALEVENT_COLUMN = "schoolClassLocalEvent";
-    private static final String SCHOOLCLASS_DISCIPLINE_COLUMN = "schoolClassDiscipline";
+    private static final String SCHOOLCLASS_DISCIPLINECLASSID_COLUMN = "schoolClassDiscipline";
     private static final String SCHOOLCLASS_ABSENTCLASS_COLUMN = "schoolClassAbsentClass";
 
     // Task Column Names
@@ -72,12 +72,16 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final String TASK_STARTTIME_COLUMN = "taskClassStartTime";
     private static final String TASK_ENDTIME_COLUMN = "taskClassEndTime";
     private static final String TASK_LOCALEVENT_COLUMN = "taskClassLocalEvent";
-    private static final String TASK_DISCIPLINE_COLUMN = "taskClassDiscipline";
+    private static final String TASK_DISCIPLINECLASSID_COLUMN = "taskClassDiscipline";
     private static final String TASK_DESCRIPTION_COLUMN = "taskClassDescription";
 
     // Student Column Names
     private static final String STUDENT_ID_COLUMN = "studentId";
     private static final String STUDENT_NAME_COLUMN = "studentName";
+    private static final String STUDENT_DISCIPLINECLASSID_COLUMN = "studentDisciplineId";
+    private static final String STUDENT_MONITORYID_COLUMN = "studentMonitoryId";
+    private static final String STUDENT_TASKID_COLUMN = "studentTaskId";
+    private static final String STUDENT_EXAMID_COLUMN = "studentExamId";
 
     // Creating Discipline Data
     private static final String CREATE_DISCIPLINE_TABLE = "CREATE TABLE " +
@@ -105,8 +109,41 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             "FOREIGN KEY (" + EXAM_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
             "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
+    // Creating Monitory Data
+    private static final String CREATE_MONITORY_TABLE = "CREATE TABLE " +
+            MONITORY_TABLE + "(" + MONITORY_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " +
+            MONITORY_DISCIPLINECLASSID_COLUMN + " INTEGER, " + MONITORY_DATEEVENT_COLUMN + " TEXT, " +
+            MONITORY_STARTTIME_COLUMN + " TEXT, " + MONITORY_ENDTIME_COLUMN + " TEXT, " +
+            MONITORY_LOCALEVENT_COLUMN + " TEXT, " + MONITORY_MONITOR_COLUMN + " TEXT, " +
+            "FOREING KEY (" + MONITORY_DISCIPLINECLASSID_COLUMN +
+            ") REFERENCES " + DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
+    // Creating Schooclass Data
+    private static final String CREATE_SCHOOLCLASS_TABLE = "CREATE TABLE " + SCHOOLCLASS_TABLE +
+            "(" + SCHOOLCLASS_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " +
+            SCHOOLCLASS_DISCIPLINECLASSID_COLUMN + " INTEGER, " + SCHOOLCLASS_DATEEVENT_COLUMN +
+            " TEXT, " + SCHOOLCLASS_STARTTIME_COLUMN + " TEXT, " + SCHOOLCLASS_ENDTIME_COLUMN +
+            " TEXT, " + SCHOOLCLASS_LOCALEVENT_COLUMN + " TEXT, " + SCHOOLCLASS_ABSENTCLASS_COLUMN +
+            " INTEGER, "  + "FOREING KEY (" + SCHOOLCLASS_DISCIPLINECLASSID_COLUMN +
+            ") REFERENCES " + DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
+    // Creating Task Data
+    private static final String CREATE_TASK_TABLE = "CREATE TABLE " + TASK_TABLE + "(" + TASK_ID_COLUMN +
+            " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + TASK_DISCIPLINECLASSID_COLUMN + "INTEGER, " +
+            TASK_DATEEVENT_COLUMN + " TEXT, " + TASK_STARTTIME_COLUMN + " TEXT, " + TASK_ENDTIME_COLUMN +
+            " TEXT, " + TASK_LOCALEVENT_COLUMN + " TEXT, " + TASK_DESCRIPTION_COLUMN + " TEXT, " +
+            "FOREING KEY (" + TASK_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
+            "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+
+    private static final String CREATE_STUDENT_TABLE = "CREATE TABLE " + STUDENT_TABLE + "(" +
+            STUDENT_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + STUDENT_NAME_COLUMN +
+            " TEXT, " + "FOREING KEY (" + STUDENT_DISCIPLINECLASSID_COLUMN + ") REFERENCES " +
+            DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "), FOREING KEY (" +
+            STUDENT_MONITORYID_COLUMN + ") REFERENCES " + MONITORY_TABLE + "(" +
+            MONITORY_ID_COLUMN + "), FOREING KEY (" + STUDENT_TASKID_COLUMN + ") REFERENCES " +
+            TASK_TABLE + "(" + TASK_ID_COLUMN + ") FOREING KEY (" + STUDENT_EXAMID_COLUMN +
+            ") REFERENCES " + EXAM_TABLE + "(" + MONITORY_ID_COLUMN + "));";
+    
     @Override
     public void onCreate(SQLiteDatabase db) {
 
