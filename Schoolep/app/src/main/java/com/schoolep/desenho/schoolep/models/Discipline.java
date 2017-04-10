@@ -1,18 +1,28 @@
 package com.schoolep.desenho.schoolep.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Discipline {
+    private Integer disciplineId;
     private String disciplineName;
     private String disciplineCode;
     private Integer disciplineCredits;
-    private List<DisciplineClass> classes;
+    private ArrayList<DisciplineClass> classes;
 
-    public Discipline(String disciplineName, String disciplineCode, Integer disciplineCredits, List<DisciplineClass> classes) {
+    public Discipline(Integer disciplineId, String disciplineName, String disciplineCode, Integer disciplineCredits, ArrayList<DisciplineClass> classes) {
         setDisciplineName(disciplineName);
         setDisciplineCode(disciplineCode);
         setDisciplineCredits(disciplineCredits);
         setClasses(classes);
+    }
+
+    public Integer getDisciplineId() {
+        return disciplineId;
+    }
+
+    public void setDisciplineId(Integer disciplineId) {
+        this.disciplineId = disciplineId;
     }
 
     public String getDisciplineName() {
@@ -31,11 +41,11 @@ public class Discipline {
         this.disciplineCode = disciplineCode;
     }
 
-    public List<DisciplineClass> getClasses() {
+    public ArrayList<DisciplineClass> getClasses() {
         return this.classes;
     }
 
-    public void setClasses(List<DisciplineClass> classes){
+    public void setClasses(ArrayList<DisciplineClass> classes){
         this.classes = classes;
     }
 

@@ -17,88 +17,84 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
 
     // Table Names
-    private static final String DISCIPLINE_TABLE = "discipline";
-    private static final String DISCIPLINECLASS_TABLE = "disciplineclass";
-    private static final String EVENT_TABLE = "event";
-    private static final String SCHOOLCLASS_TABLE = "schoolclass";
-    private static final String EXAM_TABLE = "exam";
-    private static final String MONITORY_TABLE = "monitory";
-    private static final String STUDENT_TABLE = "student";
-    private static final String TASK_TABLE = "task";
+    public static final String DISCIPLINE_TABLE = "discipline";
+    public static final String DISCIPLINECLASS_TABLE = "disciplineclass";
+    public static final String EVENT_TABLE = "event";
+    public static final String SCHOOLCLASS_TABLE = "schoolclass";
+    public static final String EXAM_TABLE = "exam";
+    public static final String MONITORY_TABLE = "monitory";
+    public static final String STUDENT_TABLE = "student";
+    public static final String TASK_TABLE = "task";
 
     // Discipline Column Names
-    private static final String DISCIPLINE_ID_COLUMN = "disciplineId";
-    private static final String DISCIPLINE_DISCIPLINECLASSID_COLUMN = "disciplineDisciplineClassId";
-    private static final String DISCIPLINE_NAME_COLUMN = "disciplineName";
-    private static final String DISCIPLINE_CODE_COLUMN = "disciplineCode";
-    private static final String DISCIPLINE_CREDITS_COLUMN = "disciplineCredits";
+    public static final String DISCIPLINE_ID_COLUMN = "disciplineId";
+    public static final String DISCIPLINE_NAME_COLUMN = "disciplineName";
+    public static final String DISCIPLINE_CODE_COLUMN = "disciplineCode";
+    public static final String DISCIPLINE_CREDITS_COLUMN = "disciplineCredits";
 
     // DisciplineClass Column Names
-    private static final String DISCIPLINECLASS_ID_COLUMN = "disciplineclassId";
-    private static final String DISCIPLINECLASS_SCHOOLCLASSID_COLUMN = "disciplineclassSchoolClassId";
-    private static final String DISCIPLINECLASS_CLASSNAME_COLUMN = "disciplineclassClassname";
-    private static final String DISCIPLINECLASS_CLASSPROFESSOR_COLUMN = "disciplineclassClassprofessor";
+    public static final String DISCIPLINECLASS_ID_COLUMN = "disciplineclassId";
+    public static final String DISCIPLINECLASS_DISCIPLINEID_COLUMN = "disciplineClassDisciplineId";
+    public static final String DISCIPLINECLASS_CLASSNAME_COLUMN = "disciplineclassClassname";
+    public static final String DISCIPLINECLASS_CLASSPROFESSOR_COLUMN = "disciplineclassClassprofessor";
 
     // Exam Column Names
-    private static final String EXAM_ID_COLUMN = "examId";
-    private static final String EXAM_DISCIPLINECLASSID_COLUMN = "examDisciplineClassId";
-    private static final String EXAM_DATEEVENT_COLUMN = "examDateevent";
-    private static final String EXAM_STARTTIME_COLUMN = "examStarttime";
-    private static final String EXAM_ENDTIME_COLUMN = "examEndtime";
-    private static final String EXAM_LOCALEVENT_COLUMN = "examLocalevent";
-    private static final String EXAM_DISCIPLINE_COLUMN = "examDiscipline";
+    public static final String EXAM_ID_COLUMN = "examId";
+    public static final String EXAM_DISCIPLINECLASSID_COLUMN = "examDisciplineClassId";
+    public static final String EXAM_DATEEVENT_COLUMN = "examDateevent";
+    public static final String EXAM_STARTTIME_COLUMN = "examStarttime";
+    public static final String EXAM_ENDTIME_COLUMN = "examEndtime";
+    public static final String EXAM_LOCALEVENT_COLUMN = "examLocalevent";
+    public static final String EXAM_DISCIPLINE_COLUMN = "examDiscipline";
 
     // Monitory Column Names
-    private static final String MONITORY_ID_COLUMN = "monitoryId";
-    private static final String MONITORY_DATEEVENT_COLUMN = "monitoryDateEvent";
-    private static final String MONITORY_STARTTIME_COLUMN = "monitoryStartTime";
-    private static final String MONITORY_ENDTIME_COLUMN = "monitoryEndTime";
-    private static final String MONITORY_LOCALEVENT_COLUMN = "monitoryLocalEvent";
-    private static final String MONITORY_DISCIPLINECLASSID_COLUMN = "monitoryDiscipline";
-    private static final String MONITORY_MONITOR_COLUMN = "monitoryMonitor";
+    public static final String MONITORY_ID_COLUMN = "monitoryId";
+    public static final String MONITORY_DATEEVENT_COLUMN = "monitoryDateEvent";
+    public static final String MONITORY_STARTTIME_COLUMN = "monitoryStartTime";
+    public static final String MONITORY_ENDTIME_COLUMN = "monitoryEndTime";
+    public static final String MONITORY_LOCALEVENT_COLUMN = "monitoryLocalEvent";
+    public static final String MONITORY_DISCIPLINECLASSID_COLUMN = "monitoryDiscipline";
+    public static final String MONITORY_MONITOR_COLUMN = "monitoryMonitor";
 
     // SchoolClass Column Names
-    private static final String SCHOOLCLASS_ID_COLUMN = "schoolClassId";
-    private static final String SCHOOLCLASS_DATEEVENT_COLUMN = "schoolClassDateEvent";
-    private static final String SCHOOLCLASS_STARTTIME_COLUMN = "schoolClassStartTime";
-    private static final String SCHOOLCLASS_ENDTIME_COLUMN = "schoolClassEndTime";
-    private static final String SCHOOLCLASS_LOCALEVENT_COLUMN = "schoolClassLocalEvent";
-    private static final String SCHOOLCLASS_DISCIPLINECLASSID_COLUMN = "schoolClassDiscipline";
-    private static final String SCHOOLCLASS_ABSENTCLASS_COLUMN = "schoolClassAbsentClass";
+    public static final String SCHOOLCLASS_ID_COLUMN = "schoolClassId";
+    public static final String SCHOOLCLASS_DATEEVENT_COLUMN = "schoolClassDateEvent";
+    public static final String SCHOOLCLASS_STARTTIME_COLUMN = "schoolClassStartTime";
+    public static final String SCHOOLCLASS_ENDTIME_COLUMN = "schoolClassEndTime";
+    public static final String SCHOOLCLASS_LOCALEVENT_COLUMN = "schoolClassLocalEvent";
+    public static final String SCHOOLCLASS_DISCIPLINECLASSID_COLUMN = "schoolClassDiscipline";
+    public static final String SCHOOLCLASS_ABSENTCLASS_COLUMN = "schoolClassAbsentClass";
 
     // Task Column Names
-    private static final String TASK_ID_COLUMN = "taskClassId";
-    private static final String TASK_DATEEVENT_COLUMN = "taskClassDateEvent";
-    private static final String TASK_STARTTIME_COLUMN = "taskClassStartTime";
-    private static final String TASK_ENDTIME_COLUMN = "taskClassEndTime";
-    private static final String TASK_LOCALEVENT_COLUMN = "taskClassLocalEvent";
-    private static final String TASK_DISCIPLINECLASSID_COLUMN = "taskClassDiscipline";
-    private static final String TASK_DESCRIPTION_COLUMN = "taskClassDescription";
+    public static final String TASK_ID_COLUMN = "taskClassId";
+    public static final String TASK_DATEEVENT_COLUMN = "taskClassDateEvent";
+    public static final String TASK_STARTTIME_COLUMN = "taskClassStartTime";
+    public static final String TASK_ENDTIME_COLUMN = "taskClassEndTime";
+    public static final String TASK_LOCALEVENT_COLUMN = "taskClassLocalEvent";
+    public static final String TASK_DISCIPLINECLASSID_COLUMN = "taskClassDiscipline";
+    public static final String TASK_DESCRIPTION_COLUMN = "taskClassDescription";
 
     // Student Column Names
-    private static final String STUDENT_ID_COLUMN = "studentId";
-    private static final String STUDENT_NAME_COLUMN = "studentName";
-    private static final String STUDENT_DISCIPLINECLASSID_COLUMN = "studentDisciplineId";
-    private static final String STUDENT_MONITORYID_COLUMN = "studentMonitoryId";
-    private static final String STUDENT_TASKID_COLUMN = "studentTaskId";
-    private static final String STUDENT_EXAMID_COLUMN = "studentExamId";
+    public static final String STUDENT_ID_COLUMN = "studentId";
+    public static final String STUDENT_NAME_COLUMN = "studentName";
+    public static final String STUDENT_DISCIPLINECLASSID_COLUMN = "studentDisciplineId";
+    public static final String STUDENT_MONITORYID_COLUMN = "studentMonitoryId";
+    public static final String STUDENT_TASKID_COLUMN = "studentTaskId";
+    public static final String STUDENT_EXAMID_COLUMN = "studentExamId";
 
     // Creating Discipline Data
     private static final String CREATE_DISCIPLINE_TABLE = "CREATE TABLE " +
             DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            DISCIPLINE_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
             DISCIPLINE_NAME_COLUMN + " TEXT, " + DISCIPLINE_CODE_COLUMN + " TEXT, " +
-            DISCIPLINE_CREDITS_COLUMN + " INTEGER, " + "FOREIGN KEY (" +
-            DISCIPLINE_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
-            "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+            DISCIPLINE_CREDITS_COLUMN + " INTEGER" + "));";
 
     // Creating DisciplineClass Data
     private static final String CREATE_DISCIPLINECLASS_TABLE = "CREATE TABLE " +
             DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + " INTEGER PRIMARY KEY " +
-            "AUTOINCREMENT, " + DISCIPLINE_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
+            "AUTOINCREMENT, " + DISCIPLINECLASS_DISCIPLINEID_COLUMN + " INTEGER, " +
             DISCIPLINECLASS_CLASSNAME_COLUMN + " TEXT, " + DISCIPLINECLASS_CLASSPROFESSOR_COLUMN +
-            " TEXT, " + "FOREIGN KEY (" + DISCIPLINECLASS_SCHOOLCLASSID_COLUMN + ") REFERENCES " +
-            SCHOOLCLASS_TABLE + "(" + SCHOOLCLASS_ID_COLUMN + "));";
+            " TEXT, " + "FOREIGN KEY (" + DISCIPLINECLASS_DISCIPLINEID_COLUMN + ") REFERENCES " +
+            DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + "));";
 
     // Creating Exam Data
     private static final String CREATE_EXAM_TABLE = "CREATE TABLE " +
