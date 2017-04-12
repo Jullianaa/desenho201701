@@ -1,17 +1,30 @@
 package com.schoolep.desenho.schoolep.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplineClass {
+    private Integer disciplineId;
     private String className;
     private String classProfessor;
-    private List<SchoolClass> days;
-    private List <Exam> exams;
+    private ArrayList<SchoolClass> days;
+    private ArrayList<Exam> exams;
 
-    public DisciplineClass(String className, String classProfessor, List<SchoolClass> days) {
+    public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams) {
+
+        setDisciplineId(disciplineId);
         setClassName(className);
         setClassProfessor(classProfessor);
         setDays(days);
+        setExams(exams);
+    }
+
+    public Integer getDisciplineId() {
+        return disciplineId;
+    }
+
+    public void setDisciplineId(Integer disciplineId) {
+        this.disciplineId = disciplineId;
     }
 
     public String getClassName() {
@@ -30,19 +43,19 @@ public class DisciplineClass {
         this.classProfessor = classProfessor;
     }
 
-    public List<SchoolClass> getDays() {
+    public ArrayList<SchoolClass> getDays() {
         return this.days;
     }
 
-    public List<Exam> getExams() {
+    public ArrayList<Exam> getExams() {
         return exams;
     }
 
-    public void setExams(List<Exam> exams) {
+    public void setExams(ArrayList<Exam> exams) {
         this.exams = exams;
     }
 
-    public void setDays(List<SchoolClass> days) {
+    public void setDays(ArrayList<SchoolClass> days) {
 
         this.days = days;
     }
