@@ -1,6 +1,6 @@
 package com.schoolep.desenho.schoolep.models;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class SchoolClass extends Event {
     private Integer absentClass;

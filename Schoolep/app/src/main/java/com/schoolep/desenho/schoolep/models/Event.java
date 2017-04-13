@@ -1,5 +1,5 @@
 package com.schoolep.desenho.schoolep.models;
-import java.util.Date;
+import java.sql.Date;
 
 public abstract class Event {
     private Date dateEvent;
