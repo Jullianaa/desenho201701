@@ -15,6 +15,7 @@ public class Student {
         setStudentMonitories(studentMonitories);
         setStudentTasks(studentTasks);
         setStudentExames(studentExames);
+        setStudentTasks(studentTasks);
     }
 
     public String getStudentName() {
@@ -46,7 +47,7 @@ public class Student {
     }
 
     public void setStudentTasks(List<Task> studentTasks) {
-        this.studentTasks studentTasks;
+        this.studentTasks = studentTasks;
     }
 
     public List<Exam> getStudentExames() {
