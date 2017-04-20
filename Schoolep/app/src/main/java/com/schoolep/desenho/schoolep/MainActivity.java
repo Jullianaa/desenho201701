@@ -12,11 +12,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ArrayList<String> disciplinesList = new ArrayList<>();
 
     // JSON String
     private static String jsonString = null;
@@ -24,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     // JSON Node names
     private static final String TAG_DISCIPLINES_NAME = "disciplines";
     private static final String TAG_CLASS_NAME = "class_name";
+
     private static final String TAG_CLASS_CODE = "class_code";
     private static final String TAG_CLASS_DATA = "class_data";
     private static final String TAG_PROFESSOR = "professor";
@@ -40,23 +38,26 @@ public class MainActivity extends AppCompatActivity {
 
         jsonString = generateJsonString();
 
-        //GETTING JSON CONTACTS
+        //getting JSON disciplines
 
         if(jsonString != null){
             JSONObject jsonObj = null;
             try {
                 jsonObj = new JSONObject(jsonString);
-                //GETTING JSON ARRAY NODE
+                //getting json array node
                 JSONArray disciplines = jsonObj.getJSONArray(TAG_DISCIPLINES_NAME);
 
-                //LOOPING THROUGH ALL CONTACTS
+                //looping through all disciplines
                 for (int indexDisciplines = 0; indexDisciplines < disciplines.length(); indexDisciplines++) {
                     JSONObject disciplinesJson = disciplines.getJSONObject(indexDisciplines);
+
+                    Log.d("     JSON: ", "disciplines");
 
                     String class_name = disciplinesJson.getString(TAG_CLASS_NAME);
                     String class_code = disciplinesJson.getString(TAG_CLASS_CODE);
 
-                    // Data node is JSON Object
+                    Log.d("     Nome - Cod: ", class_name.concat(" - ".concat(class_code)));
+
                     JSONArray class_data = disciplinesJson.getJSONArray(TAG_CLASS_DATA);
                     for (int indexData = 0; indexData < class_data.length(); indexData++) {
                         JSONObject dataJson = class_data.getJSONObject(indexData);
@@ -64,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
                         String class_n = dataJson.getString(TAG_CLASS_NAME);
                         String professor = dataJson.getString(TAG_PROFESSOR);
 
-                        JSONArray days = disciplinesJson.getJSONArray(TAG_DAYS);
+                        Log.d("     Turma - Professor: ", class_n.concat(" - ".concat(professor)));
+
+                        JSONArray days = dataJson.getJSONArray(TAG_DAYS);
 
                         for (int indexDays = 0; indexDays < days.length(); indexDays++) {
                             JSONObject dayJson = days.getJSONObject(indexDays);
@@ -73,17 +76,13 @@ public class MainActivity extends AppCompatActivity {
                             String start_time = dayJson.getString(TAG_START_TIME);
                             String end_time = dayJson.getString(TAG_END_TIME);
                             String local = dayJson.getString(TAG_LOCAL);
+
+                            Log.d("     Dia - local: ", day.concat(" - ".concat(local)));
                         }
                     }
 
-                int dataLength = class_data.length();
-                String stringDataLength = String.valueOf(dataLength);
-
-                String discipline = class_name.concat(class_code.concat(stringDataLength));
-
-                //adding contact to contact list
-                this.disciplinesList.add(discipline);
-            }
+                    Log.d(" - ", "----------------------------------------------------------");
+                }
 
             } catch (final JSONException e) {
                 runOnUiThread(new Runnable() {
@@ -97,13 +96,10 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(), "Couldn't get json from server. Check LogCat for possible errors!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Couldn't get json. Check LogCat for possible errors!", Toast.LENGTH_LONG).show();
                 }
             });
         }
-
-        //iterate hash
-
         
     }
 
@@ -121,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Log.d("JSON: ", json);
+        //Log.d("JSON: ", json);
 
         return json;
     }
