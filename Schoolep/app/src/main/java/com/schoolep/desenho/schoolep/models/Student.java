@@ -15,6 +15,7 @@ public class Student {
         setStudentMonitories(studentMonitories);
         setStudentTasks(studentTasks);
         setStudentExames(studentExames);
+        setStudentTasks(studentTasks);
     }
 
     public String getStudentName() {
