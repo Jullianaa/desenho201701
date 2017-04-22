@@ -25,7 +25,7 @@ public class DisciplineClassDAO extends GenericDBDAO {
         schoolClassDAO = new SchoolClassDAO(context);
         examDAO = new ExamDAO(context);
     }
-    /* Corrigir a maneira de selecionar da tabela (Como no SchoolClassDAO)
+    /* Corrigir a maneira de selecionar da tabela (Como no SchoolClassDAO)*/
 
     public ArrayList<DisciplineClass> getDisciplineClasses (Integer disciplineId) {
         ArrayList<DisciplineClass> disciplineClasses = new ArrayList<DisciplineClass>();
@@ -50,7 +50,7 @@ public class DisciplineClassDAO extends GenericDBDAO {
         }
         return disciplineClasses;
     }
-    */
+
     public DisciplineClass getDisciplineClass(Integer id){
         DisciplineClass disciplineClass = null;
 

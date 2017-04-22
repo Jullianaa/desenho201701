@@ -5,9 +5,9 @@ import java.sql.Date;
 public class SchoolClass extends Event {
     private Integer absentClass;
 
-    public SchoolClass(Date dateEvent, Date startTime, Date endTime, String localEvent,
-                       String discipline, Integer absentClass) {
-        super(dateEvent, startTime, endTime, localEvent, discipline);
+    public SchoolClass(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
+                       String discipline, Integer disciplineClassId, Integer absentClass) {
+        super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
         setAbsentClass(absentClass);
     }
 

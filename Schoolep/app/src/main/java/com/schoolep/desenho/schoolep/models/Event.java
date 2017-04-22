@@ -2,18 +2,23 @@ package com.schoolep.desenho.schoolep.models;
 import java.sql.Date;
 
 public abstract class Event {
+    private Integer eventId;
     private Date dateEvent;
     private Date startTime;
     private Date endTime;
     private String localEvent;
     private String discipline;
+    private Integer disciplineClassId;
 
-    public Event(Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline) {
+    public Event(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
+                 String discipline, Integer disciplineClassId) {
+        setEventId(eventId);
         setDateEvent(dateEvent);
         setStartTime(startTime);
         setEndTime(endTime);
         setLocalEvent(localEvent);
         setDiscipline(discipline);
+        setDisciplineClassId(disciplineClassId);
     }
 
     public Date getDateEvent() {
@@ -54,5 +59,21 @@ public abstract class Event {
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
+    }
+
+    public Integer getDisciplineClassId() {
+        return disciplineClassId;
+    }
+
+    public void setDisciplineClassId(Integer disciplineClassId) {
+        this.disciplineClassId = disciplineClassId;
+    }
+
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
     }
 }

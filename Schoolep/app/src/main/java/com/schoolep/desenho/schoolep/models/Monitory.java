@@ -1,12 +1,13 @@
 package com.schoolep.desenho.schoolep.models;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Monitory extends Event {
     private String monitor;
 
-    public Monitory(Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline, String monitor) {
-        super(dateEvent, startTime, endTime, localEvent, discipline);
+    public Monitory(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
+                    String discipline, Integer disciplineClassId, String monitor) {
+        super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
         setMonitor(monitor);
     }
 
