@@ -1,4 +1,4 @@
-package com.schoolep.desenho.schoolapp.databaseHelper;
+package com.schoolapp.desenho.schoolapp.databaseHelper;
 
 import android.content.Context;
 import android.database.SQLException;

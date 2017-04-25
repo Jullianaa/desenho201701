@@ -1,10 +1,10 @@
-package com.schoolep.desenho.schoolapp.dao;
+package com.schoolapp.desenho.schoolapp.dao;
 
 
 import android.content.Context;
 
-import com.schoolep.desenho.schoolapp.databaseHelper.GenericDBDAO;
-import com.schoolep.desenho.schoolapp.models.Exam;
+import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
+import com.schoolapp.desenho.schoolapp.models.Exam;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.schoolep.desenho.schoolapp;
+package com.schoolapp.desenho.schoolapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

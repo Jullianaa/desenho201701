@@ -1,4 +1,4 @@
-package com.schoolep.desenho.schoolapp.dao;
+package com.schoolapp.desenho.schoolapp.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,10 @@ import android.database.Cursor;
 import android.util.Log;
 import java.util.ArrayList;
 
-import com.schoolep.desenho.schoolapp.databaseHelper.DataBaseHelper;
-import com.schoolep.desenho.schoolapp.databaseHelper.GenericDBDAO;
-import com.schoolep.desenho.schoolapp.models.Discipline;
+import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
+import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
+import com.schoolapp.desenho.schoolapp.models.Discipline;
+
 
 public class DisciplineDAO extends GenericDBDAO{
     private static final String WHERE_ID_EQUALS = DataBaseHelper.DISCIPLINE_ID_COLUMN + " =?";

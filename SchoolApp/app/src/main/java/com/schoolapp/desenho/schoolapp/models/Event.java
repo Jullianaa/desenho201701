@@ -1,4 +1,4 @@
-package com.schoolep.desenho.schoolapp.models;
+package com.schoolapp.desenho.schoolapp.models;
 import java.sql.Date;
 
 public abstract class Event {
