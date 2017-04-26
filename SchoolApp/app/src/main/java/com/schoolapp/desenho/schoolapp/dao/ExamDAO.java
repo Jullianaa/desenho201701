@@ -25,11 +25,11 @@ public class ExamDAO extends GenericDBDAO{
         disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
-    public ArrayList<Exam> getExams (Integer disciplineClassId) {
+    public ArrayList<Exam> getAllExams (Integer disciplineClassId) {
         ArrayList<Exam> exams = new ArrayList<>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.EXAM_TABLE +
-                " WHERE " + DataBaseHelper.EXAM_ID_COLUMN + " = ?";
+                " WHERE " + DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 

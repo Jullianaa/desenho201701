@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
+
+import java.sql.Date;
 import java.util.ArrayList;
 
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
@@ -22,6 +24,28 @@ public class DisciplineDAO extends GenericDBDAO{
         disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
+    public ArrayList<Discipline> getAllStudentDisciplines(Integer studentId) {
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + DataBaseHelper.DISCIPLINE_TABLE +
+                " WHERE " + DataBaseHelper.DISCIPLINE_STUDENTID_COLUMN + " = ?";
+
+        Cursor cursor = database.rawQuery(sql, new String[] {studentId+""});
+        while(cursor.moveToNext()){
+            Discipline discipline = new Discipline(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    disciplineClassDAO.getDisciplineClasses(cursor.getInt(0)),
+                    studentId
+            );
+            disciplines.add(discipline);
+        }
+
+        return disciplines;
+    }
+
     public ArrayList<Discipline> getAllDisciplines() {
         ArrayList<Discipline> disciplines = new ArrayList<Discipline>();
 
@@ -38,7 +62,8 @@ public class DisciplineDAO extends GenericDBDAO{
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getInt(3),
-                    disciplineClassDAO.getDisciplineClasses(cursor.getInt(0))
+                    disciplineClassDAO.getDisciplineClasses(cursor.getInt(0)),
+                    cursor.getInt(4)
             );
             disciplines.add(discipline);
         }
@@ -59,7 +84,8 @@ public class DisciplineDAO extends GenericDBDAO{
                    cursor.getString(1),
                    cursor.getString(2),
                    cursor.getInt(3),
-                   disciplineClassDAO.getDisciplineClasses(id)
+                   disciplineClassDAO.getDisciplineClasses(id),
+                   cursor.getInt(4)
            );
         }
 

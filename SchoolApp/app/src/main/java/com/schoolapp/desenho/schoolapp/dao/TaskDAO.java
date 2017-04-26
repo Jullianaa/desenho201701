@@ -30,7 +30,7 @@ public class TaskDAO extends GenericDBDAO{
         ArrayList<Task> tasks = new ArrayList<>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.TASK_TABLE +
-                " WHERE " + DataBaseHelper.TASK_ID_COLUMN + " = ?";
+                " WHERE " + DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
