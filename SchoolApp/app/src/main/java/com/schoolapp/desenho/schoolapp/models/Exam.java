@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Exam extends Event{
     private Float grade;
-    private List<String> contentExam;
+    private String contentExam;
 
     public Exam(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline,
-                Integer disciplineClassId, Float grade, List<String> contentExam){
+                Integer disciplineClassId, Float grade, String contentExam){
         super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
         setGrade(grade);
         setContentExam(contentExam);
@@ -22,11 +22,11 @@ public class Exam extends Event{
         this.grade = grade;
     }
 
-    public void setContentExam(List<String> contentExam){
+    public void setContentExam(String contentExam){
         this.contentExam = contentExam;
     }
 
-    public List<String> getContentExam (){
+    public String getContentExam (){
         return this.contentExam;
     }
 

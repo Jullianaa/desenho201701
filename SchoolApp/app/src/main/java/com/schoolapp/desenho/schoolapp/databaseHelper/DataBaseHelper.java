@@ -45,7 +45,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String EXAM_STARTTIME_COLUMN = "examStarttime";
     public static final String EXAM_ENDTIME_COLUMN = "examEndtime";
     public static final String EXAM_LOCALEVENT_COLUMN = "examLocalevent";
-    public static final String EXAM_DISCIPLINE_COLUMN = "examDiscipline";
+    public static final String EXAM_GRADE_COLUMN = "examGrade";
+    public static final String EXAM_CONTENT_COLUMN = "examContent";
 
     // Monitory Column Names
     public static final String MONITORY_ID_COLUMN = "monitoryId";
@@ -102,6 +103,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             "AUTOINCREMENT, " + EXAM_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
             EXAM_DATEEVENT_COLUMN + " TEXT, " + EXAM_STARTTIME_COLUMN +
             " TEXT, " + EXAM_ENDTIME_COLUMN + " TEXT, " + EXAM_LOCALEVENT_COLUMN + " TEXT, " +
+            EXAM_GRADE_COLUMN + " FLOAT, " + EXAM_CONTENT_COLUMN + " TEXT, " +
             "FOREIGN KEY (" + EXAM_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
             "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 

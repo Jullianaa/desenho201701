@@ -26,13 +26,13 @@ public class TaskDAO extends GenericDBDAO{
         disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
-    public ArrayList<Task> getTasks (Integer taskId) {
+    public ArrayList<Task> getTasks (Integer disciplineClassId) {
         ArrayList<Task> tasks = new ArrayList<>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.TASK_TABLE +
                 " WHERE " + DataBaseHelper.TASK_ID_COLUMN + " = ?";
 
-        Cursor cursor = database.rawQuery(sql, new String[] {taskId+""});
+        Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
             Task task = new Task(
@@ -43,8 +43,8 @@ public class TaskDAO extends GenericDBDAO{
                     cursor.getString(5),
                     disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
                             getInt(1)).getDisciplineId()).getDisciplineName(),
-                    cursor.getInt(6),
-                    cursor.getString(7)
+                    cursor.getInt(1),
+                    cursor.getString(6)
             );
             tasks.add(task);
         }
