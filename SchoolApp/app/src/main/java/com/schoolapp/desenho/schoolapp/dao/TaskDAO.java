@@ -10,7 +10,7 @@ import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Task;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class TaskDAO extends GenericDBDAO{

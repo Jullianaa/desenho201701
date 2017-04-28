@@ -12,7 +12,7 @@ import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 public class MonitoryDAO extends GenericDBDAO {
     private static final String WHERE_ID_EQUALS = DataBaseHelper.MONITORY_ID_COLUMN + " =?";

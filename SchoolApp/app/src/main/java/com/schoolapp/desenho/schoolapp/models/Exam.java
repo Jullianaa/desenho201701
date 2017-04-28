@@ -1,7 +1,6 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 
 public class Exam extends Event{
     private Float grade;

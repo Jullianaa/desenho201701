@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;

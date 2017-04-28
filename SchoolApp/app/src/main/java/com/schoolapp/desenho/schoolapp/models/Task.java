@@ -1,6 +1,6 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Task extends Event {
     private String taskDescription;
