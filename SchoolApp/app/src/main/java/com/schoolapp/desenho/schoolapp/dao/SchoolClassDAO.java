@@ -10,7 +10,7 @@ import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.SchoolClass;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 public class SchoolClassDAO extends GenericDBDAO{
     private static final String WHERE_ID_EQUALS = DataBaseHelper.SCHOOLCLASS_ID_COLUMN + " =?";

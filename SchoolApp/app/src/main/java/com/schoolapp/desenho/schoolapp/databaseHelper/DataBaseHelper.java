@@ -31,10 +31,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String DISCIPLINE_NAME_COLUMN = "disciplineName";
     public static final String DISCIPLINE_CODE_COLUMN = "disciplineCode";
     public static final String DISCIPLINE_CREDITS_COLUMN = "disciplineCredits";
+    public static final String DISCIPLINE_STUDENTID_COLUMN = "disciplineStudentId";
 
     // DisciplineClass Column Names
     public static final String DISCIPLINECLASS_ID_COLUMN = "disciplineclassId";
     public static final String DISCIPLINECLASS_DISCIPLINEID_COLUMN = "disciplineClassDisciplineId";
+    public static final String DISCIPLINECLASS_STUDENTID_COLUMN = "disciplineClassStudentId";
     public static final String DISCIPLINECLASS_CLASSNAME_COLUMN = "disciplineclassClassname";
     public static final String DISCIPLINECLASS_CLASSPROFESSOR_COLUMN = "disciplineclassClassprofessor";
 
@@ -45,7 +47,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String EXAM_STARTTIME_COLUMN = "examStarttime";
     public static final String EXAM_ENDTIME_COLUMN = "examEndtime";
     public static final String EXAM_LOCALEVENT_COLUMN = "examLocalevent";
-    public static final String EXAM_DISCIPLINE_COLUMN = "examDiscipline";
+    public static final String EXAM_GRADE_COLUMN = "examGrade";
+    public static final String EXAM_CONTENT_COLUMN = "examContent";
 
     // Monitory Column Names
     public static final String MONITORY_ID_COLUMN = "monitoryId";
@@ -86,15 +89,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private static final String CREATE_DISCIPLINE_TABLE = "CREATE TABLE " +
             DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             DISCIPLINE_NAME_COLUMN + " TEXT, " + DISCIPLINE_CODE_COLUMN + " TEXT, " +
-            DISCIPLINE_CREDITS_COLUMN + " INTEGER" + "));";
+            DISCIPLINE_CREDITS_COLUMN + " INTEGER," + DISCIPLINE_STUDENTID_COLUMN + " INTEGER, " +
+            "FOREIGN KEY (" + DISCIPLINE_STUDENTID_COLUMN + ") REFERENCES " + STUDENT_TABLE +
+            "(" + STUDENT_ID_COLUMN + "));";
 
     // Creating DisciplineClass Data
     private static final String CREATE_DISCIPLINECLASS_TABLE = "CREATE TABLE " +
             DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + " INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, " + DISCIPLINECLASS_DISCIPLINEID_COLUMN + " INTEGER, " +
-            DISCIPLINECLASS_CLASSNAME_COLUMN + " TEXT, " + DISCIPLINECLASS_CLASSPROFESSOR_COLUMN +
+            DISCIPLINECLASS_STUDENTID_COLUMN + " INTEGER, " + DISCIPLINECLASS_CLASSNAME_COLUMN +
+            " TEXT, " + DISCIPLINECLASS_CLASSPROFESSOR_COLUMN +
             " TEXT, " + "FOREIGN KEY (" + DISCIPLINECLASS_DISCIPLINEID_COLUMN + ") REFERENCES " +
-            DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + "));";
+            DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + ")," + " FOREIGN KEY (" +
+            DISCIPLINECLASS_STUDENTID_COLUMN + ") REFERENCES " + STUDENT_TABLE + "(" +
+            STUDENT_ID_COLUMN + "));";
 
     // Creating Exam Data
     private static final String CREATE_EXAM_TABLE = "CREATE TABLE " +
@@ -102,6 +110,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             "AUTOINCREMENT, " + EXAM_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
             EXAM_DATEEVENT_COLUMN + " TEXT, " + EXAM_STARTTIME_COLUMN +
             " TEXT, " + EXAM_ENDTIME_COLUMN + " TEXT, " + EXAM_LOCALEVENT_COLUMN + " TEXT, " +
+            EXAM_GRADE_COLUMN + " FLOAT, " + EXAM_CONTENT_COLUMN + " TEXT, " +
             "FOREIGN KEY (" + EXAM_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
             "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
@@ -134,12 +143,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     // Creating Student Data
     private static final String CREATE_STUDENT_TABLE = "CREATE TABLE " + STUDENT_TABLE + "(" +
             STUDENT_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + STUDENT_NAME_COLUMN +
-            " TEXT, " + "FOREING KEY (" + STUDENT_DISCIPLINECLASSID_COLUMN + ") REFERENCES " +
-            DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "), FOREING KEY (" +
-            STUDENT_MONITORYID_COLUMN + ") REFERENCES " + MONITORY_TABLE + "(" +
-            MONITORY_ID_COLUMN + "), FOREING KEY (" + STUDENT_TASKID_COLUMN + ") REFERENCES " +
-            TASK_TABLE + "(" + TASK_ID_COLUMN + ") FOREING KEY (" + STUDENT_EXAMID_COLUMN +
-            ") REFERENCES " + EXAM_TABLE + "(" + MONITORY_ID_COLUMN + "));";
+            " TEXT);";
 
     private static DataBaseHelper instance;
 

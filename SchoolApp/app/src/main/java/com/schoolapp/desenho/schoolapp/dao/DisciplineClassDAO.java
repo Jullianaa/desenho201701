@@ -27,16 +27,33 @@ public class DisciplineClassDAO extends GenericDBDAO {
     }
     /* Corrigir a maneira de selecionar da tabela (Como no SchoolClassDAO)*/
 
+    public ArrayList<DisciplineClass> getAllStudentDisciplineClasses(Integer studentId) {
+        ArrayList<DisciplineClass> disciplineClasses = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + DataBaseHelper.DISCIPLINECLASS_TABLE +
+                " WHERE " + DataBaseHelper.DISCIPLINECLASS_STUDENTID_COLUMN + " = ?";
+
+        Cursor cursor = database.rawQuery(sql, new String[]{studentId + ""});
+        while (cursor.moveToNext()) {
+            DisciplineClass disciplineClass = new DisciplineClass(
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
+                    examDAO.getAllExams(cursor.getInt(0)));
+
+            disciplineClasses.add(disciplineClass);
+        }
+        return disciplineClasses;
+    }
+
     public ArrayList<DisciplineClass> getDisciplineClasses (Integer disciplineId) {
         ArrayList<DisciplineClass> disciplineClasses = new ArrayList<DisciplineClass>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.DISCIPLINECLASS_TABLE +
-                " WHERE " + DataBaseHelper.DISCIPLINECLASS_ID_COLUMN + " = ?";
+                " WHERE " + DataBaseHelper.DISCIPLINECLASS_DISCIPLINEID_COLUMN + " = ?";
 
-        Cursor cursor = database.query(DataBaseHelper.DISCIPLINECLASS_TABLE,
-                new String[] { DataBaseHelper.DISCIPLINECLASS_CLASSNAME_COLUMN,
-                        DataBaseHelper.DISCIPLINECLASS_CLASSPROFESSOR_COLUMN,
-                }, null, null,null,null,null);
+        Cursor cursor = database.rawQuery(sql, new String[] {disciplineId+""});
 
         while (cursor.moveToNext()){
             DisciplineClass disciplineClass = new DisciplineClass(
@@ -44,7 +61,7 @@ public class DisciplineClassDAO extends GenericDBDAO {
                     cursor.getString(2),
                     cursor.getString(3),
                     schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
-                    examDAO.getExam(cursor.getInt(0)));
+                    examDAO.getAllExams(cursor.getInt(0)));
 
             disciplineClasses.add(disciplineClass);
         }
@@ -64,7 +81,7 @@ public class DisciplineClassDAO extends GenericDBDAO {
                     cursor.getString(2),
                     cursor.getString(3),
                     schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
-                    examDAO.getExam(cursor.getInt(0)));
+                    examDAO.getAllExams(cursor.getInt(0)));
         }
 
         if (disciplineClass == null){

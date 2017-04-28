@@ -8,12 +8,16 @@ public class Discipline {
     private String disciplineCode;
     private Integer disciplineCredits;
     private ArrayList<DisciplineClass> classes;
+    private Integer studentId;
 
-    public Discipline(Integer disciplineId, String disciplineName, String disciplineCode, Integer disciplineCredits, ArrayList<DisciplineClass> classes) {
+    public Discipline(Integer disciplineId, String disciplineName, String disciplineCode,
+                      Integer disciplineCredits, ArrayList<DisciplineClass> classes,
+                      Integer studentId) {
         setDisciplineName(disciplineName);
         setDisciplineCode(disciplineCode);
         setDisciplineCredits(disciplineCredits);
         setClasses(classes);
+        setStudentId(studentId);
     }
 
     public Integer getDisciplineId() {
@@ -28,7 +32,7 @@ public class Discipline {
         return this.disciplineName;
     }
 
-    public void setDisciplineName(String disciplineName) {
+    private void setDisciplineName(String disciplineName) {
         this.disciplineName = disciplineName;
     }
 
@@ -36,7 +40,7 @@ public class Discipline {
         return this.disciplineCode;
     }
 
-    public void setDisciplineCode(String disciplineCode) {
+    private void setDisciplineCode(String disciplineCode) {
         this.disciplineCode = disciplineCode;
     }
 
@@ -44,7 +48,7 @@ public class Discipline {
         return this.classes;
     }
 
-    public void setClasses(ArrayList<DisciplineClass> classes){
+    private void setClasses(ArrayList<DisciplineClass> classes){
         this.classes = classes;
     }
 
@@ -52,7 +56,15 @@ public class Discipline {
         return this.disciplineCredits;
     }
 
-    public void setDisciplineCredits(int disciplineCredits) {
+    private void setDisciplineCredits(int disciplineCredits) {
         this.disciplineCredits = disciplineCredits;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    private void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 }

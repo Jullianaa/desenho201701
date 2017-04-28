@@ -12,7 +12,7 @@ import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 public class MonitoryDAO extends GenericDBDAO {
     private static final String WHERE_ID_EQUALS = DataBaseHelper.MONITORY_ID_COLUMN + " =?";
@@ -27,13 +27,13 @@ public class MonitoryDAO extends GenericDBDAO {
         disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
-    public ArrayList <Monitory> getMonitories (Integer monitoryId) {
+    public ArrayList <Monitory> getMonitories (Integer disciplineClassId) {
         ArrayList<Monitory> monitories = new ArrayList<>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.MONITORY_TABLE +
-                " WHERE " + DataBaseHelper.MONITORY_ID_COLUMN + " = ?";
+                " WHERE " + DataBaseHelper.MONITORY_DISCIPLINECLASSID_COLUMN + " = ?";
 
-        Cursor cursor = database.rawQuery(sql, new String[] {monitoryId+""});
+        Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
             Monitory monitory = new Monitory(
@@ -44,8 +44,8 @@ public class MonitoryDAO extends GenericDBDAO {
                     cursor.getString(5),
                     disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
                             getInt(1)).getDisciplineId()).getDisciplineName(),
-                    cursor.getInt(6),
-                    cursor.getString(7)
+                    cursor.getInt(1),
+                    cursor.getString(6)
             );
             monitories.add(monitory);
         }
@@ -69,8 +69,8 @@ public class MonitoryDAO extends GenericDBDAO {
                     cursor.getString(5),
                     disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
                             getInt(1)).getDisciplineId()).getDisciplineName(),
-                    cursor.getInt(6),
-                    cursor.getString(1)
+                    cursor.getInt(1),
+                    cursor.getString(6)
             );
         }
         return monitory;

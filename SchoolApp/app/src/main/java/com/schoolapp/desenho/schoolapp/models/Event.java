@@ -1,5 +1,5 @@
 package com.schoolapp.desenho.schoolapp.models;
-import java.sql.Date;
+import java.util.Date;
 
 public abstract class Event {
     private Integer eventId;

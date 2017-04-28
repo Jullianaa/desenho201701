@@ -1,6 +1,6 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Monitory extends Event {
     private String monitor;
