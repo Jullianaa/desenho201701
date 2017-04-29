@@ -18,17 +18,19 @@ public class DisciplineClassDAO extends GenericDBDAO {
 
     private SchoolClassDAO schoolClassDAO;
     private ExamDAO examDAO;
+    private Context context;
 
     public DisciplineClassDAO(Context context) {
         super(context);
 
-        schoolClassDAO = new SchoolClassDAO(context);
-        examDAO = new ExamDAO(context);
+        this.context = context;
     }
     /* Corrigir a maneira de selecionar da tabela (Como no SchoolClassDAO)*/
 
     public ArrayList<DisciplineClass> getAllStudentDisciplineClasses(Integer studentId) {
         ArrayList<DisciplineClass> disciplineClasses = new ArrayList<>();
+        schoolClassDAO = new SchoolClassDAO(context);
+        examDAO = new ExamDAO(context);
 
         String sql = "SELECT * FROM " + DataBaseHelper.DISCIPLINECLASS_TABLE +
                 " WHERE " + DataBaseHelper.DISCIPLINECLASS_STUDENTID_COLUMN + " = ?";
