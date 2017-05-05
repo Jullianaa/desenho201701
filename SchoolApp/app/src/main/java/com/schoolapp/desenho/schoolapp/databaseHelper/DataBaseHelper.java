@@ -11,7 +11,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
     // Database Name
-    private static final String DATABASE_NAME = "esculepi";
+    private static final String DATABASE_NAME = "schoolapp";
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -19,7 +19,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     // Table Names
     public static final String DISCIPLINE_TABLE = "discipline";
     public static final String DISCIPLINECLASS_TABLE = "disciplineclass";
-    public static final String EVENT_TABLE = "event";
     public static final String SCHOOLCLASS_TABLE = "schoolclass";
     public static final String EXAM_TABLE = "exam";
     public static final String MONITORY_TABLE = "monitory";
@@ -34,7 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String DISCIPLINE_STUDENTID_COLUMN = "disciplineStudentId";
 
     // DisciplineClass Column Names
-    public static final String DISCIPLINECLASS_ID_COLUMN = "disciplineclassId";
+    public static final String DISCIPLINECLASS_ID_COLUMN = "disciplineClassId";
     public static final String DISCIPLINECLASS_DISCIPLINEID_COLUMN = "disciplineClassDisciplineId";
     public static final String DISCIPLINECLASS_STUDENTID_COLUMN = "disciplineClassStudentId";
     public static final String DISCIPLINECLASS_CLASSNAME_COLUMN = "disciplineclassClassname";
@@ -80,64 +79,63 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     // Student Column Names
     public static final String STUDENT_ID_COLUMN = "studentId";
     public static final String STUDENT_NAME_COLUMN = "studentName";
-    public static final String STUDENT_DISCIPLINECLASSID_COLUMN = "studentDisciplineId";
-    public static final String STUDENT_MONITORYID_COLUMN = "studentMonitoryId";
-    public static final String STUDENT_TASKID_COLUMN = "studentTaskId";
-    public static final String STUDENT_EXAMID_COLUMN = "studentExamId";
 
     // Creating Discipline Data
     private static final String CREATE_DISCIPLINE_TABLE = "CREATE TABLE " +
-            DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            DISCIPLINE_TABLE + " (" + DISCIPLINE_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             DISCIPLINE_NAME_COLUMN + " TEXT, " + DISCIPLINE_CODE_COLUMN + " TEXT, " +
             DISCIPLINE_CREDITS_COLUMN + " INTEGER," + DISCIPLINE_STUDENTID_COLUMN + " INTEGER, " +
             "FOREIGN KEY (" + DISCIPLINE_STUDENTID_COLUMN + ") REFERENCES " + STUDENT_TABLE +
-            "(" + STUDENT_ID_COLUMN + "));";
+            " (" + STUDENT_ID_COLUMN + "));";
 
     // Creating DisciplineClass Data
     private static final String CREATE_DISCIPLINECLASS_TABLE = "CREATE TABLE " +
-            DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + " INTEGER PRIMARY KEY " +
+            DISCIPLINECLASS_TABLE + " (" + DISCIPLINECLASS_ID_COLUMN + " INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, " + DISCIPLINECLASS_DISCIPLINEID_COLUMN + " INTEGER, " +
             DISCIPLINECLASS_STUDENTID_COLUMN + " INTEGER, " + DISCIPLINECLASS_CLASSNAME_COLUMN +
             " TEXT, " + DISCIPLINECLASS_CLASSPROFESSOR_COLUMN +
             " TEXT, " + "FOREIGN KEY (" + DISCIPLINECLASS_DISCIPLINEID_COLUMN + ") REFERENCES " +
             DISCIPLINE_TABLE + "(" + DISCIPLINE_ID_COLUMN + ")," + " FOREIGN KEY (" +
-            DISCIPLINECLASS_STUDENTID_COLUMN + ") REFERENCES " + STUDENT_TABLE + "(" +
+            DISCIPLINECLASS_STUDENTID_COLUMN + ") REFERENCES " + STUDENT_TABLE + " (" +
             STUDENT_ID_COLUMN + "));";
 
     // Creating Exam Data
     private static final String CREATE_EXAM_TABLE = "CREATE TABLE " +
-            EXAM_TABLE + "(" + EXAM_ID_COLUMN + " INTEGER PRIMARY KEY " +
+            EXAM_TABLE + " (" + EXAM_ID_COLUMN + " INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, " + EXAM_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
             EXAM_DATEEVENT_COLUMN + " TEXT, " + EXAM_STARTTIME_COLUMN +
             " TEXT, " + EXAM_ENDTIME_COLUMN + " TEXT, " + EXAM_LOCALEVENT_COLUMN + " TEXT, " +
             EXAM_GRADE_COLUMN + " FLOAT, " + EXAM_CONTENT_COLUMN + " TEXT, " +
             "FOREIGN KEY (" + EXAM_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
-            "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+            " (" + DISCIPLINECLASS_ID_COLUMN + "));";
 
     // Creating Monitory Data
     private static final String CREATE_MONITORY_TABLE = "CREATE TABLE " +
-            MONITORY_TABLE + "(" + MONITORY_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " +
+            MONITORY_TABLE + " (" + MONITORY_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " +
             MONITORY_DISCIPLINECLASSID_COLUMN + " INTEGER, " + MONITORY_DATEEVENT_COLUMN + " TEXT, " +
             MONITORY_STARTTIME_COLUMN + " TEXT, " + MONITORY_ENDTIME_COLUMN + " TEXT, " +
             MONITORY_LOCALEVENT_COLUMN + " TEXT, " + MONITORY_MONITOR_COLUMN + " TEXT, " +
-            "FOREING KEY (" + MONITORY_DISCIPLINECLASSID_COLUMN +
-            ") REFERENCES " + DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+            "FOREIGN KEY (" + MONITORY_DISCIPLINECLASSID_COLUMN +
+            ") REFERENCES " + DISCIPLINECLASS_TABLE + " (" + DISCIPLINECLASS_ID_COLUMN + "));";
 
-    // Creating Schooclass Data
-    private static final String CREATE_SCHOOLCLASS_TABLE = "CREATE TABLE " + SCHOOLCLASS_TABLE +
-            "(" + SCHOOLCLASS_ID_COLUMN + " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " +
-            SCHOOLCLASS_DISCIPLINECLASSID_COLUMN + " INTEGER, " + SCHOOLCLASS_DATEEVENT_COLUMN +
-            " TEXT, " + SCHOOLCLASS_STARTTIME_COLUMN + " TEXT, " + SCHOOLCLASS_ENDTIME_COLUMN +
-            " TEXT, " + SCHOOLCLASS_LOCALEVENT_COLUMN + " TEXT, " + SCHOOLCLASS_ABSENTCLASS_COLUMN +
-            " INTEGER, "  + "FOREING KEY (" + SCHOOLCLASS_DISCIPLINECLASSID_COLUMN +
-            ") REFERENCES " + DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "));";
+    // Creating Schoolclass Data
+    private static final String CREATE_SCHOOLCLASS_TABLE = "CREATE TABLE " + SCHOOLCLASS_TABLE + " (" +
+            SCHOOLCLASS_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            SCHOOLCLASS_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
+            SCHOOLCLASS_DATEEVENT_COLUMN + " TEXT, " +
+            SCHOOLCLASS_STARTTIME_COLUMN + " TEXT, " +
+            SCHOOLCLASS_ENDTIME_COLUMN + " TEXT, " +
+            SCHOOLCLASS_LOCALEVENT_COLUMN + " TEXT, " +
+            SCHOOLCLASS_ABSENTCLASS_COLUMN + " INTEGER, " +
+            "FOREIGN KEY(" + SCHOOLCLASS_DISCIPLINECLASSID_COLUMN + ") REFERENCES " +
+            DISCIPLINECLASS_TABLE + "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
     // Creating Task Data
     private static final String CREATE_TASK_TABLE = "CREATE TABLE " + TASK_TABLE + "(" + TASK_ID_COLUMN +
-            " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + TASK_DISCIPLINECLASSID_COLUMN + "INTEGER, " +
+            " INTEGER PRIMARY KEY " + "AUTOINCREMENT, " + TASK_DISCIPLINECLASSID_COLUMN + " INTEGER, " +
             TASK_DATEEVENT_COLUMN + " TEXT, " + TASK_STARTTIME_COLUMN + " TEXT, " + TASK_ENDTIME_COLUMN +
             " TEXT, " + TASK_LOCALEVENT_COLUMN + " TEXT, " + TASK_DESCRIPTION_COLUMN + " TEXT, " +
-            "FOREING KEY (" + TASK_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
+            "FOREIGN KEY (" + TASK_DISCIPLINECLASSID_COLUMN + ") REFERENCES " + DISCIPLINECLASS_TABLE +
             "(" + DISCIPLINECLASS_ID_COLUMN + "));";
 
     // Creating Student Data

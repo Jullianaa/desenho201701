@@ -65,6 +65,8 @@ public class JSONParser {
 
     //populate the database
     public static void populateDatabase(final Activity activity, String jsonString){
+
+        disciplineDAO = new DisciplineDAO(activity);
         //getting JSON disciplines
 
         if(jsonString != null){
@@ -181,6 +183,8 @@ public class JSONParser {
 
                     // create a discipline
                     Discipline discipline = new Discipline(disciplineId, disciplineName, disciplineCode, 0, disciplineClassList, 0);
+
+                    disciplineDAO.saveDiscipline(discipline);
 
                     Log.d(" - ", "----------------------------------------------------------");
                 }
