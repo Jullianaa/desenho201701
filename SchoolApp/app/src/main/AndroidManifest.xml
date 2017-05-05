@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ExamActivity"
+            android:name=".exam.ExamActivity"
             android:label="@string/title_activity_exam"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
