@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.schoolep.desenho.schoolep.R;
 
 public class ExamActivity extends AppCompatActivity {
 
