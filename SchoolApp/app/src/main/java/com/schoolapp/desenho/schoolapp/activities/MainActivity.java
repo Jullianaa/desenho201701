@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,9 @@ import android.view.MenuItem;
 
 import com.schoolapp.desenho.schoolapp.JSONParser;
 import com.schoolapp.desenho.schoolapp.R;
+import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
+import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +56,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        HomeFragment firstFragment = new HomeFragment();
+        newFragment = firstFragment;
+
+        // Add the fragment to the 'fragment_container' FrameLayout
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, firstFragment).commit();
     }
 
     @Override
@@ -89,22 +100,33 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        // Bundle is used to send data to the current fragment
+        Bundle args = new Bundle();
+
+        newFragment = null;
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            newFragment = new HomeFragment();
         } else if (id == R.id.nav_gallery) {
-
+            newFragment = new DisciplineFragment();
         } else if (id == R.id.nav_slideshow) {
-
+            newFragment = new TaskFragment();
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            newFragment = new DisciplineFragment();
+        } else {
+            // Do nothing
         }
+
+        newFragment.setArguments(args);
+        transaction.replace(R.id.fragment_container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

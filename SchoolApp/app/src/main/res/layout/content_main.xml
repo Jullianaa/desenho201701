@@ -8,4 +8,11 @@
     tools:context="com.schoolapp.desenho.schoolapp.activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <FrameLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:id="@+id/fragment_container"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp" />
+
 </android.support.constraint.ConstraintLayout>

@@ -22,12 +22,4 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main2_drawer" />
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_container"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp" />
-
 </android.support.v4.widget.DrawerLayout>
