@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
+import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
 import com.schoolapp.desenho.schoolapp.models.Exam;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
@@ -126,9 +127,22 @@ public class StudentDAO extends GenericDBDAO{
         return student;
     }
 
+    // Saving student's name, disciplines and discipline classes.
     public long saveStudent(Student student) {
         ContentValues values = new ContentValues();
         values.put(DataBaseHelper.STUDENT_NAME_COLUMN, student.getStudentName());
+
+        ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
+        for(Discipline discipline : studentDisciplines) {
+            discipline.setStudentId(1);
+            disciplineDAO.updateDiscipline(discipline);
+        }
+
+        ArrayList<DisciplineClass> studentDisciplineClasses = student.getStudentDisciplinesClasses();
+        for(DisciplineClass disciplineClass : studentDisciplineClasses) {
+            disciplineClass.studentId = 1;
+            disciplineClassDAO.updateDisciplineClass(disciplineClass);
+        }
 
         Log.d("Status Student:", "SAVED");
 
