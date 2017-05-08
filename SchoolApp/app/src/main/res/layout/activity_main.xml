@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.schoolep.desenho.schoolapp.MainActivity">
-
+    tools:context="com.schoolapp.desenho.schoolapp.MainActivity">
+<!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,5 +14,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+-->
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.schoolapp.desenho.schoolapp.SearchDisciplinesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </android.support.constraint.ConstraintLayout>
