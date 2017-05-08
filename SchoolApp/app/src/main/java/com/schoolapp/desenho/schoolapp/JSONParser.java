@@ -189,6 +189,12 @@ public class JSONParser {
                     Log.d(" - ", "----------------------------------------------------------");
                 }
 
+                ArrayList<Discipline> teste;
+                teste = disciplineDAO.getAllDisciplines();
+                for(Discipline discipline : teste){
+                    Log.d("name:", discipline.getDisciplineName());
+                }
+
             } catch (final JSONException e) {
                 activity.runOnUiThread(new Runnable() {
                     @Override
