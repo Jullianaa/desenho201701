@@ -16,7 +16,5 @@ public class MainActivity extends AppCompatActivity {
         jsonString = jsonParser.generateJsonString(this);
         jsonParser.populateDatabase(this, jsonString);
 
-
-
     }
 }
