@@ -5,18 +5,15 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private JSONParser jsonParser;
-    private String jsonString;
+    private JSONParser jsonParser = new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        jsonString = jsonParser.generateJsonString(this);
-        jsonParser.populateDatabase(this, jsonString);
-
-
+        // Inserts all courses in the database if this is not already done
+        jsonParser.insertDisciplines(this);
 
     }
 }
