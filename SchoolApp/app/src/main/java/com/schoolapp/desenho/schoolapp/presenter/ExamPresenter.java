@@ -1,10 +1,8 @@
 package com.schoolapp.desenho.schoolapp.presenter;
 
 import android.content.Context;
-
 import com.schoolapp.desenho.schoolapp.dao.ExamDAO;
 import com.schoolapp.desenho.schoolapp.models.Exam;
-
 import java.util.List;
 
 public class ExamPresenter {
