@@ -7,10 +7,6 @@ import com.schoolapp.desenho.schoolapp.models.Exam;
 
 import java.util.List;
 
-/**
- * Created by indiara on 08/05/17.
- */
-
 public class ExamPresenter {
     private Context context;
 

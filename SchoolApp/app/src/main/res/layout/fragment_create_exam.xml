@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    tools:context="com.schoolapp.desenho.schoolapp.view.CreateExamFragment">
+    tools:context="com.schoolapp.desenho.schoolapp.view.fragments.CreateExamFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

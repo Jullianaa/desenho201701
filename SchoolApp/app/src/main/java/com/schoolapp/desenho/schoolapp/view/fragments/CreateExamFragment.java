@@ -1,4 +1,4 @@
-package com.schoolapp.desenho.schoolapp.view;
+package com.schoolapp.desenho.schoolapp.view.fragments;
 
 import android.content.Context;
 import android.net.Uri;
