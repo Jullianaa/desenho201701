@@ -1,19 +1,15 @@
 package com.schoolapp.desenho.schoolapp.presenter;
 
-
-import android.support.v4.app.Fragment;
-
-import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.Exam;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchByDiscipline extends SourceStrategy {
+public class SearchByDate extends SourceStrategy {
 
     @Override
     List<Exam> filterExams(List<Exam> allExams) {
-        List<Exam> exams = new ArrayList<>();
-        return exams;
+        List<Exam> lista = new ArrayList<>();
+        return lista;
     }
 }

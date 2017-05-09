@@ -15,9 +15,7 @@ public class DisciplinePresenter {
     }
 
     public List<String> getAllDisciplinesName(Integer userId){
-        DisciplineDAO disciplineDAO = new DisciplineDAO(this.context);
-
-        ArrayList<Discipline> allDisciplines = disciplineDAO.getAllStudentDisciplines(userId);
+        List<Discipline> allDisciplines = this.getAllDisciplines(userId);
         List<String> allDisciplinesNames = new ArrayList<>();
 
         for(Integer discipline=0; discipline<=allDisciplines.size(); discipline++){
@@ -25,5 +23,14 @@ public class DisciplinePresenter {
         }
 
         return allDisciplinesNames;
+    }
+
+    public List<Discipline> getAllDisciplines(Integer userId) {
+        DisciplineDAO disciplineDAO = new DisciplineDAO(this.context);
+
+        ArrayList<Discipline> allDisciplines = disciplineDAO.getAllStudentDisciplines(userId);
+
+        return allDisciplines;
+
     }
 }
