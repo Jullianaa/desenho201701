@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.fragments.ExamGradeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
@@ -118,8 +119,10 @@ public class MainActivity extends AppCompatActivity
             newFragment = new TaskFragment();
         } else if (id == R.id.nav_manage) {
             newFragment = new DisciplineFragment();
+        } else if (id == R.id.nav_exams_grade){
+            newFragment = new ExamGradeFragment();
         } else {
-            // Do nothing
+            // Nothing to do.
         }
 
         newFragment.setArguments(args);
