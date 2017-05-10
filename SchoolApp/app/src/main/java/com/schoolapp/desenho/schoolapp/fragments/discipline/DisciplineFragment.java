@@ -1,4 +1,4 @@
-package com.schoolapp.desenho.schoolapp.fragments;
+package com.schoolapp.desenho.schoolapp.fragments.discipline;
 
 import android.content.Context;
 import android.net.Uri;

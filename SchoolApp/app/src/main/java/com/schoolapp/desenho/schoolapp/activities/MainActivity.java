@@ -15,11 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.schoolapp.desenho.schoolapp.JSONParser;
 import com.schoolapp.desenho.schoolapp.R;
-import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.fragments.discipline.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
-import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
+import com.schoolapp.desenho.schoolapp.fragments.discipline.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
 
 public class MainActivity extends AppCompatActivity
