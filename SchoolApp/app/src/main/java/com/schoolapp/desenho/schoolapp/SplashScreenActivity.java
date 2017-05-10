@@ -14,7 +14,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     final long WAIT_TIME = 2000;
     private final JSONParser jsonParser = new JSONParser();
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -31,7 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         final UserDataHelper userDataHelper = new UserDataHelper(this);
         userDataHelper.setStudent();
 
-
+        Log.d("User set: ", userDataHelper.getUserInstance().getStudentName());
 
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/

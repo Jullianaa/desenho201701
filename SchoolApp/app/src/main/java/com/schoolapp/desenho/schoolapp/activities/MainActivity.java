@@ -20,6 +20,7 @@ import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
+import com.schoolapp.desenho.schoolapp.view.CreateExamFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -110,9 +111,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            newFragment = new HomeFragment();
-        } else if (id == R.id.nav_gallery) {
             newFragment = new SearchDisciplinesFragment();
+        } else if (id == R.id.nav_gallery) {
+            newFragment = new CreateExamFragment();
         } else if (id == R.id.nav_slideshow) {
             newFragment = new TaskFragment();
         } else if (id == R.id.nav_manage) {
