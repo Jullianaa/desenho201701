@@ -1,8 +1,7 @@
-package com.schoolapp.desenho.schoolapp;
+package com.schoolapp.desenho.schoolapp.fragments;
 
-import android.app.ListFragment;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,12 +13,13 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
 
 import java.util.ArrayList;
 
-public class SearchDisciplinesFragment extends ListFragment{
+public class SearchDisciplinesFragment extends ListFragment {
 
     ArrayAdapter adapter;
     ArrayList<String> disciplinesName;
