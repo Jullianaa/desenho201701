@@ -16,6 +16,7 @@ import com.schoolapp.desenho.schoolapp.models.Exam;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
 import com.schoolapp.desenho.schoolapp.models.SchoolClass;
 import com.schoolapp.desenho.schoolapp.models.Student;
+import com.schoolapp.desenho.schoolapp.models.StudentPresence;
 import com.schoolapp.desenho.schoolapp.models.Task;
 
 import java.util.ArrayList;
@@ -61,6 +62,41 @@ public class UserDataHelper {
         }
 
         return foundStudent;
+    }
+
+    public ArrayList<StudentPresence> getPresenceList(){
+        final Student user = this.getUserInstance();
+        final ArrayList<ArrayList<SchoolClass>> studentClasses = user.getStudentSchoolClasses();
+        ArrayList<StudentPresence> presenceList = new ArrayList<>();
+
+        // Get array sizes
+        final int classesSize = studentClasses.size();
+
+        // Interate over all student classes
+        for(int counter = 0; counter < classesSize; counter++){
+            final ArrayList<SchoolClass> classEventsList = studentClasses.get(counter);
+            String disciplineName = "";
+            Integer missedClassesCount = 0;
+
+            // Get list size and interate over each event of classes
+            final int eventsSize = classEventsList.size();
+
+            for(int eventsCounter = 0; eventsCounter < eventsSize; eventsCounter++){
+                final SchoolClass classEvent = classEventsList.get(eventsCounter);
+
+                missedClassesCount += classEvent.getAbsentClass();
+                disciplineName = classEvent.getDiscipline();
+            }
+
+            // Create a Student Presence object and add to the returning array
+            final StudentPresence presenceInfo = new StudentPresence(disciplineName,
+                    missedClassesCount);
+
+            presenceList.add(presenceInfo);
+
+        }
+
+        return presenceList;
     }
 
     /* This function is responsible for creating an empty student if needed
