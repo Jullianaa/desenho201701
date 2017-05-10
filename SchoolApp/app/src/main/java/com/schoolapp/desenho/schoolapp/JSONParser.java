@@ -22,6 +22,7 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class JSONParser {
 
@@ -45,8 +46,20 @@ public class JSONParser {
     private static int disciplineClassId = -1;
     private static int eventId = -1;
 
+    // check if the database is already populated
+    public void insertDisciplines(Activity activity){
+        disciplineDAO = new DisciplineDAO(activity);
+        ArrayList<Discipline> disciplines = disciplineDAO.getAllDisciplines();
+        if(disciplines.size() == 0) {
+            String jsonString = this.generateJsonString(activity);
+            this.populateDatabase(activity, jsonString);
+        } else {
+            // nothing to do
+        }
+    }
+
     // get JSON String from a JSON file
-    public static String generateJsonString(Context context) {
+    private String generateJsonString(Context context) {
         String json = null;
 
         try {
@@ -64,9 +77,8 @@ public class JSONParser {
     }
 
     //populate the database
-    public static void populateDatabase(final Activity activity, String jsonString){
+    private void populateDatabase(final Activity activity, String jsonString){
 
-        disciplineDAO = new DisciplineDAO(activity);
         //getting JSON disciplines
 
         if(jsonString != null){
@@ -181,11 +193,17 @@ public class JSONParser {
 
                     }
 
+                    /* get the days from a school class to calculate the number of credits
+                    from the time of each class */
+                    ArrayList<SchoolClass> days = disciplineClassList.get(0).getDays();
+                    Integer numberOfCredits = calculateNumberOfCredits(days);
+
                     // create a discipline
-                    Discipline discipline = new Discipline(disciplineId, disciplineName, disciplineCode, 0, disciplineClassList, 0);
+                    Discipline discipline = new Discipline(disciplineId, disciplineName, disciplineCode, numberOfCredits, disciplineClassList, 0);
 
                     disciplineDAO.saveDiscipline(discipline);
 
+                    Log.d("Credits: ", numberOfCredits.toString());
                     Log.d(" - ", "----------------------------------------------------------");
                 }
 
@@ -207,5 +225,47 @@ public class JSONParser {
         }
     }
 
+    private int calculateNumberOfCredits(ArrayList<SchoolClass> days){
+
+        // the total minutes of six, four or two credits disciplines
+        final int SIX_CREDITS_MINUTES = 330;
+        final int FIVE_CREDITS_MINUTES = 275;
+        final int FOUR_CREDITS_MINUTES = 220;
+        final int THREE_CREDITS_MINUTES = 165;
+        final int TWO_CREDITS_MINUTES = 110;
+
+        int totalClassTime = 0;
+        int numberOfCredits = 0;
+        long rangeInMilliseconds = 0;
+        long rangeInMinutes = 0;
+        Date startTime;
+        Date endTime;
+
+        // count the number of minutes of each class
+        for(SchoolClass day : days){
+            startTime = day.getStartTime();
+            endTime = day.getEndTime();
+            rangeInMilliseconds = endTime.getTime()-startTime.getTime();
+            rangeInMinutes = TimeUnit.MILLISECONDS.toMinutes(rangeInMilliseconds);
+            totalClassTime += rangeInMinutes;
+        }
+
+        // assign the number of credits depending on the class time in minutes
+        if (totalClassTime >= SIX_CREDITS_MINUTES) {
+            numberOfCredits = 6;
+        } else if (totalClassTime >= FIVE_CREDITS_MINUTES) {
+            numberOfCredits = 5;
+        } else if (totalClassTime >= FOUR_CREDITS_MINUTES) {
+            numberOfCredits = 4;
+        } else if (totalClassTime >= THREE_CREDITS_MINUTES) {
+            numberOfCredits = 3;
+        } else if (totalClassTime >= TWO_CREDITS_MINUTES){
+            numberOfCredits = 2;
+        } else {
+            numberOfCredits = 1;
+        }
+
+        return numberOfCredits;
+    }
 
 }

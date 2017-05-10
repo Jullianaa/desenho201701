@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
+import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
 import com.schoolapp.desenho.schoolapp.models.Exam;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
@@ -36,6 +37,18 @@ public class StudentDAO extends GenericDBDAO{
         monitoryDAO = new MonitoryDAO(context);
         examDAO = new ExamDAO(context);
         taskDAO = new TaskDAO(context);
+    }
+
+    public Student getDefaultStudent(){
+        // Defines the default student id - Which is 1
+        final Integer defaultStudentId = new Integer(1);
+
+        Student foundStudent = null;
+
+        // Uses the DAO to retrieve the student from database
+        foundStudent = this.getStudent(defaultStudentId);
+
+        return foundStudent;
     }
 
     public Student getStudent(Integer studentId){
@@ -79,12 +92,25 @@ public class StudentDAO extends GenericDBDAO{
         return student;
     }
 
+    // Saving student's name, disciplines and discipline classes.
     public long saveStudent(Student student) {
         ContentValues values = new ContentValues();
         values.put(DataBaseHelper.STUDENT_NAME_COLUMN, student.getStudentName());
 
-        Log.d("Status Discipline:", "SAVED");
+        ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
+        for(Discipline discipline : studentDisciplines) {
+            discipline.setStudentId(1);
+            disciplineDAO.updateDiscipline(discipline);
+        }
 
-        return database.insert(DataBaseHelper.DISCIPLINE_TABLE, null, values);
+        ArrayList<DisciplineClass> studentDisciplineClasses = student.getStudentDisciplinesClasses();
+        for(DisciplineClass disciplineClass : studentDisciplineClasses) {
+            disciplineClass.studentId = 1;
+            disciplineClassDAO.updateDisciplineClass(disciplineClass);
+        }
+
+        Log.d("Status Student:", "SAVED");
+
+        return database.insert(DataBaseHelper.STUDENT_TABLE, null, values);
     }
 }

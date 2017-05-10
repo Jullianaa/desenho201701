@@ -53,6 +53,7 @@ public class DisciplineDAO extends GenericDBDAO{
                         DataBaseHelper.DISCIPLINE_NAME_COLUMN,
                         DataBaseHelper.DISCIPLINE_CODE_COLUMN,
                         DataBaseHelper.DISCIPLINE_CREDITS_COLUMN,
+                        DataBaseHelper.DISCIPLINE_STUDENTID_COLUMN,
                 }, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
@@ -100,6 +101,7 @@ public class DisciplineDAO extends GenericDBDAO{
         values.put(DataBaseHelper.DISCIPLINE_NAME_COLUMN, discipline.getDisciplineName());
         values.put(DataBaseHelper.DISCIPLINE_CODE_COLUMN, discipline.getDisciplineCode());
         values.put(DataBaseHelper.DISCIPLINE_CREDITS_COLUMN, discipline.getDisciplineCredits());
+        values.put(DataBaseHelper.DISCIPLINE_STUDENTID_COLUMN, discipline.getStudentId());
 
         Log.d("Status Discipline:", "SAVED");
 
@@ -112,6 +114,7 @@ public class DisciplineDAO extends GenericDBDAO{
         values.put(DataBaseHelper.DISCIPLINE_NAME_COLUMN, discipline.getDisciplineName());
         values.put(DataBaseHelper.DISCIPLINE_CODE_COLUMN, discipline.getDisciplineCode());
         values.put(DataBaseHelper.DISCIPLINE_CREDITS_COLUMN, discipline.getDisciplineCredits());
+        values.put(DataBaseHelper.DISCIPLINE_STUDENTID_COLUMN, discipline.getStudentId());
 
         long result = database.update(DataBaseHelper.DISCIPLINE_TABLE, values,
                 WHERE_ID_EQUALS,

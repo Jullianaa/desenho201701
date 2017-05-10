@@ -15,18 +15,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.schoolapp.desenho.schoolapp.JSONParser;
 import com.schoolapp.desenho.schoolapp.R;
+<<<<<<< HEAD:SchoolApp/app/src/main/java/com/schoolapp/desenho/schoolapp/view/activities/MainActivity.java
 import com.schoolapp.desenho.schoolapp.view.fragments.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.view.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.view.fragments.ListExamsFragment;
 import com.schoolapp.desenho.schoolapp.view.fragments.TaskFragment;
+=======
+import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
+import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
+import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
+>>>>>>> e09a9af44e382ceb435bae9aacc0024e7a1402e5:SchoolApp/app/src/main/java/com/schoolapp/desenho/schoolapp/activities/MainActivity.java
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private JSONParser jsonParser;
-    private String jsonString;
 
     private Fragment newFragment;
 
@@ -36,9 +39,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        jsonString = jsonParser.generateJsonString(this);
-        jsonParser.populateDatabase(this, jsonString);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
+        // The count below is never used
+        //int count = getFragmentManager().getBackStackEntryCount();
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
