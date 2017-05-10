@@ -39,49 +39,14 @@ public class StudentDAO extends GenericDBDAO{
         taskDAO = new TaskDAO(context);
     }
 
-    public Student getFirstStudent(){
-        // The string below is a SQL command for getting all students in the DB
-        final String sqlCommand = "SELECT * FROM" + DataBaseHelper.STUDENT_TABLE;
+    public Student getDefaultStudent(){
+        // Defines the default student id - Which is 1
+        final Integer defaultStudentId = new Integer(1);
 
         Student foundStudent = null;
-        Cursor cursor = null;
 
-        // Runs the DB query
-        cursor = database.rawQuery(sqlCommand, null);
-
-        // Manipulate the student data, if found
-        if(cursor.moveToNext()) {
-            ArrayList<DisciplineClass> disciplineClasses = disciplineClassDAO.getAllStudentDisciplineClasses(cursor.getInt(0));
-            ArrayList<ArrayList<SchoolClass>> disciplineSchoolClasses = new ArrayList<ArrayList<SchoolClass>>();
-            ArrayList<ArrayList<Monitory>> disciplineMonitories = new ArrayList<ArrayList<Monitory>>();
-            ArrayList<ArrayList<Task>> disciplineTasks = new ArrayList<ArrayList<Task>>();
-            ArrayList<ArrayList<Exam>> disciplineExams = new ArrayList<ArrayList<Exam>>();
-
-            for(DisciplineClass disciplineClass : disciplineClasses){
-                ArrayList<SchoolClass> schoolClasses = schoolClassDAO.getSchoolClasses(disciplineClass.getDisciplineId());
-                disciplineSchoolClasses.add(schoolClasses);
-
-                ArrayList<Monitory> monitories = monitoryDAO.getMonitories(disciplineClass.getDisciplineId());
-                disciplineMonitories.add(monitories);
-
-                ArrayList<Task> tasks = taskDAO.getTasks(disciplineClass.getDisciplineId());
-                disciplineTasks.add(tasks);
-
-                ArrayList<Exam> exams = examDAO.getAllExams(disciplineClass.getDisciplineId());
-                disciplineExams.add(exams);
-            }
-
-            // Create the found student with the data above
-            foundStudent = new Student(
-                    cursor.getString(0),
-                    disciplineDAO.getAllStudentDisciplines(cursor.getInt(0)),
-                    disciplineClassDAO.getAllStudentDisciplineClasses(cursor.getInt(0)),
-                    disciplineSchoolClasses,
-                    disciplineMonitories,
-                    disciplineTasks,
-                    disciplineExams
-            );
-        }
+        // Uses the DAO to retrieve the student from database
+        foundStudent = this.getStudent(defaultStudentId);
 
         return foundStudent;
     }
