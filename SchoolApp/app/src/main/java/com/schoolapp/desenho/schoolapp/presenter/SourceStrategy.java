@@ -35,7 +35,7 @@ public abstract class SourceStrategy {
         return allExams;
     }
 
-    abstract List<Exam> filterExams(List<Exam> allExams);
+    abstract List<Exam> filterExams(List<Exam> allExams, String param);
 
 
 }

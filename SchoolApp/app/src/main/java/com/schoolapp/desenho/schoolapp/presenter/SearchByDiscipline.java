@@ -12,8 +12,10 @@ import java.util.List;
 public class SearchByDiscipline extends SourceStrategy {
 
     @Override
-    List<Exam> filterExams(List<Exam> allExams) {
+    List<Exam> filterExams(List<Exam> allExams, String discipline) {
         List<Exam> exams = new ArrayList<>();
+
+        List<Exam> disciplineExames = allExams.
         return exams;
     }
 }
