@@ -106,6 +106,7 @@ public class DisciplineClassDAO extends GenericDBDAO {
         ContentValues values = new ContentValues();
 
         values.put(DataBaseHelper.DISCIPLINECLASS_DISCIPLINEID_COLUMN, disciplineClass.getDisciplineId());
+        values.put(DataBaseHelper.DISCIPLINECLASS_STUDENTID_COLUMN, disciplineClass.studentId);
         values.put(DataBaseHelper.DISCIPLINECLASS_CLASSNAME_COLUMN, disciplineClass.getClassName());
         values.put(DataBaseHelper.DISCIPLINECLASS_CLASSPROFESSOR_COLUMN, disciplineClass.getClassProfessor());
 
