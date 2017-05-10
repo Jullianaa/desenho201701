@@ -5,9 +5,27 @@
     tools:context="com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Disciplines" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@android:id/empty"
+            android:text="@string/no_student_disciplines"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="top|center_horizontal"
+            />
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+    </LinearLayout>
 
 </FrameLayout>
