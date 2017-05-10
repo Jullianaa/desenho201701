@@ -13,11 +13,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     final long WAIT_TIME = 2000;
     private final JSONParser jsonParser = new JSONParser();
-    private final UserDataHelper userDataHelper = new UserDataHelper(this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final UserDataHelper userDataHelper = new UserDataHelper(this);
         setContentView(R.layout.activity_main);
 
         // Inserts all courses in the database if this is not already done
@@ -30,6 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
          * this. No need for manipulation.
          */
         userDataHelper.setStudent();
+
+        Log.d("User set: ", userDataHelper.getUserInstance().getStudentName());
 
 
 

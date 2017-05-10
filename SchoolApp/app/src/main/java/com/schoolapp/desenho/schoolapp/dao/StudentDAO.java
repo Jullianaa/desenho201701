@@ -54,7 +54,7 @@ public class StudentDAO extends GenericDBDAO{
     public Student getStudent(Integer studentId){
         Student student = null;
 
-        String sql = "SELECT * FROM" + DataBaseHelper.STUDENT_TABLE +
+        String sql = "SELECT * FROM " + DataBaseHelper.STUDENT_TABLE +
                 " WHERE " + DataBaseHelper.STUDENT_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { studentId + "" });
