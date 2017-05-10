@@ -17,4 +17,9 @@ public class ExamPresenter {
         List<Exam> allExams = examDAO.getAllExams(disciplineId);
         return allExams;
     }
+
+    public void insertExam(Exam exam){
+        ExamDAO examDAO = new ExamDAO(context);
+        examDAO.saveExam(exam);
+    }
 }
