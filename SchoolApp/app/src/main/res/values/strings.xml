@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Schoolep</string>
-    <string name="title_activity_exam">ExamActivity</string>
+    <string name="app_name">SchoolApp</string>
+    <string name="disciplines">Disciplinas</string>
+    <string name="no_results_found">Nenhuma disciplina encontrada</string>
 </resources>

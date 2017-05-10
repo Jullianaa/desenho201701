@@ -45,8 +45,20 @@ public class JSONParser {
     private static int disciplineClassId = -1;
     private static int eventId = -1;
 
+    // check if the database is already populated
+    public void insertDisciplines(Activity activity){
+        disciplineDAO = new DisciplineDAO(activity);
+        ArrayList<Discipline> disciplines = disciplineDAO.getAllDisciplines();
+        if(disciplines.size() == 0) {
+            String jsonString = this.generateJsonString(activity);
+            this.populateDatabase(activity, jsonString);
+        } else {
+            // nothing to do
+        }
+    }
+
     // get JSON String from a JSON file
-    public static String generateJsonString(Context context) {
+    private String generateJsonString(Context context) {
         String json = null;
 
         try {
@@ -64,9 +76,8 @@ public class JSONParser {
     }
 
     //populate the database
-    public static void populateDatabase(final Activity activity, String jsonString){
+    private void populateDatabase(final Activity activity, String jsonString){
 
-        disciplineDAO = new DisciplineDAO(activity);
         //getting JSON disciplines
 
         if(jsonString != null){
