@@ -2,22 +2,17 @@ package com.schoolapp.desenho.schoolapp.view;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.schoolapp.desenho.schoolapp.R;
-import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.presenter.DisciplinePresenter;
 
 import java.util.List;
@@ -42,7 +37,7 @@ public class CreateExamFragment extends Fragment {
             DisciplinePresenter disciplinePresenter = new DisciplinePresenter(getContext());
             List<String> allUserDisciplinesName = disciplinePresenter.getAllDisciplinesName(0);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(),
                     android.R.layout.simple_spinner_dropdown_item, allUserDisciplinesName);
 
             spinner.setAdapter(adapter);
