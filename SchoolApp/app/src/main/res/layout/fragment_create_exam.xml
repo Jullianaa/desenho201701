@@ -23,11 +23,11 @@
         android:layout_height="wrap_content"
         android:text="Data" />
 
-    <EditText
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/date_field"
-        android:text="Digite a data" />
+        android:text="Insira a data"/>
 
     <TextView
         android:layout_width="match_parent"

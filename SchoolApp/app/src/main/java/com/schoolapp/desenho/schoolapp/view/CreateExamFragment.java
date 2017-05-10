@@ -1,9 +1,12 @@
 package com.schoolapp.desenho.schoolapp.view;
 
+import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +40,7 @@ public class CreateExamFragment extends Fragment {
             Spinner spinner = (Spinner) clicked.findViewById(R.id.discipline_field);
 
             DisciplinePresenter disciplinePresenter = new DisciplinePresenter(getContext());
-            List<String> allUserDisciplinesName = disciplinePresenter.getAllDisciplinesName(userId);
+            List<String> allUserDisciplinesName = disciplinePresenter.getAllDisciplinesName(0);
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
                     android.R.layout.simple_spinner_dropdown_item, allUserDisciplinesName);
@@ -53,8 +56,10 @@ public class CreateExamFragment extends Fragment {
                 }
             });
         }
-        else if(clicked.getId() == R.id.send_exame){
-
+        else if(clicked.getId() == R.id.date_field){
+            Activity thisActivity = getActivity();
+            DialogFragment datePicker = new DatePickerFragment();
+            datePicker.show(thisActivity.getFragmentManager(), "Data Picker");
         }
     }
 }
