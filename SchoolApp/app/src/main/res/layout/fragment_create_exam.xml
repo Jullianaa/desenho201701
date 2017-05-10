@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context="com.schoolapp.desenho.schoolapp.view.fragments.CreateExamFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disciplina" />
+
+    <Spinner
+        android:id="@+id/discipline_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione uma disciplina" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_field"
+        android:text="Digite a data" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título da Prova" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/local_field"
+        android:text="Digite o local da prova" />
+
+    <Button
+        android:id="@+id/send_exame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar" />
+
+</LinearLayout>

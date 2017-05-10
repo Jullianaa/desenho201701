@@ -1,4 +1,4 @@
-package com.schoolapp.desenho.schoolapp.activities;
+package com.schoolapp.desenho.schoolapp.view.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,10 +16,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.schoolapp.desenho.schoolapp.R;
+<<<<<<< HEAD:SchoolApp/app/src/main/java/com/schoolapp/desenho/schoolapp/view/activities/MainActivity.java
+import com.schoolapp.desenho.schoolapp.view.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.view.fragments.HomeFragment;
+import com.schoolapp.desenho.schoolapp.view.fragments.ListExamsFragment;
+import com.schoolapp.desenho.schoolapp.view.fragments.TaskFragment;
+=======
 import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
+>>>>>>> e09a9af44e382ceb435bae9aacc0024e7a1402e5:SchoolApp/app/src/main/java/com/schoolapp/desenho/schoolapp/activities/MainActivity.java
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -112,7 +119,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             newFragment = new HomeFragment();
         } else if (id == R.id.nav_gallery) {
-            newFragment = new SearchDisciplinesFragment();
+            newFragment = new ListExamsFragment();
         } else if (id == R.id.nav_slideshow) {
             newFragment = new TaskFragment();
         } else if (id == R.id.nav_manage) {
