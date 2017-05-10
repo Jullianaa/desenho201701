@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.schoolapp.desenho.schoolapp.JSONParser;
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
@@ -63,7 +62,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
 
-        int count = getFragmentManager().getBackStackEntryCount();
+        // The count below is never used
+        //int count = getFragmentManager().getBackStackEntryCount();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

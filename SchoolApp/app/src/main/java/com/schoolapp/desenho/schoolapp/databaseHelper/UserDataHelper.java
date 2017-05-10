@@ -27,7 +27,7 @@ public class UserDataHelper {
         this.setUserDB(new StudentDAO(context));
     }
 
-    public void setStudent(Context context){
+    public void setStudent(){
         // Get student form DB and checks if there is any user(Student) already in the DB
         Student user = this.getUserInstance();
         final Boolean userAvailable = user != null;
