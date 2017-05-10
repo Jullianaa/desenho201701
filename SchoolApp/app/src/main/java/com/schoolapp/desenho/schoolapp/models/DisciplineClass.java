@@ -8,6 +8,7 @@ public class DisciplineClass {
     private String classProfessor;
     private ArrayList<SchoolClass> days;
     private ArrayList<Exam> exams;
+    public Integer studentId;
 
     public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams) {
 

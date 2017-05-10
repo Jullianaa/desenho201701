@@ -64,7 +64,7 @@ public class Discipline {
         return studentId;
     }
 
-    private void setStudentId(Integer studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 }
