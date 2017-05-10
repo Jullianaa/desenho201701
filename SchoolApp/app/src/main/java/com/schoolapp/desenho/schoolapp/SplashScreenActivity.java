@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.schoolapp.desenho.schoolapp.activities.MainActivity;
+import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     final long WAIT_TIME = 2000;
-    private JSONParser jsonParser = new JSONParser();
+    private final JSONParser jsonParser = new JSONParser();
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -23,6 +23,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         jsonParser.insertDisciplines(this);
 
         Log.d("SplashScreen", "Disciplines populated!!");
+
+        /* Checks the actual user in DB. If not user is in the DB, the userDataHelper will handle
+         * this. No need for manipulation.
+         */
+        final UserDataHelper userDataHelper = new UserDataHelper(this);
+        userDataHelper.setStudent();
+
+        Log.d("User set: ", userDataHelper.getUserInstance().getStudentName());
+
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
         new Handler().postDelayed(new Runnable(){

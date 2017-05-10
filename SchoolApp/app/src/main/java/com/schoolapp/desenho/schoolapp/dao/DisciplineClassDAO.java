@@ -42,7 +42,8 @@ public class DisciplineClassDAO extends GenericDBDAO {
                     cursor.getString(2),
                     cursor.getString(3),
                     schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
-                    examDAO.getAllExams(cursor.getInt(0)));
+                    examDAO.getAllExams(cursor.getInt(0)),
+                    cursor.getInt(0));
 
             disciplineClasses.add(disciplineClass);
         }
@@ -63,7 +64,8 @@ public class DisciplineClassDAO extends GenericDBDAO {
                     cursor.getString(2),
                     cursor.getString(3),
                     schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
-                    examDAO.getAllExams(cursor.getInt(0)));
+                    examDAO.getAllExams(cursor.getInt(0)),
+                    cursor.getInt(0));
 
             disciplineClasses.add(disciplineClass);
         }
@@ -83,7 +85,8 @@ public class DisciplineClassDAO extends GenericDBDAO {
                     cursor.getString(2),
                     cursor.getString(3),
                     schoolClassDAO.getSchoolClasses((cursor.getInt(0))),
-                    examDAO.getAllExams(cursor.getInt(0)));
+                    examDAO.getAllExams(cursor.getInt(0)),
+                    cursor.getInt(0));
         }
 
         if (disciplineClass == null){
@@ -105,7 +108,9 @@ public class DisciplineClassDAO extends GenericDBDAO {
     public long updateDisciplineClass (DisciplineClass disciplineClass){
         ContentValues values = new ContentValues();
 
+        values.put(DataBaseHelper.DISCIPLINECLASS_ID_COLUMN, disciplineClass.getDisciplineClassId());
         values.put(DataBaseHelper.DISCIPLINECLASS_DISCIPLINEID_COLUMN, disciplineClass.getDisciplineId());
+        values.put(DataBaseHelper.DISCIPLINECLASS_STUDENTID_COLUMN, disciplineClass.studentId);
         values.put(DataBaseHelper.DISCIPLINECLASS_CLASSNAME_COLUMN, disciplineClass.getClassName());
         values.put(DataBaseHelper.DISCIPLINECLASS_CLASSPROFESSOR_COLUMN, disciplineClass.getClassProfessor());
 
