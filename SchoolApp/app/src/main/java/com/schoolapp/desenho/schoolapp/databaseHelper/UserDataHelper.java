@@ -116,6 +116,7 @@ public class UserDataHelper {
 
         // Returns the new student
         return new Student(
+                1,
                 emptyName,
                 emptyDisciplines,
                 emptyClasses,

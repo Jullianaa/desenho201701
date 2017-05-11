@@ -16,15 +16,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.schoolapp.desenho.schoolapp.R;
-import com.schoolapp.desenho.schoolapp.fragments.DisciplineFragment;
+import com.schoolapp.desenho.schoolapp.fragments.discipline.DisciplineDetailFragment;
+import com.schoolapp.desenho.schoolapp.fragments.discipline.DisciplineFragment;
 import com.schoolapp.desenho.schoolapp.fragments.ExamGradeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
-import com.schoolapp.desenho.schoolapp.fragments.SearchDisciplinesFragment;
+import com.schoolapp.desenho.schoolapp.fragments.discipline.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
 import com.schoolapp.desenho.schoolapp.view.CreateExamFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DisciplineFragment.InterfaceCommunication {
 
     private Fragment newFragment;
 
@@ -133,5 +134,18 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void getDisciplineClassId(int disciplineClassId){
+        DisciplineDetailFragment disciplineDetailFragment = new DisciplineDetailFragment();
+
+        Bundle disciplineClassArguments = new Bundle();
+
+        disciplineClassArguments.putInt("disciplineClassId", disciplineClassId);
+        disciplineDetailFragment.setArguments(disciplineClassArguments);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, disciplineDetailFragment);
+        transaction.commit();
     }
 }
