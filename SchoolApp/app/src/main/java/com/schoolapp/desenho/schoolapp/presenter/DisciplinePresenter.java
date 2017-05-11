@@ -39,4 +39,10 @@ public class DisciplinePresenter {
         return theDiscipline;
     }
 
+    public List<Discipline> allUserDisciplines(Integer userId){
+        DisciplineDAO disciplineDAO = new DisciplineDAO(this.context);
+        ArrayList<Discipline> userDisciplines = disciplineDAO.getAllStudentDisciplines(userId);
+
+        return userDisciplines;
+    }
 }
