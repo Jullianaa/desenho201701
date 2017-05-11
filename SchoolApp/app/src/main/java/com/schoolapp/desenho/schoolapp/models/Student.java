@@ -3,6 +3,7 @@ package com.schoolapp.desenho.schoolapp.models;
 import java.util.ArrayList;
 
 public class Student {
+    private Integer studentId;
     private String studentName;
     private ArrayList<Discipline> studentDisciplines;
     private ArrayList<DisciplineClass> studentDisciplinesClasses;
@@ -11,11 +12,13 @@ public class Student {
     private ArrayList<ArrayList<Task>> studentTasks;
     private ArrayList<ArrayList<Exam>> studentExames;
 
-    public Student(String studentName, ArrayList<Discipline> studentDisciplines,
+    public Student(Integer studentId, String studentName, ArrayList<Discipline> studentDisciplines,
                    ArrayList<DisciplineClass> studentDisciplinesClasses,
                    ArrayList<ArrayList<SchoolClass>> studentSchoolClasses,
                    ArrayList<ArrayList<Monitory>> studentMonitories,
                    ArrayList<ArrayList<Task>> studentTasks, ArrayList<ArrayList<Exam>> studentExames) {
+
+        setStudentId(studentId);
         setStudentName(studentName);
         setStudentDisciplines(studentDisciplines);
         setStudentDisciplinesClasses(studentDisciplinesClasses);
@@ -24,6 +27,14 @@ public class Student {
         setStudentTasks(studentTasks);
         setStudentExames(studentExames);
         setStudentTasks(studentTasks);
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
     public String getStudentName() {

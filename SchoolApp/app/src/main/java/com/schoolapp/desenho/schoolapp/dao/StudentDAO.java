@@ -79,7 +79,8 @@ public class StudentDAO extends GenericDBDAO{
                 disciplineExams.add(exams);
             }
             student = new Student(
-                    cursor.getString(0),
+                    cursor.getInt(0),
+                    cursor.getString(1),
                     disciplineDAO.getAllStudentDisciplines(cursor.getInt(0)),
                     disciplineClassDAO.getAllStudentDisciplineClasses(cursor.getInt(0)),
                     disciplineSchoolClasses,
@@ -112,5 +113,29 @@ public class StudentDAO extends GenericDBDAO{
         Log.d("Status Student:", "SAVED");
 
         return database.insert(DataBaseHelper.STUDENT_TABLE, null, values);
+    }
+
+    public long updateSchoolClass(Student student) {
+        ContentValues values = new ContentValues();
+
+        values.put(DataBaseHelper.STUDENT_NAME_COLUMN, student.getStudentName());
+        long result = database.update(DataBaseHelper.STUDENT_TABLE, values,
+                WHERE_ID_EQUALS,
+                new String[] { String.valueOf(student.getStudentId())});
+        Log.d("Update Result:", "=" + result);
+
+        ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
+        for(Discipline discipline : studentDisciplines) {
+            discipline.setStudentId(1);
+            disciplineDAO.updateDiscipline(discipline);
+        }
+
+        ArrayList<DisciplineClass> studentDisciplineClasses = student.getStudentDisciplinesClasses();
+        for(DisciplineClass disciplineClass : studentDisciplineClasses) {
+            disciplineClass.studentId = 1;
+            disciplineClassDAO.updateDisciplineClass(disciplineClass);
+        }
+
+        return result;
     }
 }
