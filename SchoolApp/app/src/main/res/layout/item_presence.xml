@@ -9,9 +9,8 @@
         android:text="Disciplina" />
 
     <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
 
     <TextView
         android:id="@+id/missed_count"
@@ -20,21 +19,30 @@
         android:text="Contagem" />
 
     <Space
+        android:layout_width="70dp"
+        android:layout_height="30dp"/>
+
+    <Button
+        android:id="@+id/add_miss"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_red_light"
+        android:text="+"
+        android:textColor="@android:color/white" />
+
+    <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/add_miss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="+" />
-
-    <Button
         android:id="@+id/remove_miss"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_weight="1"
-        android:text="-" />
+        android:background="@android:color/holo_green_light"
+        android:text="-"
+        android:textColor="@android:color/white" />
 </LinearLayout>
