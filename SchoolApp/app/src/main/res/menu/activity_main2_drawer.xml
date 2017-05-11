@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_menu_share"
             android:title="Disciplinas" />
         <item
+            android:id="@+id/nav_presence"
+            android:icon="@drawable/ic_menu_check"
+            android:title="Faltas" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Provas" />

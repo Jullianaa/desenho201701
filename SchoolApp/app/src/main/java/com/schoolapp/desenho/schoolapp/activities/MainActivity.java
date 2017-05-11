@@ -22,6 +22,7 @@ import com.schoolapp.desenho.schoolapp.fragments.ExamGradeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.discipline.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
+import com.schoolapp.desenho.schoolapp.fragments.presence.PresenceManagerFragment;
 import com.schoolapp.desenho.schoolapp.view.CreateExamFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -122,6 +123,8 @@ public class MainActivity extends AppCompatActivity
             newFragment = new DisciplineFragment();
         } else if (id == R.id.nav_exams_grade){
             newFragment = new ExamGradeFragment();
+        } else if(id == R.id.nav_presence){
+            newFragment = new PresenceManagerFragment();
         } else {
             // Nothing to do.
         }
