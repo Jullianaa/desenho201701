@@ -26,4 +26,17 @@ public class DisciplinePresenter {
 
         return allDisciplinesNames;
     }
+
+    public Discipline getDisciplineByName(Integer userId, String disciplineName){
+        Discipline theDiscipline = null;
+        DisciplineDAO disciplineDAO = new DisciplineDAO(this.context);
+        ArrayList<Discipline> allDisciplines = disciplineDAO.getAllStudentDisciplines(userId);
+
+        for(int discipline=0; discipline<allDisciplines.size(); discipline++){
+            if(allDisciplines.get(discipline).getDisciplineName().equals(disciplineName))
+                theDiscipline = allDisciplines.get(discipline);
+        }
+        return theDiscipline;
+    }
+
 }

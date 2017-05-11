@@ -14,7 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.schoolapp.desenho.schoolapp.R;
+import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.Exam;
+import com.schoolapp.desenho.schoolapp.presenter.DisciplinePresenter;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -29,6 +31,7 @@ public class CreateExamFragment extends Fragment {
     private TextView dateField;
     private Button saveExam;
     private EditText examTitle;
+    private EditText examDescription;
 
     public CreateExamFragment() {
         // Required empty public constructor
@@ -70,6 +73,12 @@ public class CreateExamFragment extends Fragment {
             public void onClick(View v) {
                 String discipline = spinner.getSelectedItem().toString();
                 String title = examTitle.getText().toString();
+                String description = examDescription.getText().toString();
+
+                DisciplinePresenter disciplinePresenter = new DisciplinePresenter(getContext());
+                Discipline examDiscipline = disciplinePresenter.getDisciplineByName(userId);
+
+                Integer disciplineId = examDiscipline.getDisciplineId();
 
                 DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
                 Date date = null;
@@ -79,9 +88,7 @@ public class CreateExamFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                //Exam exam = new Exam();
-
-
+                Exam exam = new Exam(1, date, date, date, title, discipline, disciplineId, 0F, description);
 
             }
         });
@@ -92,6 +99,7 @@ public class CreateExamFragment extends Fragment {
         dateField = (TextView) getView().findViewById(R.id.date_field);
         saveExam = (Button) getView().findViewById(R.id.button_save_exam);
         examTitle = (EditText) getView().findViewById(R.id.title_field);
+        examDescription = (EditText) getView().findViewById(R.id.description_field);
     }
 
     private void setCurrentDate(TextView dateField) {
