@@ -80,10 +80,10 @@ public class ExamDAO extends GenericDBDAO{
         ContentValues values = new ContentValues();
 
         values.put(DataBaseHelper.EXAM_ID_COLUMN, exam.getDisciplineClassId());
-        values.put(DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN, exam.getDateEvent().toString());
+        values.put(DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN, exam.getDisciplineClassId());
         values.put(DataBaseHelper.EXAM_DATEEVENT_COLUMN, exam.getDateEvent().toString());
-        values.put(DataBaseHelper.EXAM_STARTTIME_COLUMN, exam.getEndTime().toString());
-        values.put(DataBaseHelper.EXAM_ENDTIME_COLUMN, exam.getLocalEvent());
+        values.put(DataBaseHelper.EXAM_STARTTIME_COLUMN, exam.getDateEvent().toString());
+        values.put(DataBaseHelper.EXAM_ENDTIME_COLUMN, exam.getEndTime().toString());
         values.put(DataBaseHelper.EXAM_LOCALEVENT_COLUMN, exam.getLocalEvent());
         values.put(DataBaseHelper.EXAM_GRADE_COLUMN, exam.getGrade());
         values.put(DataBaseHelper.EXAM_CONTENT_COLUMN, exam.getContentExam());
@@ -95,10 +95,10 @@ public class ExamDAO extends GenericDBDAO{
         ContentValues values = new ContentValues();
 
         values.put(DataBaseHelper.EXAM_ID_COLUMN, exam.getDisciplineClassId());
-        values.put(DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN, exam.getDateEvent().toString());
+        values.put(DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN, exam.getDisciplineClassId());
         values.put(DataBaseHelper.EXAM_DATEEVENT_COLUMN, exam.getDateEvent().toString());
-        values.put(DataBaseHelper.EXAM_STARTTIME_COLUMN, exam.getEndTime().toString());
-        values.put(DataBaseHelper.EXAM_ENDTIME_COLUMN, exam.getLocalEvent());
+        values.put(DataBaseHelper.EXAM_STARTTIME_COLUMN, exam.getDateEvent().toString());
+        values.put(DataBaseHelper.EXAM_ENDTIME_COLUMN, exam.getEndTime().toString());
         values.put(DataBaseHelper.EXAM_LOCALEVENT_COLUMN, exam.getLocalEvent());
         values.put(DataBaseHelper.EXAM_GRADE_COLUMN, exam.getGrade());
         values.put(DataBaseHelper.EXAM_CONTENT_COLUMN, exam.getContentExam());

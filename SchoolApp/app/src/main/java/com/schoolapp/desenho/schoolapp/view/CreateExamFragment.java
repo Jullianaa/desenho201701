@@ -3,6 +3,7 @@ package com.schoolapp.desenho.schoolapp.view;
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.schoolapp.desenho.schoolapp.R;
+import com.schoolapp.desenho.schoolapp.dao.ExamDAO;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.Exam;
 import com.schoolapp.desenho.schoolapp.presenter.DisciplinePresenter;
@@ -41,7 +43,7 @@ public class CreateExamFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         getViews();
-
+        // TODO Get all User disciplines
         // DisciplinePresenter disciplinePresenter = new DisciplinePresenter(getContext());
         // List<String> allUserDisciplinesName = disciplinePresenter.getAllDisciplinesName(0);
         List<String> allUserDisciplinesName = new ArrayList<>();
@@ -76,9 +78,9 @@ public class CreateExamFragment extends Fragment {
                 String description = examDescription.getText().toString();
 
                 DisciplinePresenter disciplinePresenter = new DisciplinePresenter(getContext());
-                Discipline examDiscipline = disciplinePresenter.getDisciplineByName(userId);
-
-                Integer disciplineId = examDiscipline.getDisciplineId();
+                //Discipline examDiscipline = disciplinePresenter.getDisciplineByName(userId);
+                // TODO Get user disciplines by Name
+                Integer disciplineId = 0; //examDiscipline.getDisciplineId();
 
                 DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
                 Date date = null;
@@ -87,9 +89,14 @@ public class CreateExamFragment extends Fragment {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
+                // TODO Get out the test of exam2
                 Exam exam = new Exam(1, date, date, date, title, discipline, disciplineId, 0F, description);
+                ExamDAO examDAO = new ExamDAO(getContext());
+                examDAO.saveExam(exam);
 
+                Exam exam2 = examDAO.getExam(0);
+                Toast.makeText(getContext(), "Prova salva com sucesso! " + exam2.getContentExam(),
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
