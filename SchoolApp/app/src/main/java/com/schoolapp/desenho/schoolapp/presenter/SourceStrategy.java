@@ -15,12 +15,12 @@ public abstract class SourceStrategy {
 
     public void search(Integer userId, Context context){
         this.allExams = findExams(userId, context);
-        this.allExams = filterExams(this.allExams, "");
+        this.allExams = filterExams(this.allExams, "", context);
     }
 
     List<Exam> findExams(Integer userId, Context context){
         DisciplinePresenter disciplinePresenter = new DisciplinePresenter(context);
-        List<Discipline> studentDisciplines = disciplinePresenter.getAllDisciplines(userId);
+        List<Discipline> studentDisciplines = disciplinePresenter.allUserDisciplines(userId);
         List<Exam> allExams = new ArrayList<Exam>();
 
         for(Integer discipline = 0; discipline < studentDisciplines.size(); discipline++){
@@ -35,7 +35,7 @@ public abstract class SourceStrategy {
         return allExams;
     }
 
-    abstract List<Exam> filterExams(List<Exam> allExams, String param);
+    abstract List<Exam> filterExams(List<Exam> allExams, String param, Context context);
 
 
 }
