@@ -78,11 +78,15 @@ public class DisciplineFragment extends ListFragment {
     }
 
     public void getDisciplines() {
-        if (this.userData!=null) {
-            studentDisciplineClasses = this.userData.getStudentDisciplinesClasses();
-            for( DisciplineClass disciplineClass : studentDisciplineClasses) {
-                disciplinesName.add(new DisciplineDAO(getActivity()).getDiscipline(disciplineClass.getDisciplineId()).getDisciplineName());
-            }
+        UserDataHelper userDH = new UserDataHelper(this.getActivity());
+        Student student = userDH.getUserInstance();
+
+        if (student!=null) {
+          ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
+          ArrayList<String>  disciplines = new ArrayList<>();
+          for( Discipline discipline : studentDisciplines) {
+              disciplines.add(discipline.getDisciplineName());
+          }
         }else{
           //nothing to do
         }
