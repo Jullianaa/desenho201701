@@ -186,7 +186,7 @@ public class JSONParser {
                         ArrayList<Exam> exams = new ArrayList<>();
 
                         // create the discipline class object
-                        DisciplineClass disciplineClass = new DisciplineClass(disciplineId, class_name, professor, daysList, exams);
+                        DisciplineClass disciplineClass = new DisciplineClass(disciplineId, class_name, professor, daysList, exams, disciplineClassId);
 
                         // add the DisciplineClass object to the list
                         disciplineClassList.add(disciplineClass);

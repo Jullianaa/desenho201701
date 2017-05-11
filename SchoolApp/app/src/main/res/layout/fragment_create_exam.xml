@@ -5,7 +5,7 @@
     android:layout_margin="10dp"
     tools:context="com.schoolapp.desenho.schoolapp.view.CreateExamFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Update strings -->
     <TextView
         android:id="@+id/discipline_label"
         android:layout_width="match_parent"
@@ -63,6 +63,8 @@
         android:layout_marginTop="10sp"
         android:textAlignment="center"
         android:layout_below="@id/title_label"/>
+        android:id="@+id/local_field"
+        android:hint="Digite o local da prova" />
 
     <Button
         android:id="@+id/button_save_exam"
