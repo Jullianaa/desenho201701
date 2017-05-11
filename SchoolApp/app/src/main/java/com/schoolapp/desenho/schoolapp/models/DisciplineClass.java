@@ -8,11 +8,12 @@ public class DisciplineClass {
     private String classProfessor;
     private ArrayList<SchoolClass> days;
     private ArrayList<Exam> exams;
-    public Integer studentId;
+
+    private Integer studentId;
 
     private Integer disciplineClassId;
 
-    public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams, Integer disciplineClassId) {
+    public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams, Integer disciplineClassId, Integer studentId) {
 
         setDisciplineId(disciplineId);
         setClassName(className);
@@ -20,6 +21,7 @@ public class DisciplineClass {
         setDays(days);
         setExams(exams);
         setDisciplineClassId(disciplineClassId);
+        setStudentId(studentId);
     }
 
     public Integer getDisciplineClassId() {
@@ -69,5 +71,13 @@ public class DisciplineClass {
     public void setDays(ArrayList<SchoolClass> days) {
 
         this.days = days;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 }

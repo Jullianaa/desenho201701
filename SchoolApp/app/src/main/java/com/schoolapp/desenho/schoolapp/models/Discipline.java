@@ -13,6 +13,8 @@ public class Discipline {
     public Discipline(Integer disciplineId, String disciplineName, String disciplineCode,
                       Integer disciplineCredits, ArrayList<DisciplineClass> classes,
                       Integer studentId) {
+
+        setDisciplineId(disciplineId);
         setDisciplineName(disciplineName);
         setDisciplineCode(disciplineCode);
         setDisciplineCredits(disciplineCredits);

@@ -6,8 +6,8 @@ public class Monitory extends Event {
     private String monitor;
 
     public Monitory(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
-                    String discipline, Integer disciplineClassId, String monitor) {
-        super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
+                    Integer disciplineClassId, String monitor) {
+        super(eventId, dateEvent, startTime, endTime, localEvent, disciplineClassId);
         setMonitor(monitor);
     }
 

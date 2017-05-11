@@ -41,14 +41,12 @@ public class TaskDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(1),
                     cursor.getString(6)
             );
             tasks.add(task);
         }
-
+        cursor.close();
         return tasks;
     }
 
@@ -66,12 +64,11 @@ public class TaskDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(6),
                     cursor.getString(1)
             );
         }
+        cursor.close();
         return task;
     }
 

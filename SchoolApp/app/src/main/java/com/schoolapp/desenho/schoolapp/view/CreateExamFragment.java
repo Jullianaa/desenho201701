@@ -90,7 +90,7 @@ public class CreateExamFragment extends Fragment {
                     e.printStackTrace();
                 }
                 // TODO Get out the test of exam2
-                Exam exam = new Exam(1, date, date, date, title, discipline, disciplineId, 0F, description);
+                Exam exam = new Exam(1, date, date, date, title, disciplineId, 0F, description);
                 ExamDAO examDAO = new ExamDAO(getContext());
                 examDAO.saveExam(exam);
 

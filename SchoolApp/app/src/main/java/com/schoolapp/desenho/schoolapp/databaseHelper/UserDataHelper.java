@@ -121,7 +121,6 @@ public class UserDataHelper {
                 final SchoolClass classEvent = classEventsList.get(eventsCounter);
 
                 missedClassesCount += classEvent.getAbsentClass();
-                disciplineName = classEvent.getDiscipline();
             }
 
             // Create a Student Presence object and add to the returning array

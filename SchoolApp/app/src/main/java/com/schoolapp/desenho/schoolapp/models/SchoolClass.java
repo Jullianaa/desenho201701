@@ -6,8 +6,8 @@ public class SchoolClass extends Event {
     private Integer absentClass;
 
     public SchoolClass(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
-                       String discipline, Integer disciplineClassId, Integer absentClass) {
-        super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
+                       Integer disciplineClassId, Integer absentClass) {
+        super(eventId, dateEvent, startTime, endTime, localEvent, disciplineClassId);
         setAbsentClass(absentClass);
     }
 

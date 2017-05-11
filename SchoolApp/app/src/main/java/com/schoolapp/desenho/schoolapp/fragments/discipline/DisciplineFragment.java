@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.schoolapp.desenho.schoolapp.R;
+import com.schoolapp.desenho.schoolapp.dao.DisciplineClassDAO;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
 import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
@@ -36,7 +38,8 @@ public class DisciplineFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getDisciplines();
+        this.getDisciplinesName();
+        //this.getDisciplines();
         //  Set up the initial state for acessing the DB
         Activity actualActivity = getActivity();
         UserDataHelper userDH = new UserDataHelper(actualActivity);
@@ -49,7 +52,6 @@ public class DisciplineFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_discipline, container, false);
 
         adapter = new ArrayAdapter(
@@ -66,6 +68,8 @@ public class DisciplineFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+        Log.d("Posicao Disciplina", String.valueOf(position));
+
         mListener.getDisciplineClassId(studentDisciplineClasses.get(position).getDisciplineClassId());
 
 
@@ -77,18 +81,40 @@ public class DisciplineFragment extends ListFragment {
         this.userData = userData;
     }
 
-    public void getDisciplines() {
-        UserDataHelper userDH = new UserDataHelper(this.getActivity());
-        Student student = userDH.getUserInstance();
 
-        if (student!=null) {
-          ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
-          ArrayList<String>  disciplines = new ArrayList<>();
-          for( Discipline discipline : studentDisciplines) {
-              disciplines.add(discipline.getDisciplineName());
-          }
-        }else{
-          //nothing to do
+    public void getDisciplinesName() {
+        DisciplineDAO disciplineDAO = new DisciplineDAO(getContext());
+        Discipline disciplineU = disciplineDAO.getDiscipline(1);
+        disciplineU.setStudentId(1);
+        disciplineDAO.updateDiscipline(disciplineU);
+        Log.d("Discipline StudentId", disciplineDAO.getDiscipline(1).getStudentId().toString());
+
+        DisciplineClassDAO disciplineClassDAO = new DisciplineClassDAO(getContext());
+        DisciplineClass disciplineClass = disciplineClassDAO.getDisciplineClass(1);
+        disciplineClass.setStudentId(1);
+        disciplineClassDAO.updateDisciplineClass(disciplineClass);
+        Log.d("DC StudentId", disciplineClassDAO.getDisciplineClass(1).getDisciplineClassId().toString());
+
+        ArrayList<Discipline> allDisciplines = disciplineDAO.getAllStudentDisciplines(1);
+        disciplinesName = new ArrayList<>();
+        for( Discipline discipline : allDisciplines) {
+            disciplinesName.add(discipline.getDisciplineName());
         }
+
     }
+
+//    public void getDisciplines() {
+//        UserDataHelper userDH = new UserDataHelper(this.getActivity());
+//        Student student = userDH.getUserInstance();
+//
+//        if (student!=null) {
+//          ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
+//          ArrayList<String>  disciplines = new ArrayList<>();
+//          for( Discipline discipline : studentDisciplines) {
+//              disciplines.add(discipline.getDisciplineName());
+//          }
+//        }else{
+//          //nothing to do
+//        }
+//    }
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
+import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
 
 
 public class DisciplineDAO extends GenericDBDAO{
@@ -41,7 +42,7 @@ public class DisciplineDAO extends GenericDBDAO{
             );
             disciplines.add(discipline);
         }
-
+        cursor.close();
         return disciplines;
     }
 
@@ -67,6 +68,7 @@ public class DisciplineDAO extends GenericDBDAO{
             );
             disciplines.add(discipline);
         }
+        cursor.close();
         return disciplines;
     }
 
@@ -92,7 +94,7 @@ public class DisciplineDAO extends GenericDBDAO{
         if(discipline == null) {
             Log.d("DisciplineDAO", "discipline is null");
         }
-
+        cursor.close();
         return discipline;
     }
 

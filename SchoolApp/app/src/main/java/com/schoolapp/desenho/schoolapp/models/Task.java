@@ -5,9 +5,9 @@ import java.util.Date;
 public class Task extends Event {
     private String taskDescription;
 
-    public Task(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline,
+    public Task(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
                 Integer disciplineClassId, String taskDescription) {
-        super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
+        super(eventId, dateEvent, startTime, endTime, localEvent, disciplineClassId);
         setTaskDescription(taskDescription);
     }
 
