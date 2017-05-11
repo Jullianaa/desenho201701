@@ -1,5 +1,5 @@
-/* This class serves as a facade (Design Pattern) for handling complex database manipulation,
-   focusing on the user data.
+/* This class serves as a facade (Design Pattern) for handling student data and its complex
+   database manipulation, if needed.
 
    @class UserDataHelper
  */
@@ -28,18 +28,28 @@ public class UserDataHelper {
         this.setUserDB(new StudentDAO(context));
     }
 
+    /* This method is used to check if the user is already in the database. If not, an empty student
+     * is created and saved to DB.
+     *
+     * An example of usage is in the SplashScreen, to make sure that there's an user before any
+     * data manipulation.
+     */
     public void setStudent(){
         // Get student form DB and checks if there is any user(Student) already in the DB
-        Student user = this.getUserInstance();
-        final Boolean userAvailable = user != null;
+        final Student studentFound = this.getUserInstance();
+        final Boolean studentAvailable = studentFound != null;
 
-        if(userAvailable){
-            Log.d("User Check: ", "User is ready.");
+        /* If the user is available in the DB, there's nothing to do. If not, a new empty student
+         * must be created and saved to the DB.
+         */
+        if(studentAvailable){
+            Log.d("User Check: ", "User is already in DB...");
         } else{
             Log.d("User Check: ", "FAILED. Creating empty User");
 
-            user = this.createEmptyStudent();
-            this.getUserDB().saveStudent(user);
+            final Student newStudent = this.createEmptyStudent();
+
+            this.saveStudentInstance(newStudent);
         }
     }
 
@@ -54,16 +64,42 @@ public class UserDataHelper {
 
         final Boolean isStudentDAOAvailable = studentDAO != null;
 
+        // If the DAO is ready, the condition will try to get the student available in the DB.
         if(isStudentDAOAvailable){
             foundStudent = this.getUserDB().getDefaultStudent();
         } else
         {
-            Log.e("UserData: ", "Can't resolve user data in DB.");
+            Log.e("UserData: ", "NULLPOINTER found! Could not access StudentDAO in getUserInstance.");
         }
 
         return foundStudent;
     }
 
+    /* This method saves/updates the student data available in the DB. If there isn't a student
+     * in the DB, the DAO "save" method will be used for creating a new student.
+     *
+     * @parms Student user; Just pass the new student you want to push to the DB and the function
+     *               will handle it.
+     */
+    public void saveStudentInstance(Student user){
+        // Checks if a student is already available in DB
+        final Student studentFound = this.getUserInstance();
+
+        // If there's a student, the method should update the user
+        if (studentFound != null){
+            this.getUserDB().updateStudent(user);
+            Log.d("saveStudentInstance: ", "Updated with success!");
+        } else{
+            this.getUserDB().saveStudent(user);
+            Log.d("saveStudentInstance: ", "Saved with success!");
+        }
+    }
+
+    /* This method parse the presence data from the student in the DB for a more clean representation
+     *
+     * @return ArrayList<StudentPresence> presenceList; An ArrayList with all the presence data from
+     *              the student in DB.
+     */
     public ArrayList<StudentPresence> getPresenceList(){
         final Student user = this.getUserInstance();
         final ArrayList<ArrayList<SchoolClass>> studentClasses = user.getStudentSchoolClasses();

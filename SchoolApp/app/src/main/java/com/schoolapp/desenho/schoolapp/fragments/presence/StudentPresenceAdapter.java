@@ -21,19 +21,23 @@ public class StudentPresenceAdapter extends ArrayAdapter<StudentPresence> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         StudentPresence presence = getItem(position);
+        assert presence != null : "NULLPOINTER found in data! (StudentPresenceAdapter";
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_presence, parent, false);
         }
 
-        // Lookup view for data population
-        TextView disciplineName = (TextView) convertView.findViewById(R.id.discipline_name);
-        TextView missedCount = (TextView) convertView.findViewById(R.id.missed_count);
+        // Lookup for textviews for inserting the data
+        TextView disciplineNameTV = (TextView) convertView.findViewById(R.id.discipline_name);
+        TextView missedCountTV = (TextView) convertView.findViewById(R.id.missed_count);
 
-        // Populate the data into the template view using the data object
-        disciplineName.setText(presence.getDisciplineName());
-        missedCount.setText(presence.getClassesMissed().toString());
+        // Populate the data into the template view using the data
+        final String disciplineName = presence.getDisciplineName();
+        final String missedCount = presence.getClassesMissed().toString();
+
+        disciplineNameTV.setText(disciplineName);
+        missedCountTV.setText(missedCount);
 
         // Return the completed view to render on screen
         return convertView;

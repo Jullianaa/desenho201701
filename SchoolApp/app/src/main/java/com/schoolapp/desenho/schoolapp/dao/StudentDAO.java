@@ -115,7 +115,7 @@ public class StudentDAO extends GenericDBDAO{
         return database.insert(DataBaseHelper.STUDENT_TABLE, null, values);
     }
 
-    public long updateSchoolClass(Student student) {
+    public long updateStudent(Student student) {
         ContentValues values = new ContentValues();
 
         values.put(DataBaseHelper.STUDENT_NAME_COLUMN, student.getStudentName());

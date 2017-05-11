@@ -18,28 +18,31 @@ public class PresenceList extends ListFragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_presence_list, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_presence_list, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        /*
         final UserDataHelper userDH = new UserDataHelper(getActivity());
         final ArrayList<StudentPresence> studentMissedClasses= userDH.getPresenceList();
 
+        ArrayAdapter<StudentPresence> adapter =
+        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, studentMissedClasses);
+
+        */
+
+        // Use fakeData for debug process
         ArrayList<StudentPresence> fakeData = new ArrayList<>();
         fakeData.add(new StudentPresence("Disciplina 1", 0));
         fakeData.add(new StudentPresence("Disciplina 2", 3));
         fakeData.add(new StudentPresence("Disciplina 3", 5));
 
-
-       // ArrayAdapter<StudentPresence> adapter =
-         //       new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, studentMissedClasses);
-
         StudentPresenceAdapter adapter =
                 new StudentPresenceAdapter(getActivity(), fakeData);
+
         setListAdapter(adapter);
         getListView().setOnItemClickListener(this);
     }
