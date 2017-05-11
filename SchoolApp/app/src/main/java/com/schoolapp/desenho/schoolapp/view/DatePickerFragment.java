@@ -2,9 +2,12 @@ package com.schoolapp.desenho.schoolapp.view;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
+import android.widget.TextView;
+
+import com.schoolapp.desenho.schoolapp.R;
 
 import java.util.Calendar;
 
@@ -22,5 +25,9 @@ public class DatePickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
+        TextView examDate = (TextView) getActivity().findViewById(R.id.date_field);
+        examDate.setText(String.format("%02d", view.getDayOfMonth()) + " / " +
+                String.format("%02d", view.getMonth()) + " / " +
+                String.format("%02d", view.getYear()));
     }
 }
