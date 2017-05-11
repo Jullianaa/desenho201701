@@ -11,6 +11,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Provas" />
         <item
+            android:id="@+id/nav_exams_grade"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Nota das provas" />
+        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Atividades" />

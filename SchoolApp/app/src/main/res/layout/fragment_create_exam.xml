@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/local_field"
-        android:text="Digite o local da prova" />
+        android:hint="Digite o local da prova" />
 
     <Button
         android:id="@+id/send_exame"

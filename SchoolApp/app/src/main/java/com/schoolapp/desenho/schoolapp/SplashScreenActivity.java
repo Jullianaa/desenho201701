@@ -13,10 +13,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     final long WAIT_TIME = 2000;
     private final JSONParser jsonParser = new JSONParser();
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final UserDataHelper userDataHelper = new UserDataHelper(this);
         setContentView(R.layout.activity_main);
 
         // Inserts all courses in the database if this is not already done
@@ -28,11 +27,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         /* Checks the actual user in DB. If not user is in the DB, the userDataHelper will handle
          * this. No need for manipulation.
          */
+        final UserDataHelper userDataHelper = new UserDataHelper(this);
         userDataHelper.setStudent();
 
         Log.d("User set: ", userDataHelper.getUserInstance().getStudentName());
-
-
 
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/

@@ -57,7 +57,7 @@ public class DisciplineFragment extends ListFragment {
     public void getDisciplines() {
         UserDataHelper userDH = new UserDataHelper(this.getActivity());
         Student student = userDH.getUserInstance();
-        
+
         if (student!=null) {
           ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
           ArrayList<String>  disciplines = new ArrayList<>();

@@ -10,13 +10,24 @@ public class DisciplineClass {
     private ArrayList<Exam> exams;
     public Integer studentId;
 
-    public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams) {
+    private Integer disciplineClassId;
+
+    public DisciplineClass(Integer disciplineId, String className, String classProfessor, ArrayList<SchoolClass> days, ArrayList<Exam> exams, Integer disciplineClassId) {
 
         setDisciplineId(disciplineId);
         setClassName(className);
         setClassProfessor(classProfessor);
         setDays(days);
         setExams(exams);
+        setDisciplineClassId(disciplineClassId);
+    }
+
+    public Integer getDisciplineClassId() {
+        return disciplineClassId;
+    }
+
+    public void setDisciplineClassId(Integer disciplineClassId) {
+        this.disciplineClassId = disciplineClassId;
     }
 
     public Integer getDisciplineId() {
