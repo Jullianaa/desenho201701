@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <EditText
+        android:id="@+id/idSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Matéria "
+        />
+    <EditText
+        android:id="@+id/disciplineClassId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Código da matéria "
+        />
+    <EditText
+        android:id="@+id/monitor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Monitor"
+        />
+    <EditText
+        android:id="@+id/idClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Turma "
+        />
+    <EditText
+        android:id="@+id/idTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Professor "
+        />
+    <EditText
+        android:id="@+id/idDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="datetime"
+        android:hint="Horário "
+        />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Criar Monitoria"
+        android:textColor="#fff"
+        android:onClick="registerSubject"
+        />
+</LinearLayout>
