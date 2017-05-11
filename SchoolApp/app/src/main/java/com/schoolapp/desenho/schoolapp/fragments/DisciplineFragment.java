@@ -19,7 +19,7 @@ import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
 import com.schoolapp.desenho.schoolapp.models.Student;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
-import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
+import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.Student;
 
 
@@ -55,11 +55,14 @@ public class DisciplineFragment extends ListFragment {
     }
 
     public void getDisciplines() {
-        if (this.userData!=null) {
-          ArrayList<DisciplineClass> studentDisciplines = this.userData.getStudentDisciplinesClasses();
+        UserDataHelper userDH = new UserDataHelper(this.getActivity());
+        Student student = userDH.getUserInstance();
+        
+        if (student!=null) {
+          ArrayList<Discipline> studentDisciplines = student.getStudentDisciplines();
           ArrayList<String>  disciplines = new ArrayList<>();
-          for( DisciplineClass discipline : studentDisciplines) {
-              disciplines.add(discipline.getClassName());
+          for( Discipline discipline : studentDisciplines) {
+              disciplines.add(discipline.getDisciplineName());
           }
         }else{
           //nothing to do
