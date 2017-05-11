@@ -36,13 +36,13 @@ public class ExamDAO extends GenericDBDAO{
         while(cursor.moveToNext()){
             Exam exam = new Exam(
                     cursor.getInt(0),
+                    cursor.getInt(1),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
                     disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
                             getInt(1)).getDisciplineId()).getDisciplineName(),
-                    cursor.getInt(1),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );
@@ -55,20 +55,20 @@ public class ExamDAO extends GenericDBDAO{
     public Exam getExam (Integer examId){
         Exam exam = null;
 
-        String sql = "SELECT * FROM" + DataBaseHelper.EXAM_TABLE +
+        String sql = "SELECT * FROM " + DataBaseHelper.EXAM_TABLE +
                 " WHERE " + DataBaseHelper.EXAM_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { examId + "" });
         if(cursor.moveToNext()) {
             exam = new Exam(
                     examId,
+                    cursor.getInt(1),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
                     disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
                             getInt(1)).getDisciplineId()).getDisciplineName(),
-                    cursor.getInt(1),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );

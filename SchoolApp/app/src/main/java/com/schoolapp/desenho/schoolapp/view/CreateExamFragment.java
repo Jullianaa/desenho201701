@@ -90,13 +90,11 @@ public class CreateExamFragment extends Fragment {
                     e.printStackTrace();
                 }
                 // TODO Get out the test of exam2
-                Exam exam = new Exam(1, date, date, date, title, discipline, disciplineId, 0F, description);
+                Exam exam = new Exam(1, disciplineId, date, date, date, title, discipline, 0F, description);
                 ExamDAO examDAO = new ExamDAO(getContext());
-                examDAO.saveExam(exam);
 
-                Exam exam2 = examDAO.getExam(0);
-                Toast.makeText(getContext(), "Prova salva com sucesso! " + exam2.getContentExam(),
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Prova salva com sucesso! ",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -115,8 +113,8 @@ public class CreateExamFragment extends Fragment {
         int month = c.get(Calendar.MONTH);
         int year = c.get(Calendar.YEAR);
 
-        dateField.setText(String.format("%02d", day) + " / " + String.format("%02d", month) +
-                " / " + String.format("%02d", year));
+        dateField.setText(String.format("%02d", day) + "/" + String.format("%02d", month) +
+                "/" + String.format("%02d", year));
     }
 
     public void setListenerToSpinner(Spinner spinner){

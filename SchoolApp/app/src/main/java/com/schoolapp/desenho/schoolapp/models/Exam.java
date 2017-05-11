@@ -6,8 +6,8 @@ public class Exam extends Event{
     private Float grade;
     private String contentExam;
 
-    public Exam(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent, String discipline,
-                Integer disciplineClassId, Float grade, String contentExam){
+    public Exam(Integer eventId, Integer disciplineClassId, Date dateEvent, Date startTime,
+                Date endTime, String localEvent, String discipline, Float grade, String contentExam){
         super(eventId, dateEvent, startTime, endTime, localEvent, discipline, disciplineClassId);
         setGrade(grade);
         setContentExam(contentExam);
