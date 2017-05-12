@@ -7,6 +7,8 @@
     <string name="my_disciplines">Minhas Disciplinas</string>
     <string name="no_student_disciplines">Você ainda não registrou nenhuma disciplina</string>
 
+    <string name="no_misses_found">Muito bem, você não possui faltas! =D</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_exam">ExamActivity</string>
