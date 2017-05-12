@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.MonitoryFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,15 +38,15 @@ public class MonitoryDAO extends GenericDBDAO {
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            Monitory monitory = new Monitory(
-                    cursor.getInt(0),
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(1),
-                    cursor.getString(6)
-            );
+            Monitory.Builder builder = new Monitory.Builder();
+            Monitory monitory = builder.setEventId(cursor.getInt(0))
+                    .setDateEvent(new Date(cursor.getLong(2)))
+                    .setStartTime(new Date(cursor.getLong(3)))
+                    .setEndTime(new Date(cursor.getLong(4)))
+                    .setLocalEvent(cursor.getString(5))
+                    .setDisciplineClassId(cursor.getInt(1))
+                    .setMonitor(cursor.getString(6))
+                    .createMonitory();
             monitories.add(monitory);
         }
         cursor.close();
@@ -59,15 +61,15 @@ public class MonitoryDAO extends GenericDBDAO {
 
         Cursor cursor = database.rawQuery(sql, new String[] { monitoryId + "" });
         if(cursor.moveToNext()) {
-            monitory = new Monitory(
-                    monitoryId,
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(1),
-                    cursor.getString(6)
-            );
+          Monitory.Builder builder = new Monitory.Builder();
+          monitory = builder.setEventId(cursor.getInt(0))
+                  .setDateEvent(new Date(cursor.getLong(2)))
+                  .setStartTime(new Date(cursor.getLong(3)))
+                  .setEndTime(new Date(cursor.getLong(4)))
+                  .setLocalEvent(cursor.getString(5))
+                  .setDisciplineClassId(cursor.getInt(1))
+                  .setMonitor(cursor.getString(6))
+                  .createMonitory();
         }
         cursor.close();
         return monitory;

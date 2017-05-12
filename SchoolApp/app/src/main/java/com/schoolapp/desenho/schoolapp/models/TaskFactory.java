@@ -1,10 +1,10 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-class TaskFactory extends AbstractFactory {
+public class TaskFactory implements AbstractFactory {
 
     @Override
     public Event createEvent() {
-        return new Task();
+        return new Task(null, null, null, null, null, null, null);
     }
 
 }

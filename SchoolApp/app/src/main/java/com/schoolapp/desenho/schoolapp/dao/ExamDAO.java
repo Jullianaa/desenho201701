@@ -8,6 +8,8 @@ import android.util.Log;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Exam;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.ExamFactory;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -34,16 +36,16 @@ public class ExamDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            Exam exam = new Exam(
-                    cursor.getInt(0),
-                    cursor.getInt(1),
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getFloat(6),
-                    cursor.getString(7)
-            );
+            Exam.Builder builder = new Exam.Builder();
+            Exam exam = builder.setEventId(cursor.getInt(0))
+                    .setDateEvent(new Date(cursor.getLong(2)))
+                    .setStartTime(new Date(cursor.getLong(3)))
+                    .setEndTime(new Date(cursor.getLong(4)))
+                    .setLocalEvent(cursor.getString(5))
+                    .setDisciplineClassId(cursor.getInt(1))
+                    .setGrade(cursor.getFloat(6))
+                    .setContentExam(cursor.getString(7))
+                    .createExam();
             exams.add(exam);
         }
 
@@ -59,16 +61,16 @@ public class ExamDAO extends GenericDBDAO{
 
         Cursor cursor = database.rawQuery(sql, new String[] { examId + "" });
         if(cursor.moveToNext()) {
-            exam = new Exam(
-                    examId,
-                    cursor.getInt(1),
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getFloat(6),
-                    cursor.getString(7)
-            );
+          Exam.Builder builder = new Exam.Builder();
+          exam = builder.setEventId(cursor.getInt(0))
+                  .setDateEvent(new Date(cursor.getLong(2)))
+                  .setStartTime(new Date(cursor.getLong(3)))
+                  .setEndTime(new Date(cursor.getLong(4)))
+                  .setLocalEvent(cursor.getString(5))
+                  .setDisciplineClassId(cursor.getInt(1))
+                  .setGrade(cursor.getFloat(6))
+                  .setContentExam(cursor.getString(7))
+                  .createExam();
         }
         cursor.close();
         return exam;
