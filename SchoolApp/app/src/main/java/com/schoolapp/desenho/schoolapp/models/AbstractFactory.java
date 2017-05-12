@@ -9,11 +9,11 @@ abstract class AbstractFactory {
     static AbstractFactory getFactory(String architecture) {
         AbstractFactory factory = null;
         switch (architecture) {
-            case 'Task':
+            case "Task":
                 factory = task;
-            case 'SchoolClass':
+            case "SchoolClass":
                 factory = schoolClass;
-            case 'Exam':
+            case "Exam":
                 factory = exam;
         }
         return factory;
