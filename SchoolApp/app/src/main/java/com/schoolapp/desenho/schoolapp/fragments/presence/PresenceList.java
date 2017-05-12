@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
+import com.schoolapp.desenho.schoolapp.models.SchoolClass;
+import com.schoolapp.desenho.schoolapp.models.Student;
 import com.schoolapp.desenho.schoolapp.models.StudentPresence;
 
 import java.util.ArrayList;
@@ -51,4 +53,5 @@ public class PresenceList extends ListFragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
         Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
     }
+
 }
