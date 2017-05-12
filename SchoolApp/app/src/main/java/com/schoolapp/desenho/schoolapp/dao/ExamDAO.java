@@ -39,11 +39,11 @@ public class ExamDAO extends GenericDBDAO{
             AbstractFactory factory = AbstractFactory.getFactory("Exam");
             Exam exam = factory.createEvent(
                     cursor.getInt(0),
+                    cursor.getInt(1),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    cursor.getInt(1),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );
@@ -56,7 +56,7 @@ public class ExamDAO extends GenericDBDAO{
 
     public Exam getExam (Integer examId){
 
-        String sql = "SELECT * FROM" + DataBaseHelper.EXAM_TABLE +
+        String sql = "SELECT * FROM " + DataBaseHelper.EXAM_TABLE +
                 " WHERE " + DataBaseHelper.EXAM_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { examId + "" });
@@ -64,11 +64,11 @@ public class ExamDAO extends GenericDBDAO{
           AbstractFactory factory = AbstractFactory.getFactory("Exam");
           Exam exam = factory.createEvent(
                     examId,
+                    cursor.getInt(1),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    cursor.getInt(1),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );
@@ -80,7 +80,6 @@ public class ExamDAO extends GenericDBDAO{
     public long saveExam (Exam exam){
         ContentValues values = new ContentValues();
 
-        values.put(DataBaseHelper.EXAM_ID_COLUMN, exam.getDisciplineClassId());
         values.put(DataBaseHelper.EXAM_DISCIPLINECLASSID_COLUMN, exam.getDisciplineClassId());
         values.put(DataBaseHelper.EXAM_DATEEVENT_COLUMN, exam.getDateEvent().toString());
         values.put(DataBaseHelper.EXAM_STARTTIME_COLUMN, exam.getDateEvent().toString());
