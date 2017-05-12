@@ -8,6 +8,8 @@ import android.util.Log;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Exam;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.ExamFactory;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -34,7 +36,8 @@ public class ExamDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            Exam exam = new Exam(
+            AbstractFactory factory = AbstractFactory.getFactory("Exam");
+            Exam exam = factory.createCPU(
                     cursor.getInt(0),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

@@ -9,6 +9,8 @@ import android.util.Log;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Task;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.TaskFactory;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -35,7 +37,8 @@ public class TaskDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            Task task = new Task(
+          AbstractFactory factory = AbstractFactory.getFactory("Task");
+          Task task = factory.createEvent(
                     cursor.getInt(0),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

@@ -8,6 +8,8 @@ import android.util.Log;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.SchoolClass;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.SchoolClassFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +30,8 @@ public class SchoolClassDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            SchoolClass schoolClass = new SchoolClass(
+            AbstractFactory factory = AbstractFactory.getFactory("SchoolClass");
+            SchoolClass schoolClass = factory.createEvent(
                     cursor.getInt(0),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
@@ -51,7 +54,8 @@ public class SchoolClassDAO extends GenericDBDAO{
 
         Cursor cursor = database.rawQuery(sql, new String[] { schoolClassId + "" });
         if(cursor.moveToNext()) {
-            schoolClass = new SchoolClass(
+          AbstractFactory factory = AbstractFactory.getFactory("Task");
+          SchoolClass schoolClass = factory.createCPU(
                     schoolClassId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
