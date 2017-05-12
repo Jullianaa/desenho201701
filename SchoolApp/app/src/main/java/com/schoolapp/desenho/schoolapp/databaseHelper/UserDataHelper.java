@@ -7,8 +7,10 @@
 package com.schoolapp.desenho.schoolapp.databaseHelper;
 
 import android.content.Context;
+import android.support.annotation.RestrictTo;
 import android.util.Log;
 
+import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
 import com.schoolapp.desenho.schoolapp.dao.StudentDAO;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
@@ -23,9 +25,11 @@ import java.util.ArrayList;
 
 public class UserDataHelper {
     private StudentDAO userDB;
+    private DisciplineDAO diciplineDB;
 
     public UserDataHelper(Context context){
         this.setUserDB(new StudentDAO(context));
+        this.setDiciplineDB(new DisciplineDAO(context));
     }
 
     /* This method is used to check if the user is already in the database. If not, an empty student
@@ -162,6 +166,39 @@ public class UserDataHelper {
         );
     }
 
+    // add missed class
+    public void changeMissedClass (Integer qntd, String diciplineName) {
+
+        Student student = this.getUserInstance();
+
+        ArrayList<ArrayList<SchoolClass>> studentClasses = student.getStudentSchoolClasses();
+
+        // Get array sizes
+        final int classesSize = studentClasses.size();
+
+        // Interate over all student classes
+        for (int counter = 0; counter < classesSize; counter++) {
+
+            final ArrayList<SchoolClass> classEventList = studentClasses.get(counter);
+            final SchoolClass classEvent = classEventList.get(0);
+            final Integer studentDisciplineId = classEvent.getDisciplineClassId();
+
+            // Tu vai ter que pegar a disciplina no banco agora
+            final Discipline foundDiscipline = this.getDiciplineDB().getDiscipline(studentDisciplineId);
+
+            // Verifica se é vazio, tá?
+            if (diciplineName != null){
+                final Integer actualMisses = classEvent.getAbsentClass();
+                student.getStudentSchoolClasses().get(counter).get(0).setAbsentClass(actualMisses + qntd);
+                this.getUserDB().saveStudent(student);
+
+            } else {
+             // Nothing to do
+            }
+
+        }
+    }
+
     // Public Getters and Setters
     private StudentDAO getUserDB() {
         return userDB;
@@ -169,5 +206,13 @@ public class UserDataHelper {
 
     private void setUserDB(StudentDAO userDB) {
         this.userDB = userDB;
+    }
+
+    private DisciplineDAO getDiciplineDB() {
+        return diciplineDB;
+    }
+
+    private void setDiciplineDB(DisciplineDAO diciplineDB) {
+        this.diciplineDB = diciplineDB;
     }
 }
