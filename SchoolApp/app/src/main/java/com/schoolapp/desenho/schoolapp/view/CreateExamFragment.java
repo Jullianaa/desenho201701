@@ -82,7 +82,7 @@ public class CreateExamFragment extends Fragment {
                 // TODO Get user disciplines by Name
                 Integer disciplineId = 0; //examDiscipline.getDisciplineId();
 
-                DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = null;
                 try {
                     date = formatter.parse(dateField.getText().toString());
