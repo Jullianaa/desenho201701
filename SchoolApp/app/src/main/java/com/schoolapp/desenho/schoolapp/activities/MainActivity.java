@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.fragments.discipline.DisciplineDetailFragment;
 import com.schoolapp.desenho.schoolapp.fragments.discipline.DisciplineFragment;
-import com.schoolapp.desenho.schoolapp.fragments.ExamGradeFragment;
+import com.schoolapp.desenho.schoolapp.fragments.examGrade.CreateExamGrade;
 import com.schoolapp.desenho.schoolapp.fragments.HomeFragment;
 import com.schoolapp.desenho.schoolapp.fragments.discipline.SearchDisciplinesFragment;
 import com.schoolapp.desenho.schoolapp.fragments.TaskFragment;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             newFragment = new DisciplineFragment();
         } else if (id == R.id.nav_exams_grade){
-            newFragment = new ExamGradeFragment();
+            newFragment = new CreateExamGrade();
         } else if(id == R.id.nav_presence){
             newFragment = new PresenceListFragment();
         } else {
