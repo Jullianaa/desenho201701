@@ -8,6 +8,7 @@ import android.util.Log;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.SchoolClass;
+import com.schoolapp.desenho.schoolapp.models.Event;
 import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
 import com.schoolapp.desenho.schoolapp.models.SchoolClassFactory;
 
@@ -30,16 +31,16 @@ public class SchoolClassDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            AbstractFactory factory = AbstractFactory.getFactory("SchoolClass");
-            SchoolClass schoolClass = factory.createEvent(
-                    cursor.getInt(0),
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(6),
-                    cursor.getInt(1)
-            );
+            SchoolClass.Builder builder = new SchoolClass.Builder();
+            SchoolClass schoolClass = builder.setEventId(disciplineClassId)
+                    .setDateEvent(new Date(cursor.getLong(2)))
+                    .setStartTime(new Date(cursor.getLong(3)))
+                    .setEndTime(new Date(cursor.getLong(4)))
+                    .setLocalEvent(cursor.getString(5))
+                    .setDisciplineClassId(cursor.getInt(6))
+                    .setAbsentClass(cursor.getInt(1))
+                    .createSchoolClass();
+
             schoolClasses.add(schoolClass);
         }
         cursor.close();
@@ -47,22 +48,22 @@ public class SchoolClassDAO extends GenericDBDAO{
     }
 
     public SchoolClass getSchoolClass(Integer schoolClassId){
+        SchoolClass schoolClass = null;
 
         String sql = "SELECT * FROM " + DataBaseHelper.SCHOOLCLASS_TABLE +
                 " WHERE " + DataBaseHelper.SCHOOLCLASS_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { schoolClassId + "" });
         if(cursor.moveToNext()) {
-          AbstractFactory factory = AbstractFactory.getFactory("SchoolClass");
-          SchoolClass schoolClass = factory.createEvent(
-                    schoolClassId,
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(6),
-                    cursor.getInt(1)
-            );
+          SchoolClass.Builder builder = new SchoolClass.Builder();
+          schoolClass = builder.setEventId(schoolClassId)
+                  .setDateEvent(new Date(cursor.getLong(2)))
+                  .setStartTime(new Date(cursor.getLong(3)))
+                  .setEndTime(new Date(cursor.getLong(4)))
+                  .setLocalEvent(cursor.getString(5))
+                  .setDisciplineClassId(cursor.getInt(6))
+                  .setAbsentClass(cursor.getInt(1))
+                  .createSchoolClass();
         }
         cursor.close();
         return schoolClass;

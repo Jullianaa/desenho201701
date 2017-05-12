@@ -11,6 +11,7 @@ public class SchoolClass extends Event {
         setAbsentClass(absentClass);
     }
 
+
     public int getAbsentClass() {
         return this.absentClass;
     }
@@ -27,7 +28,7 @@ public class SchoolClass extends Event {
         private Date endTime;
         private String localEvent;
         private Integer disciplineClassId;
-        private String monitor;
+        private Integer absentClass;
 
         public Builder setEventId(int eventId){
             this.eventId = eventId;
@@ -64,7 +65,7 @@ public class SchoolClass extends Event {
             return this;
         }
 
-        public SchoolClass createExam(){
+        public SchoolClass createSchoolClass(){
             return new SchoolClass(eventId, dateEvent, startTime, endTime,
                                 localEvent, disciplineClassId, absentClass);
         }

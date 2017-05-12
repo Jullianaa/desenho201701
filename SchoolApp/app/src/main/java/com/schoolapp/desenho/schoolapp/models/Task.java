@@ -27,7 +27,7 @@ public class Task extends Event {
         private Date endTime;
         private String localEvent;
         private Integer disciplineClassId;
-        private String monitor;
+        private String taskDescription;
 
         public Builder setEventId(int eventId){
             this.eventId = eventId;
@@ -64,7 +64,7 @@ public class Task extends Event {
             return this;
         }
 
-        public Task createExam(){
+        public Task createTask(){
             return new Task(eventId, dateEvent, startTime, endTime,
                                 localEvent, disciplineClassId, taskDescription);
         }

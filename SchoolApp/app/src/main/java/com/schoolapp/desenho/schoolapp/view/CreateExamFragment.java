@@ -91,7 +91,7 @@ public class CreateExamFragment extends Fragment {
                 }
                 // TODO Get out the test of exam2
 
-                Exam exam = new Exam(1, disciplineId, date, date, date, title, 0F, description);
+                Exam exam = new Exam(1, date, date, date, title, disciplineId, 0F, description);
                 ExamDAO examDAO = new ExamDAO(getContext());
 
                 Toast.makeText(getContext(), "Prova salva com sucesso! ",

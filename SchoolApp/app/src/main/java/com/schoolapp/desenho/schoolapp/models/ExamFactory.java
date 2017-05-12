@@ -2,11 +2,12 @@ package com.schoolapp.desenho.schoolapp.models;
 
 import java.util.Date;
 
-public class ExamFactory extends AbstractFactory {
+public class ExamFactory implements AbstractFactory {
 
     @Override
-    public Exam createEvent() {
-        return new Exam();
+    public Event createEvent() {
+        Exam exam = new Exam(null, null, null, null, null, null, null, null);
+        return exam;
     }
 
 }

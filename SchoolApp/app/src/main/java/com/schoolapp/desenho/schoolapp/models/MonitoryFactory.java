@@ -1,12 +1,10 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.util.Date;
-
-public class MonitoryFactory extends AbstractFactory {
+public class MonitoryFactory implements AbstractFactory {
 
     @Override
-    public Monitory createEvent() {
-        return new Monitory();
+    public Event createEvent() {
+        return new Monitory(null, null, null, null, null, null, null);
     }
 
 }

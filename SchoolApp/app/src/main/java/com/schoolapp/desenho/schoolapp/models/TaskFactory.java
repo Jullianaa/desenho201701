@@ -1,12 +1,10 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.util.Date;
-
-public class TaskFactory extends AbstractFactory {
+public class TaskFactory implements AbstractFactory {
 
     @Override
-    public Task createEvent() {
-        return new Task();
+    public Event createEvent() {
+        return new Task(null, null, null, null, null, null, null);
     }
 
 }

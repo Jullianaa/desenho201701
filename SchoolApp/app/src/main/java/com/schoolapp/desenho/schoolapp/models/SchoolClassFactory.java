@@ -1,12 +1,10 @@
 package com.schoolapp.desenho.schoolapp.models;
 
-import java.util.Date;
-
-public class SchoolClassFactory extends AbstractFactory {
+public class SchoolClassFactory implements AbstractFactory {
 
     @Override
-    public SchoolClass createEvent() {
-        return new SchoolClass();
+    public Event createEvent() {
+        return new SchoolClass(null, null, null, null, null, null, null);
     }
 
 }

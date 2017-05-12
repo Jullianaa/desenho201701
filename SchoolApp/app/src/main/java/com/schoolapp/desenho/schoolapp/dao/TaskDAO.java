@@ -37,16 +37,16 @@ public class TaskDAO extends GenericDBDAO{
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-          AbstractFactory factory = AbstractFactory.getFactory("Task");
-          Task task = factory.createEvent(
-                    cursor.getInt(0),
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(1),
-                    cursor.getString(6)
-            );
+          Task.Builder builder = new Task.Builder();
+          Task task = builder.setEventId(disciplineClassId)
+                  .setDateEvent(new Date(cursor.getLong(2)))
+                  .setStartTime(new Date(cursor.getLong(3)))
+                  .setEndTime(new Date(cursor.getLong(4)))
+                  .setLocalEvent(cursor.getString(5))
+                  .setDisciplineClassId(cursor.getInt(6))
+                  .setTaskDescription(cursor.getString(1))
+                  .createTask();
+
             tasks.add(task);
         }
         cursor.close();
@@ -54,22 +54,21 @@ public class TaskDAO extends GenericDBDAO{
     }
 
     public Task getTask (Integer taskId){
-
+        Task task = null;
         String sql = "SELECT * FROM" + DataBaseHelper.TASK_TABLE +
                 " WHERE " + DataBaseHelper.TASK_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { taskId + "" });
         if(cursor.moveToNext()) {
-          AbstractFactory factory = AbstractFactory.getFactory("Task");
-          Task task = factory.createEvent(
-                    taskId,
-                    new Date(cursor.getLong(2)),
-                    new Date(cursor.getLong(3)),
-                    new Date(cursor.getLong(4)),
-                    cursor.getString(5),
-                    cursor.getInt(6),
-                    cursor.getString(1)
-            );
+          Task.Builder builder = new Task.Builder();
+          task = builder.setEventId(taskId)
+                  .setDateEvent(new Date(cursor.getLong(2)))
+                  .setStartTime(new Date(cursor.getLong(3)))
+                  .setEndTime(new Date(cursor.getLong(4)))
+                  .setLocalEvent(cursor.getString(5))
+                  .setDisciplineClassId(cursor.getInt(6))
+                  .setTaskDescription(cursor.getString(1))
+                  .createTask();
         }
         cursor.close();
         return task;

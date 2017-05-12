@@ -64,7 +64,7 @@ public class Monitory extends Event {
             return this;
         }
 
-        public Monitory createExam(){
+        public Monitory createMonitory(){
             return new Monitory(eventId, dateEvent, startTime, endTime,
                                 localEvent, disciplineClassId, monitor);
         }
