@@ -1,22 +1,20 @@
 package com.schoolapp.desenho.schoolapp.fragments.presence;
 
-import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.schoolapp.desenho.schoolapp.R;
-import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
-import com.schoolapp.desenho.schoolapp.models.SchoolClass;
-import com.schoolapp.desenho.schoolapp.models.Student;
 import com.schoolapp.desenho.schoolapp.models.StudentPresence;
 
 import java.util.ArrayList;
 
-public class PresenceList extends ListFragment implements AdapterView.OnItemClickListener {
+public class PresenceListFragment extends Fragment implements AdapterView.OnItemClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,11 +40,16 @@ public class PresenceList extends ListFragment implements AdapterView.OnItemClic
         fakeData.add(new StudentPresence("Disciplina 2", 3));
         fakeData.add(new StudentPresence("Disciplina 3", 5));
 
-        StudentPresenceAdapter adapter =
-                new StudentPresenceAdapter(getActivity(), fakeData);
+        // Get the ListView
+        ListView list = (ListView)getActivity().findViewById(R.id.presence_list);
 
-        setListAdapter(adapter);
-        getListView().setOnItemClickListener(this);
+        // Create and set the custom adapter for the listview
+        final StudentPresenceAdapter adapter =
+                new StudentPresenceAdapter(getActivity(), fakeData);
+        list.setAdapter(adapter);
+
+        // Set a listener for each item
+        list.setOnItemClickListener(this);
     }
 
     @Override
