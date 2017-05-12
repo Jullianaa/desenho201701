@@ -10,7 +10,7 @@
     <string name="no_misses_found">Muito bem, você não possui faltas! =D</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">SchoolApp</string>
     <string name="title_activity_exam">ExamActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

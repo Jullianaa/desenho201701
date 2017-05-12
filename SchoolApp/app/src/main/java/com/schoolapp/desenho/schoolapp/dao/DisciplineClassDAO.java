@@ -54,6 +54,37 @@ public class DisciplineClassDAO extends GenericDBDAO {
         return disciplineClasses;
     }
 
+    public DisciplineClass getCurrentStudentDisciplineClass(Integer studentId, Integer disciplineClassId) {
+        DisciplineClass disciplineClass = null;
+        schoolClassDAO = new SchoolClassDAO(context);
+        examDAO = new ExamDAO(context);
+
+        String sql = "SELECT * FROM " + DataBaseHelper.DISCIPLINECLASS_TABLE +
+                " WHERE " + DataBaseHelper.DISCIPLINECLASS_STUDENTID_COLUMN + " = " + studentId +
+                " AND " + DataBaseHelper.DISCIPLINECLASS_DISCIPLINEID_COLUMN + " = " + disciplineClassId;
+
+        Cursor cursor = database.rawQuery(sql,null);
+        if(cursor.moveToNext()){
+            disciplineClass = new DisciplineClass(
+                    cursor.getInt(1),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    schoolClassDAO.getSchoolClasses(cursor.getInt(0)),
+                    examDAO.getAllExams(cursor.getInt(0)),
+                    cursor.getInt(0),
+                    cursor.getInt(2));
+        }
+
+        if (disciplineClass == null){
+            Log.d("DisciplineClassDAO", "disciplineClass is null");
+        }
+        else {
+            Log.d("DisciplineClassDAO", disciplineClass.getDisciplineClassId().toString());
+        }
+        cursor.close();
+        return disciplineClass;
+    }
+
     public ArrayList<DisciplineClass> getDisciplineClasses (Integer disciplineId) {
         ArrayList<DisciplineClass> disciplineClasses = new ArrayList<DisciplineClass>();
         schoolClassDAO = new SchoolClassDAO(context);

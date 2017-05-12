@@ -10,29 +10,28 @@ import android.widget.TextView;
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.models.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskListAdapter extends ArrayAdapter<Task> {
 
-    private final Context context;
-    private List<Task> tasks;
-    private LayoutInflater inflater;
+    private ArrayList<Task> tasks;
 
-    public TaskListAdapter(Context context, List<Task> tasks) {
-        super(context, R.layout.task_list, tasks);
-
-        this.context = context;
+    public TaskListAdapter(Context context, ArrayList<Task> tasks) {
+        super(context, 0, tasks);
         this.tasks = tasks;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View taskListViewItem = inflater.inflate(R.layout.task_list,null,true);
+        // Check if an existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.task_list, parent, false);
+        }
 
-        TextView tvTask = (TextView) taskListViewItem.findViewById(R.id.tl_task_name);
-        TextView tvDate = (TextView) taskListViewItem.findViewById(R.id.tl_task_date);
+        TextView tvTask = (TextView) convertView.findViewById(R.id.tl_task_name);
+        TextView tvDate = (TextView) convertView.findViewById(R.id.tl_task_date);
 
         tvTask.setText(tasks.get(position).getTaskDescription());
         tvDate.setText(tasks.get(position).getDateEvent().toString());
