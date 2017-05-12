@@ -113,7 +113,7 @@ public class DisciplineFragment extends ListFragment {
         Log.d("DC StudentId", disciplineClassDAO.getDisciplineClass(1).getDisciplineClassId().toString());
 
         TaskDAO taskDAO = new TaskDAO(getContext());
-        Task task = new Task(1,new Date(), new Date(), new Date(), "Inferno", 1, "Cultuar o Demônio");
+        Task task = new Task(1,new Date(), new Date(), new Date(), "Inferno", 1, "Atividade de Desenho");
         taskDAO.saveTask(task);
         Log.d("TaskSaved", taskDAO.getTask(1).getTaskDescription());
 
