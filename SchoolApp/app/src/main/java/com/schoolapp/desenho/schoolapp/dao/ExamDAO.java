@@ -41,14 +41,13 @@ public class ExamDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );
             exams.add(exam);
         }
 
+        cursor.close();
         return exams;
     }
 
@@ -67,12 +66,11 @@ public class ExamDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getFloat(6),
                     cursor.getString(7)
             );
         }
+        cursor.close();
         return exam;
     }
 

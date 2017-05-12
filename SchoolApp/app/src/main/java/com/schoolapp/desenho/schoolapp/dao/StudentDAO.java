@@ -89,7 +89,7 @@ public class StudentDAO extends GenericDBDAO{
                     disciplineExams
             );
         }
-
+        cursor.close();
         return student;
     }
 
@@ -106,7 +106,7 @@ public class StudentDAO extends GenericDBDAO{
 
         ArrayList<DisciplineClass> studentDisciplineClasses = student.getStudentDisciplinesClasses();
         for(DisciplineClass disciplineClass : studentDisciplineClasses) {
-            disciplineClass.studentId = 1;
+            disciplineClass.setStudentId(1);
             disciplineClassDAO.updateDisciplineClass(disciplineClass);
         }
 
@@ -132,7 +132,7 @@ public class StudentDAO extends GenericDBDAO{
 
         ArrayList<DisciplineClass> studentDisciplineClasses = student.getStudentDisciplinesClasses();
         for(DisciplineClass disciplineClass : studentDisciplineClasses) {
-            disciplineClass.studentId = 1;
+            disciplineClass.setStudentId(1);
             disciplineClassDAO.updateDisciplineClass(disciplineClass);
         }
 

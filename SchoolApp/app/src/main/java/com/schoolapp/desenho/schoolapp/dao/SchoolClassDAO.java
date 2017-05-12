@@ -15,13 +15,8 @@ import java.util.Date;
 public class SchoolClassDAO extends GenericDBDAO{
     private static final String WHERE_ID_EQUALS = DataBaseHelper.SCHOOLCLASS_ID_COLUMN + " =?";
 
-    private DisciplineDAO disciplineDAO;
-    private DisciplineClassDAO disciplineClassDAO;
-
     public SchoolClassDAO(Context context) {
         super(context);
-        disciplineDAO = new DisciplineDAO(context);
-        disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
     public ArrayList <SchoolClass> getSchoolClasses (Integer disciplineClassId) {
@@ -39,21 +34,19 @@ public class SchoolClassDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(6),
                     cursor.getInt(1)
             );
             schoolClasses.add(schoolClass);
         }
-
+        cursor.close();
         return schoolClasses;
     }
 
     public SchoolClass getSchoolClass(Integer schoolClassId){
         SchoolClass schoolClass = null;
 
-        String sql = "SELECT * FROM" + DataBaseHelper.SCHOOLCLASS_TABLE +
+        String sql = "SELECT * FROM " + DataBaseHelper.SCHOOLCLASS_TABLE +
                 " WHERE " + DataBaseHelper.SCHOOLCLASS_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { schoolClassId + "" });
@@ -64,19 +57,18 @@ public class SchoolClassDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(6),
                     cursor.getInt(1)
             );
         }
+        cursor.close();
         return schoolClass;
     }
 
     public long saveSchoolClass(SchoolClass schoolClass){
         ContentValues values = new ContentValues();
 
-        values.put(DataBaseHelper.SCHOOLCLASS_DISCIPLINECLASSID_COLUMN, schoolClass.getDiscipline());
+        values.put(DataBaseHelper.SCHOOLCLASS_DISCIPLINECLASSID_COLUMN, schoolClass.getDisciplineClassId());
         values.put(DataBaseHelper.SCHOOLCLASS_ABSENTCLASS_COLUMN, schoolClass.getAbsentClass());
         values.put(DataBaseHelper.SCHOOLCLASS_DATEEVENT_COLUMN, schoolClass.getDateEvent().toString());
         values.put(DataBaseHelper.SCHOOLCLASS_ENDTIME_COLUMN, schoolClass.getEndTime().toString());
@@ -89,7 +81,7 @@ public class SchoolClassDAO extends GenericDBDAO{
     public long updateSchoolClass(SchoolClass schoolClass){
         ContentValues values = new ContentValues();
 
-        values.put(DataBaseHelper.SCHOOLCLASS_DISCIPLINECLASSID_COLUMN, schoolClass.getDiscipline());
+        values.put(DataBaseHelper.SCHOOLCLASS_DISCIPLINECLASSID_COLUMN, schoolClass.getDisciplineClassId());
         values.put(DataBaseHelper.SCHOOLCLASS_ABSENTCLASS_COLUMN, schoolClass.getAbsentClass());
         values.put(DataBaseHelper.SCHOOLCLASS_DATEEVENT_COLUMN, schoolClass.getDateEvent().toString());
         values.put(DataBaseHelper.SCHOOLCLASS_ENDTIME_COLUMN, schoolClass.getEndTime().toString());

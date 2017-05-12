@@ -7,17 +7,15 @@ public abstract class Event {
     private Date startTime;
     private Date endTime;
     private String localEvent;
-    private String discipline;
     private Integer disciplineClassId;
 
     public Event(Integer eventId, Date dateEvent, Date startTime, Date endTime, String localEvent,
-                 String discipline, Integer disciplineClassId) {
+                 Integer disciplineClassId) {
         setEventId(eventId);
         setDateEvent(dateEvent);
         setStartTime(startTime);
         setEndTime(endTime);
         setLocalEvent(localEvent);
-        setDiscipline(discipline);
         setDisciplineClassId(disciplineClassId);
     }
 
@@ -51,14 +49,6 @@ public abstract class Event {
 
     public void setLocalEvent(String localEvent) {
         this.localEvent = localEvent;
-    }
-
-    public String getDiscipline() {
-        return this.discipline;
-    }
-
-    public void setDiscipline(String discipline) {
-        this.discipline = discipline;
     }
 
     public Integer getDisciplineClassId() {

@@ -5,7 +5,9 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.schoolapp.desenho.schoolapp.dao.DisciplineClassDAO;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
+import com.schoolapp.desenho.schoolapp.dao.SchoolClassDAO;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
 import com.schoolapp.desenho.schoolapp.models.Exam;
@@ -27,7 +29,9 @@ import java.util.concurrent.TimeUnit;
 public class JSONParser {
 
     // Discipline Class DAO
-    private static DisciplineDAO disciplineDAO;
+    private  DisciplineDAO disciplineDAO;
+    private  DisciplineClassDAO disciplineClassDAO;
+    private  SchoolClassDAO schoolClassDAO;
 
     // JSON Node names
     private static final String TAG_DISCIPLINES_NAME = "disciplines";
@@ -42,13 +46,15 @@ public class JSONParser {
     private static final String TAG_LOCAL = "local";
 
     // class id's
-    private static int disciplineId = -1;
-    private static int disciplineClassId = -1;
-    private static int eventId = -1;
+    private static int disciplineId = 0;
+    private static int disciplineClassId = 0;
+    private static int eventId = 0;
 
     // check if the database is already populated
     public void insertDisciplines(Activity activity){
         disciplineDAO = new DisciplineDAO(activity);
+        disciplineClassDAO = new DisciplineClassDAO(activity);
+        schoolClassDAO = new SchoolClassDAO(activity);
         ArrayList<Discipline> disciplines = disciplineDAO.getAllDisciplines();
         if(disciplines.size() == 0) {
             String jsonString = this.generateJsonString(activity);
@@ -84,6 +90,8 @@ public class JSONParser {
         if(jsonString != null){
             JSONObject jsonObj = null;
             try {
+                boolean isDisciplineAdded = false;
+                boolean isDisciplineClassAdded = false;
                 jsonObj = new JSONObject(jsonString);
 
                 //getting json array node
@@ -174,11 +182,29 @@ public class JSONParser {
                                 e.printStackTrace();
                             }
 
+                            // create a discipline
+
+                            if(!isDisciplineAdded){
+                                Discipline discipline = new Discipline(disciplineId, disciplineName, disciplineCode, 0, disciplineClassList, 0);
+                                disciplineDAO.saveDiscipline(discipline);
+                                isDisciplineAdded = true;
+                            }
+
+                            if(!isDisciplineClassAdded){
+                                // create the discipline class object
+                                DisciplineClass disciplineClass = new DisciplineClass(disciplineId, class_name, professor, daysList, new ArrayList<Exam>(), disciplineClassId, 0);
+                                disciplineClassDAO.saveDisciplineClass(disciplineClass);
+                                isDisciplineClassAdded = true;
+                            }
+
                             // creating a SchoolClass object
-                            SchoolClass schoolClass = new SchoolClass(eventId, dateEvent, startTime, endTime, localEvent, disciplineName, disciplineClassId, 0);
+                            SchoolClass schoolClass = new SchoolClass(eventId, dateEvent, startTime, endTime, localEvent, disciplineClassId, 0);
 
                             // add the SchoolClass created to the list
                             daysList.add(schoolClass);
+
+                            schoolClassDAO.saveSchoolClass(schoolClass);
+                            Log.d("JSONParser SchoolClass", schoolClassDAO.getSchoolClass(eventId).getEventId().toString());
 
                             Log.d("     Dia - local: ", day.concat(" - ".concat(localEvent)));
                         }
@@ -186,11 +212,13 @@ public class JSONParser {
                         ArrayList<Exam> exams = new ArrayList<>();
 
                         // create the discipline class object
-                        DisciplineClass disciplineClass = new DisciplineClass(disciplineId, class_name, professor, daysList, exams, disciplineClassId);
+                        DisciplineClass disciplineClass = new DisciplineClass(disciplineId, class_name, professor, daysList, exams, disciplineClassId, 0);
+                        disciplineClassDAO.updateDisciplineClass(disciplineClass);
+                        Log.d("JSON DisciplineClass", disciplineClassDAO.getDisciplineClass(disciplineClassId).getDisciplineClassId().toString());
 
                         // add the DisciplineClass object to the list
                         disciplineClassList.add(disciplineClass);
-
+                        isDisciplineClassAdded = false;
                     }
 
                     /* get the days from a school class to calculate the number of credits
@@ -201,10 +229,12 @@ public class JSONParser {
                     // create a discipline
                     Discipline discipline = new Discipline(disciplineId, disciplineName, disciplineCode, numberOfCredits, disciplineClassList, 0);
 
-                    disciplineDAO.saveDiscipline(discipline);
+                    disciplineDAO.updateDiscipline(discipline);
+                    Log.d("JSON Discipline", disciplineDAO.getDiscipline(disciplineId).getDisciplineName());
 
                     Log.d("Credits: ", numberOfCredits.toString());
                     Log.d(" - ", "----------------------------------------------------------");
+                    isDisciplineAdded = false;
                 }
 
             } catch (final JSONException e) {

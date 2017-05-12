@@ -42,14 +42,12 @@ public class MonitoryDAO extends GenericDBDAO {
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(1),
                     cursor.getString(6)
             );
             monitories.add(monitory);
         }
-
+        cursor.close();
         return monitories;
     }
 
@@ -67,12 +65,11 @@ public class MonitoryDAO extends GenericDBDAO {
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    disciplineDAO.getDiscipline(disciplineClassDAO.getDisciplineClass(cursor.
-                            getInt(1)).getDisciplineId()).getDisciplineName(),
                     cursor.getInt(1),
                     cursor.getString(6)
             );
         }
+        cursor.close();
         return monitory;
     }
 
