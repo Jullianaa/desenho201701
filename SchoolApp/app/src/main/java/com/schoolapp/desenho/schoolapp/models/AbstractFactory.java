@@ -2,9 +2,9 @@ package com.schoolapp.desenho.schoolapp.models;
 
 
 abstract class AbstractFactory {
-    private static final Task task = new Task();
-    private static final SchoolClass schoolClass = new SchoolClass();
-    private static final Exam exam = new Exam();
+    private static final TaskFactory task = new TaskFactory();
+    private static final SchoolClassFactory schoolClass = new SchoolClassFactory();
+    private static final ExamFactory exam = new ExamFactory();
 
     static AbstractFactory getFactory(String architecture) {
         AbstractFactory factory = null;
@@ -19,10 +19,6 @@ abstract class AbstractFactory {
         return factory;
     }
 
-    public abstract Task createTask();
-
-    public abstract SchoolClass createSchoolClass();
-
-    public abstract Exam createExam();
+    public abstract Event createEvent();
 
 }
