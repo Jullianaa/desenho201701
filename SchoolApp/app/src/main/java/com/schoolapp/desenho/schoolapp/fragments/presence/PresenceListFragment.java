@@ -108,7 +108,7 @@ public class PresenceListFragment extends Fragment implements AdapterView.OnItem
 
         // Disable the info text if the data size is greater than 0
         if(listSize > 0){
-            infoText.setVisibility(View.INVISIBLE);
+            infoText.setVisibility(View.GONE);
             list.setVisibility(View.VISIBLE);
         } else {
             infoText.setVisibility(View.VISIBLE);
