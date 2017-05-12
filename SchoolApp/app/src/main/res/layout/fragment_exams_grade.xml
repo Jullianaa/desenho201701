@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.schoolapp.desenho.schoolapp.fragments.ExamGradeFragment">
+    tools:context="com.schoolapp.desenho.schoolapp.fragments.examGrade.ExamGradeFragment">
 
     <TextView
         android:layout_width="match_parent"
