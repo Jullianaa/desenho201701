@@ -16,23 +16,18 @@ import java.util.ArrayList;
 public class TaskDAO extends GenericDBDAO{
     private static final String WHERE_ID_EQUALS = DataBaseHelper.TASK_ID_COLUMN + " =?";
 
-    private DisciplineDAO disciplineDAO;
-    private DisciplineClassDAO disciplineClassDAO;
-
     public TaskDAO (Context context) {
         super(context);
-
-        disciplineDAO = new DisciplineDAO(context);
-        disciplineClassDAO = new DisciplineClassDAO(context);
     }
 
     public ArrayList<Task> getTasks (Integer disciplineClassId) {
-        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<Task>();
 
         String sql = "SELECT * FROM " + DataBaseHelper.TASK_TABLE +
-                " WHERE " + DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN + " = ?";
+                " WHERE " + DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN + " = " +
+                disciplineClassId;
 
-        Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
+        Cursor cursor = database.rawQuery(sql, null);
 
         while(cursor.moveToNext()){
             Task task = new Task(
@@ -45,7 +40,13 @@ public class TaskDAO extends GenericDBDAO{
                     cursor.getString(6)
             );
             tasks.add(task);
+            Log.d("TaskDAO", task.getTaskDescription());
         }
+
+        if(tasks == null) {
+            Log.d("TasksDAO", "Tasks nulo");
+        }
+
         cursor.close();
         return tasks;
     }
@@ -53,7 +54,7 @@ public class TaskDAO extends GenericDBDAO{
     public Task getTask (Integer taskId){
         Task task = null;
 
-        String sql = "SELECT * FROM" + DataBaseHelper.TASK_TABLE +
+        String sql = "SELECT * FROM " + DataBaseHelper.TASK_TABLE +
                 " WHERE " + DataBaseHelper.TASK_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { taskId + "" });
@@ -64,8 +65,8 @@ public class TaskDAO extends GenericDBDAO{
                     new Date(cursor.getLong(3)),
                     new Date(cursor.getLong(4)),
                     cursor.getString(5),
-                    cursor.getInt(6),
-                    cursor.getString(1)
+                    cursor.getInt(1),
+                    cursor.getString(6)
             );
         }
         cursor.close();
@@ -75,13 +76,14 @@ public class TaskDAO extends GenericDBDAO{
     public long saveTask (Task task){
         ContentValues values = new ContentValues();
 
-        values.put(DataBaseHelper.TASK_ID_COLUMN, task.getDisciplineClassId());
-        values.put(DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN, task.getDateEvent().toString());
+        values.put(DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN, task.getDisciplineClassId());
         values.put(DataBaseHelper.TASK_DATEEVENT_COLUMN, task.getDateEvent().toString());
         values.put(DataBaseHelper.TASK_STARTTIME_COLUMN, task.getEndTime().toString());
         values.put(DataBaseHelper.TASK_ENDTIME_COLUMN, task.getLocalEvent());
         values.put(DataBaseHelper.TASK_LOCALEVENT_COLUMN, task.getLocalEvent());
         values.put(DataBaseHelper.TASK_DESCRIPTION_COLUMN, task.getTaskDescription());
+
+        Log.d("SaveTask Status:", "SAVED!");
 
         return database.insert(DataBaseHelper.TASK_TABLE, null, values);
     }
@@ -89,7 +91,6 @@ public class TaskDAO extends GenericDBDAO{
     public long updateTask (Task task){
         ContentValues values = new ContentValues();
 
-        values.put(DataBaseHelper.TASK_ID_COLUMN, task.getDisciplineClassId());
         values.put(DataBaseHelper.TASK_DISCIPLINECLASSID_COLUMN, task.getDateEvent().toString());
         values.put(DataBaseHelper.TASK_DATEEVENT_COLUMN, task.getDateEvent().toString());
         values.put(DataBaseHelper.TASK_STARTTIME_COLUMN, task.getEndTime().toString());

@@ -1,7 +1,10 @@
 package com.schoolapp.desenho.schoolapp.fragments.discipline;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -15,10 +18,12 @@ import android.widget.Toast;
 import com.schoolapp.desenho.schoolapp.R;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineClassDAO;
 import com.schoolapp.desenho.schoolapp.dao.DisciplineDAO;
+import com.schoolapp.desenho.schoolapp.dao.TaskDAO;
 import com.schoolapp.desenho.schoolapp.databaseHelper.UserDataHelper;
 import com.schoolapp.desenho.schoolapp.models.Discipline;
 import com.schoolapp.desenho.schoolapp.models.Student;
 import com.schoolapp.desenho.schoolapp.models.DisciplineClass;
+import com.schoolapp.desenho.schoolapp.models.Task;
 
 
 public class DisciplineFragment extends ListFragment {
@@ -36,8 +41,20 @@ public class DisciplineFragment extends ListFragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (InterfaceCommunication) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement " +
+                    "OnArticleSelectedListener");
+        }
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        studentDisciplineClasses = new ArrayList<DisciplineClass>();
         this.getDisciplinesName();
         //this.getDisciplines();
         //  Set up the initial state for acessing the DB
@@ -70,9 +87,9 @@ public class DisciplineFragment extends ListFragment {
         Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
         Log.d("Posicao Disciplina", String.valueOf(position));
 
+
+        Log.d("Id DisciplineClass", studentDisciplineClasses.get(position).getDisciplineClassId().toString());
         mListener.getDisciplineClassId(studentDisciplineClasses.get(position).getDisciplineClassId());
-
-
     }
 
 
@@ -95,10 +112,18 @@ public class DisciplineFragment extends ListFragment {
         disciplineClassDAO.updateDisciplineClass(disciplineClass);
         Log.d("DC StudentId", disciplineClassDAO.getDisciplineClass(1).getDisciplineClassId().toString());
 
+        TaskDAO taskDAO = new TaskDAO(getContext());
+        Task task = new Task(1,new Date(), new Date(), new Date(), "Inferno", 1, "Cultuar o Demônio");
+        taskDAO.saveTask(task);
+        Log.d("TaskSaved", taskDAO.getTask(1).getTaskDescription());
+
         ArrayList<Discipline> allDisciplines = disciplineDAO.getAllStudentDisciplines(1);
         disciplinesName = new ArrayList<>();
         for( Discipline discipline : allDisciplines) {
             disciplinesName.add(discipline.getDisciplineName());
+            Log.d("DisciplineId", discipline.getDisciplineId().toString());
+            DisciplineClass currentDisciplineClass = disciplineClassDAO.getCurrentStudentDisciplineClass(1,discipline.getDisciplineId());
+            studentDisciplineClasses.add(currentDisciplineClass);
         }
 
     }

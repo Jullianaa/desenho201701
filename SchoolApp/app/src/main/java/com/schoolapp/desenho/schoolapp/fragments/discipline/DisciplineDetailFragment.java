@@ -2,6 +2,7 @@ package com.schoolapp.desenho.schoolapp.fragments.discipline;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,11 +46,13 @@ public class DisciplineDetailFragment extends Fragment implements AdapterView.On
         if (disciplineClassArguments != null) {
 
             disciplineClassId = disciplineClassArguments.getInt("disciplineClassId");
+            Log.d("DisciplineDetail Data", String.valueOf(disciplineClassId));
         }
 
         TaskDAO taskDAO = new TaskDAO(getContext());
 
         tasks = taskDAO.getTasks(disciplineClassId);
+        Log.d("TaskDescription", tasks.get(0).getTaskDescription());
 
         TaskListAdapter taskListAdapter = new TaskListAdapter(getContext(), tasks);
 
