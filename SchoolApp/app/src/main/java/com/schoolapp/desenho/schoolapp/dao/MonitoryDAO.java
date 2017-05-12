@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import com.schoolapp.desenho.schoolapp.databaseHelper.DataBaseHelper;
 import com.schoolapp.desenho.schoolapp.databaseHelper.GenericDBDAO;
 import com.schoolapp.desenho.schoolapp.models.Monitory;
+import com.schoolapp.desenho.schoolapp.models.AbstractFactory;
+import com.schoolapp.desenho.schoolapp.models.MonitoryFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,7 +38,8 @@ public class MonitoryDAO extends GenericDBDAO {
         Cursor cursor = database.rawQuery(sql, new String[] {disciplineClassId+""});
 
         while(cursor.moveToNext()){
-            Monitory monitory = new Monitory(
+          AbstractFactory factory = AbstractFactory.getFactory("Monitory");
+          Monitory monitory = factory.createEvent(
                     cursor.getInt(0),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
@@ -52,14 +55,14 @@ public class MonitoryDAO extends GenericDBDAO {
     }
 
     public Monitory getMonitory(Integer monitoryId){
-        Monitory monitory = null;
 
         String sql = "SELECT * FROM" + DataBaseHelper.MONITORY_TABLE +
                 " WHERE " + DataBaseHelper.MONITORY_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { monitoryId + "" });
         if(cursor.moveToNext()) {
-            monitory = new Monitory(
+          AbstractFactory factory = AbstractFactory.getFactory("Monitory");
+          Monitory monitory = factory.createEvent(
                     monitoryId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

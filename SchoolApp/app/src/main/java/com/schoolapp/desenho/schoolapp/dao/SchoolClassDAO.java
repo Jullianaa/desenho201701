@@ -54,8 +54,8 @@ public class SchoolClassDAO extends GenericDBDAO{
 
         Cursor cursor = database.rawQuery(sql, new String[] { schoolClassId + "" });
         if(cursor.moveToNext()) {
-          AbstractFactory factory = AbstractFactory.getFactory("Task");
-          SchoolClass schoolClass = factory.createCPU(
+          AbstractFactory factory = AbstractFactory.getFactory("SchoolClass");
+          SchoolClass schoolClass = factory.createEvent(
                     schoolClassId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

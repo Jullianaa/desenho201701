@@ -37,7 +37,7 @@ public class ExamDAO extends GenericDBDAO{
 
         while(cursor.moveToNext()){
             AbstractFactory factory = AbstractFactory.getFactory("Exam");
-            Exam exam = factory.createCPU(
+            Exam exam = factory.createEvent(
                     cursor.getInt(0),
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
@@ -55,14 +55,14 @@ public class ExamDAO extends GenericDBDAO{
     }
 
     public Exam getExam (Integer examId){
-        Exam exam = null;
 
         String sql = "SELECT * FROM" + DataBaseHelper.EXAM_TABLE +
                 " WHERE " + DataBaseHelper.EXAM_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { examId + "" });
         if(cursor.moveToNext()) {
-            exam = new Exam(
+          AbstractFactory factory = AbstractFactory.getFactory("Exam");
+          Exam exam = factory.createEvent(
                     examId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

@@ -54,14 +54,14 @@ public class TaskDAO extends GenericDBDAO{
     }
 
     public Task getTask (Integer taskId){
-        Task task = null;
 
         String sql = "SELECT * FROM" + DataBaseHelper.TASK_TABLE +
                 " WHERE " + DataBaseHelper.TASK_ID_COLUMN + " = ?";
 
         Cursor cursor = database.rawQuery(sql, new String[] { taskId + "" });
         if(cursor.moveToNext()) {
-            task = new Task(
+          AbstractFactory factory = AbstractFactory.getFactory("Task");
+          Task task = factory.createEvent(
                     taskId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),

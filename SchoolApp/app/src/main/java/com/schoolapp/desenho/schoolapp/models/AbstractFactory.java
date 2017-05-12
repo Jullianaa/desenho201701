@@ -5,6 +5,7 @@ abstract class AbstractFactory {
     private static final TaskFactory task = new TaskFactory();
     private static final SchoolClassFactory schoolClass = new SchoolClassFactory();
     private static final ExamFactory exam = new ExamFactory();
+    private static final MonitoryFactory monitory = new MonitoryFactory();
 
     static AbstractFactory getFactory(String architecture) {
         AbstractFactory factory = null;
@@ -15,6 +16,8 @@ abstract class AbstractFactory {
                 factory = schoolClass;
             case 'Exam':
                 factory = exam;
+            case 'Monitory':
+                factory = monitory;
         }
         return factory;
     }
