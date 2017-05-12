@@ -47,7 +47,6 @@ public class SchoolClassDAO extends GenericDBDAO{
     }
 
     public SchoolClass getSchoolClass(Integer schoolClassId){
-        SchoolClass schoolClass = null;
 
         String sql = "SELECT * FROM " + DataBaseHelper.SCHOOLCLASS_TABLE +
                 " WHERE " + DataBaseHelper.SCHOOLCLASS_ID_COLUMN + " = ?";

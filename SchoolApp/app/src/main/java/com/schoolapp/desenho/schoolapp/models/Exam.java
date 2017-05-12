@@ -30,4 +30,59 @@ public class Exam extends Event{
         return this.contentExam;
     }
 
+    public static class Builder{
+
+        private Integer eventId;
+        private Integer disciplineClassId;
+        private Date dateEvent;
+        private Date startTime;
+        private Date endTime;
+        private String localEvent;
+        private Float grade;
+        private String contentExam;
+
+        public Builder setEventId(int eventId){
+            this.eventId = eventId;
+            return this;
+        }
+        public Builder setDateEvent(Date dateEvent){
+            this.dateEvent = dateEvent;
+            return this;
+        }
+
+        public Builder setStartTime(Date startTime){
+            this.startTime = startTime;
+            return this;
+        }
+
+        public Builder setEndTime(Date endTime){
+            this.endTime = endTime;
+            return this;
+        }
+
+        public Builder setLocalEvent(String localEvent){
+            this.localEvent = localEvent;
+            return this;
+        }
+
+        public Builder setDisciplineClassId(int disciplineClassId){
+            this.disciplineClassId = disciplineClassId;
+            return this;
+        }
+
+        public Builder setGrade(Float grade){
+            this.grade = grade;
+            return this;
+        }
+
+        public Builder setContentExam(String contentExam){
+            this.contentExam = contentExam;
+            return this;
+        }
+
+        public Exam createExam(){
+            return new Exam(eventId, dateEvent, startTime, endTime, localEvent,
+                        disciplineClassId, grade, contentExam);
+        }
+    }
 }

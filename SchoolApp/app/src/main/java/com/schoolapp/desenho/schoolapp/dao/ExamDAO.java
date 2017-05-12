@@ -37,7 +37,9 @@ public class ExamDAO extends GenericDBDAO{
 
         while(cursor.moveToNext()){
             AbstractFactory factory = AbstractFactory.getFactory("Exam");
-            Exam exam = factory.createEvent(
+            Exam exam = factory.createEvent();
+
+
                     cursor.getInt(0),
                     cursor.getInt(1),
                     new Date(cursor.getLong(2)),

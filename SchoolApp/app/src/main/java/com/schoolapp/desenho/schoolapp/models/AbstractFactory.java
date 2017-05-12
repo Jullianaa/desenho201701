@@ -1,22 +1,23 @@
 package com.schoolapp.desenho.schoolapp.models;
 
+import java.util.Date;
 
-abstract class AbstractFactory {
-    private static final TaskFactory task = new TaskFactory();
-    private static final SchoolClassFactory schoolClass = new SchoolClassFactory();
-    private static final ExamFactory exam = new ExamFactory();
-    private static final MonitoryFactory monitory = new MonitoryFactory();
+public abstract class AbstractFactory {
+    private static TaskFactory task = new TaskFactory();
+    private static SchoolClassFactory schoolClass = new SchoolClassFactory();
+    private static ExamFactory exam = new ExamFactory();
+    private static MonitoryFactory monitory = new MonitoryFactory();
 
-    static AbstractFactory getFactory(String architecture) {
+    public static AbstractFactory getFactory(String architecture) {
         AbstractFactory factory = null;
         switch (architecture) {
-            case 'Task':
+            case "Task":
                 factory = task;
-            case 'SchoolClass':
+            case "SchoolClass":
                 factory = schoolClass;
-            case 'Exam':
+            case "Exam":
                 factory = exam;
-            case 'Monitory':
+            case "Monitory":
                 factory = monitory;
         }
         return factory;

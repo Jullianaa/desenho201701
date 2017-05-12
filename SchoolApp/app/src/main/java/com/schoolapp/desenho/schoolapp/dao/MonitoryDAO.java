@@ -62,7 +62,8 @@ public class MonitoryDAO extends GenericDBDAO {
         Cursor cursor = database.rawQuery(sql, new String[] { monitoryId + "" });
         if(cursor.moveToNext()) {
           AbstractFactory factory = AbstractFactory.getFactory("Monitory");
-          Monitory monitory = factory.createEvent(
+          Monitory monitory = factory.createEvent();
+          (
                     monitoryId,
                     new Date(cursor.getLong(2)),
                     new Date(cursor.getLong(3)),
